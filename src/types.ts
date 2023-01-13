@@ -1,4 +1,4 @@
-export type Unit = 'g' | 'cm' | 'cup';
+export type Unit = 'g' | 'cm' | 'c' | 'ml';
 
 export interface WeightUnit {
   name: string;

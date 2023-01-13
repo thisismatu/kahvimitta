@@ -1,9 +1,10 @@
 import { WeightUnit, BrewMethod } from './types';
 
 export const units: WeightUnit[] = [
-  { name: 'grams', unit: 'g' },
+  { name: 'gram', unit: 'g' },
   { name: 'coffee measure', unit: 'cm' },
-  { name: 'coffee cup', unit: 'cup' },
+  { name: 'cup', unit: 'c' },
+  { name: 'millilitre', unit: 'ml' },
 ];
 
 export const methods: BrewMethod[] = [

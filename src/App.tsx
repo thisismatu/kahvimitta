@@ -70,7 +70,7 @@ function App() {
     if (ns) handleStrength(ns);
   };
 
-  const coffeeUnits = units.filter((u) => u.unit !== 'cup');
+  const coffeeUnits = units.filter((u) => u.unit !== 'c' && u.unit !== 'ml');
   const waterUnits = units.filter((u) => u.unit !== 'cm');
 
   return (
@@ -92,14 +92,14 @@ function App() {
       <input type="number" value={coffeeAmount || ''} onChange={handleCoffeeInput} />
       {coffeeUnits.map((u) => (
         <Button key={`coffee-${u.unit}`} as="button" onClick={() => handleCoffeeUnit(coffeeUnit, u.unit)}>
-          {u.name} {u.unit === coffeeUnit && '*'}
+          {u.name} ({u.unit}) {u.unit === coffeeUnit && '*'}
         </Button>
       ))}
       <label>Water</label>
       <input type="number" value={waterAmount || ''} onChange={handleWaterInput} />
       {waterUnits.map((u) => (
         <Button key={`water-${u.unit}`} as="button" onClick={() => handleWaterUnit(waterUnit, u.unit)}>
-          {u.name} {u.unit === waterUnit && '*'}
+          {u.name} ({u.unit}) {u.unit === waterUnit && '*'}
         </Button>
       ))}
     </div>
