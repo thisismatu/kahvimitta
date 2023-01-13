@@ -1,13 +1,32 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+@import url('https://cdn.jsdelivr.net/npm/modern-normalize/modern-normalize.min.css');
+@import url('https://fonts.googleapis.com/css2?family=Sofia+Sans:wght@500&display=swap');
+
+:root {
+  --brown-1: #fff8ea;
+  --brown-2: #b39494;
+  --brown-3: #9e7676;
+  --brown-4: #815b5b;
+  --brown-5: #453535;
+  --font: 'Sofia Sans', sans-serif;
+  --ease: all .2s ease;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+@media (prefers-color-scheme: dark) {
+  :root {
+    --brown-1: #453535;
+    --brown-2: #815b5b;
+    --brown-3: #9e7676;
+    --brown-4: #b39494;
+    --brown-5: #fff8ea;
+  }
+}
+
+
+body {
+  background-color: var(--brown-1);
+  color: var(--brown-5);
+  font-family: var(--font);
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
