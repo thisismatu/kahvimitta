@@ -1,5 +1,5 @@
 @import url('https://cdn.jsdelivr.net/npm/modern-normalize/modern-normalize.min.css');
-@import url('https://fonts.googleapis.com/css2?family=Sofia+Sans:wght@500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;500;700&display=swap');
 
 :root {
   --brown-1: #fff8ea;
@@ -7,7 +7,7 @@
   --brown-3: #9e7676;
   --brown-4: #815b5b;
   --brown-5: #453535;
-  --font: 'Sofia Sans', sans-serif;
+  --font: 'M PLUS Rounded 1c', sans-serif;
   --ease: all .2s ease;
 }
 

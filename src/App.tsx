@@ -75,33 +75,50 @@ function App() {
 
   return (
     <div className="App">
-      <div>Coffee Measure</div>
       <label>Brew Method</label>
-      {methods.map((m) => (
-        <Button key={m.name} as="button" onClick={() => handleMethod(m)}>
-          {m.name} {m.name === method.name && '*'}
-        </Button>
-      ))}
+      <div className="Group">
+        {methods.map((m) => (
+          <Button key={m.name} as="button" onClick={() => handleMethod(m)} disabled={m.name === method.name}>
+            {m.name}
+          </Button>
+        ))}
+      </div>
       <label>Strength</label>
-      {method.strengths.map((s) => (
-        <Button key={s.name} as="button" onClick={() => handleStrength(s)}>
-          {s.name} (1:{s.ratio}) {s.name === strength.name && '*'}
-        </Button>
-      ))}
+      <div className="Group">
+        {method.strengths.map((s) => (
+          <Button key={s.name} as="button" onClick={() => handleStrength(s)} disabled={s.name === strength.name}>
+            {s.name} (1:{s.ratio})
+          </Button>
+        ))}
+      </div>
       <label>Coffee</label>
       <input type="number" value={coffeeAmount || ''} onChange={handleCoffeeInput} />
-      {coffeeUnits.map((u) => (
-        <Button key={`coffee-${u.unit}`} as="button" onClick={() => handleCoffeeUnit(coffeeUnit, u.unit)}>
-          {u.name} ({u.unit}) {u.unit === coffeeUnit && '*'}
-        </Button>
-      ))}
+      <div className="Group">
+        {coffeeUnits.map((u) => (
+          <Button
+            key={`coffee-${u.unit}`}
+            as="button"
+            onClick={() => handleCoffeeUnit(coffeeUnit, u.unit)}
+            disabled={u.unit === coffeeUnit}
+          >
+            {u.name} ({u.unit})
+          </Button>
+        ))}
+      </div>
       <label>Water</label>
       <input type="number" value={waterAmount || ''} onChange={handleWaterInput} />
-      {waterUnits.map((u) => (
-        <Button key={`water-${u.unit}`} as="button" onClick={() => handleWaterUnit(waterUnit, u.unit)}>
-          {u.name} ({u.unit}) {u.unit === waterUnit && '*'}
-        </Button>
-      ))}
+      <div className="Group">
+        {waterUnits.map((u) => (
+          <Button
+            key={`water-${u.unit}`}
+            as="button"
+            onClick={() => handleWaterUnit(waterUnit, u.unit)}
+            disabled={u.unit === waterUnit}
+          >
+            {u.name} ({u.unit})
+          </Button>
+        ))}
+      </div>
     </div>
   );
 }

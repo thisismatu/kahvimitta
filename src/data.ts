@@ -9,7 +9,7 @@ export const units: WeightUnit[] = [
 
 export const methods: BrewMethod[] = [
   {
-    name: 'Autodrip',
+    name: 'Drip coffee',
     strengths: [
       { name: 'strong', ratio: 15 },
       { name: 'normal', ratio: 16.67 },
@@ -17,7 +17,23 @@ export const methods: BrewMethod[] = [
     ],
   },
   {
-    name: 'Aeropress',
+    name: 'Pour over',
+    strengths: [
+      { name: 'strong', ratio: 15 },
+      { name: 'normal', ratio: 16.67 },
+      { name: 'mild', ratio: 18 },
+    ],
+  },
+  {
+    name: 'Aero\u200bpress',
+    strengths: [
+      { name: 'strong', ratio: 13 },
+      { name: 'normal', ratio: 15 },
+      { name: 'mild', ratio: 17 },
+    ],
+  },
+  {
+    name: 'French Press',
     strengths: [
       { name: 'strong', ratio: 13 },
       { name: 'normal', ratio: 15 },
