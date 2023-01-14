@@ -83,14 +83,6 @@ function App() {
           </Button>
         ))}
       </div>
-      <label>Strength</label>
-      <div className="Group">
-        {method.strengths.map((s) => (
-          <Button key={s.name} as="button" onClick={() => handleStrength(s)} disabled={s.name === strength.name}>
-            {s.name} (1:{s.ratio})
-          </Button>
-        ))}
-      </div>
       <label>Coffee</label>
       <input type="number" value={coffeeAmount || ''} onChange={handleCoffeeInput} />
       <div className="Group">
@@ -116,6 +108,14 @@ function App() {
             disabled={u.unit === waterUnit}
           >
             {u.name} ({u.unit})
+          </Button>
+        ))}
+      </div>
+      <label>Strength</label>
+      <div className="Group">
+        {method.strengths.map((s) => (
+          <Button key={s.name} as="button" onClick={() => handleStrength(s)} disabled={s.name === strength.name}>
+            {s.name} (1:{s.ratio})
           </Button>
         ))}
       </div>
