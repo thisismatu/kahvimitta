@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { Button } from 'ariakit/button';
-import { BrewMethod, Strength, Unit } from './types';
-import { convert, round } from './utils';
-import { methods, units } from './data';
+import { BrewMethod, Strength, Unit } from 'types';
+import { convert, round } from 'utils';
+import { methods, units } from 'data';
 import './App.css';
 
 function App() {
