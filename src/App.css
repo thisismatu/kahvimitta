@@ -35,6 +35,9 @@ button, input {
 }
 
 button {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
   font-size: 0.875rem;
 }
 
@@ -43,13 +46,18 @@ button:disabled {
   color: var(--brown-1);
 }
 
+button small {
+  opacity: 0.75;
+  font-size: 12px;
+}
+
 input {
   font-size: 1.25rem;
   padding: 1rem;
   width: 100%;
 }
 
-.Group {
+.group {
   display: flex;
   gap: 0.5rem;
 }
