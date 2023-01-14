@@ -3,6 +3,7 @@ import { Button } from 'ariakit/button';
 import { BrewMethod, Strength, Unit } from 'types';
 import { convert, round } from 'utils';
 import { methods, units } from 'data';
+import { UnitSelect } from 'components/UnitSelect';
 import './App.css';
 
 function App() {
@@ -85,32 +86,10 @@ function App() {
       </div>
       <label>Coffee</label>
       <input type="number" value={coffeeAmount || ''} onChange={handleCoffeeInput} min={0} />
-      <div className="group">
-        {coffeeUnits.map((u) => (
-          <Button
-            key={`coffee-${u.unit}`}
-            as="button"
-            onClick={() => handleCoffeeUnit(coffeeUnit, u.unit)}
-            disabled={u.unit === coffeeUnit}
-          >
-            {u.name} <small>({u.unit})</small>
-          </Button>
-        ))}
-      </div>
+      <UnitSelect items={coffeeUnits} currentUnit={coffeeUnit} onSelect={handleCoffeeUnit} />
       <label>Water</label>
       <input type="number" value={waterAmount || ''} onChange={handleWaterInput} min={0} />
-      <div className="group">
-        {waterUnits.map((u) => (
-          <Button
-            key={`water-${u.unit}`}
-            as="button"
-            onClick={() => handleWaterUnit(waterUnit, u.unit)}
-            disabled={u.unit === waterUnit}
-          >
-            {u.name} <small>({u.unit})</small>
-          </Button>
-        ))}
-      </div>
+      <UnitSelect items={waterUnits} currentUnit={waterUnit} onSelect={handleWaterUnit} />
       <label>Strength</label>
       <div className="group">
         {method.strengths.map((s) => (

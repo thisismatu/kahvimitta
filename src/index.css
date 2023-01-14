@@ -9,6 +9,7 @@
   --brown-5: #402b1a;
   --accent-1: #ffa500;
   --accent-2: #ffda99;
+  --shadow: rgba(0, 0, 0, .2);
   --font: 'M PLUS Rounded 1c', sans-serif;
   --ease: all .2s ease;
 }
