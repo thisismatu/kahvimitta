@@ -1,0 +1,95 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  background-color: var(--brown-2);
+  padding: 0.5rem;
+  border-radius: 0.75rem;
+}
+
+.label {
+  padding: 0.5rem;
+}
+
+.input {
+  appearance: none;
+  background: none;
+  border: none;
+  text-align: center;
+  font-size: 2rem;
+  color: var(--brown-5);
+  height: 100%;
+  width: 100%;
+  padding: 2rem 1rem;
+  -moz-appearance: textfield;
+}
+
+input::placeholder {
+  color: var(--brown-4);
+}
+
+.input:focus {
+  outline: none;
+}
+
+.input::-webkit-outer-spin-button,
+.input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}
+
+.select {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+  appearance: none;
+  background: none;
+  border: none;
+  line-height: 1.25;
+  transition: var(--ease);
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  width: 100%;
+}
+
+.select:hover {
+  box-shadow: inset 0 0 0 100px var(--brown-3);
+}
+
+.popover {
+  display: flex;
+  flex-direction: column;
+  background-color: var(--brown-1);
+  border-radius: 0.75rem;
+  padding: 0.5rem 0;
+  box-shadow: 2px 0 8px var(--hover), 0 0 0 1px var(--hover);
+  z-index: 10;
+  opacity: 0;
+  transition: var(--ease);
+}
+
+.popover[data-enter] {
+  opacity: 1;
+}
+
+.item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  cursor: pointer;
+  padding: 0.75rem 1rem;
+  line-height: 1.25;
+}
+
+.item:hover {
+  background-color: var(--brown-2);
+}
+
+.item small {
+  font-size: 0.75em;
+  margin-right: auto;
+  opacity: 0.75;
+  white-space: nowrap;
+}

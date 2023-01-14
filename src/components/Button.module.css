@@ -1,0 +1,32 @@
+.button {
+  cursor: pointer;
+  display: inline-flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.25rem;
+  justify-content: center;
+  text-align: center;
+  background-color: var(--brown-2);
+  border: none;
+  border-radius: 0.75rem;
+  color: var(--brown-5);
+  font-family: inherit;
+  padding: 0.75rem 0.5rem;
+  transition: var(--ease);
+}
+
+.button:hover {
+  background-color: var(--brown-3);
+}
+
+.button:disabled {
+  background-color: var(--brown-5);
+  color: var(--brown-1);
+}
+
+.button small {
+  font-size: 0.75em;
+  opacity: 0.75;
+  white-space: nowrap;
+}

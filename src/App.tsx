@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
-import { Button } from 'ariakit/button';
 import { BrewMethod, Strength, Unit } from 'types';
 import { convert, round } from 'utils';
 import { methods, units } from 'data';
-import { UnitSelect } from 'components/UnitSelect';
-import './App.css';
+import { AmountInput } from 'components/AmountInput';
+import { Button } from 'components/Button';
+import { MethodButton } from 'components/MethodButton';
+import styles from './App.module.css';
 
 function App() {
   const [method, setMethod] = useState<BrewMethod>(methods[0]);
@@ -75,28 +76,42 @@ function App() {
   const waterUnits = units.filter((u) => u.unit !== 'cs');
 
   return (
-    <div className="App">
-      <label>Brew Method</label>
-      <div className="group">
-        {methods.map((m) => (
-          <Button key={m.name} as="button" onClick={() => handleMethod(m)} disabled={m.name === method.name}>
-            {m.name}
-          </Button>
-        ))}
-      </div>
-      <label>Coffee</label>
-      <input type="number" value={coffeeAmount || ''} onChange={handleCoffeeInput} min={0} />
-      <UnitSelect items={coffeeUnits} currentUnit={coffeeUnit} onSelect={handleCoffeeUnit} />
-      <label>Water</label>
-      <input type="number" value={waterAmount || ''} onChange={handleWaterInput} min={0} />
-      <UnitSelect items={waterUnits} currentUnit={waterUnit} onSelect={handleWaterUnit} />
-      <label>Strength</label>
-      <div className="group">
-        {method.strengths.map((s) => (
-          <Button key={s.name} as="button" onClick={() => handleStrength(s)} disabled={s.name === strength.name}>
-            {s.name} <small>(1:{s.ratio})</small>
-          </Button>
-        ))}
+    <div className={styles.container}>
+      <div className={styles.header}>Coffee Ratio Calculator</div>
+      <div className={styles.form}>
+        <div className={styles.buttonGroup}>
+          {methods.map((m) => (
+            <MethodButton key={m.name} onClick={() => handleMethod(m)} disabled={m.name === method.name}>
+              <m.icon />
+              {m.name}
+            </MethodButton>
+          ))}
+        </div>
+        <div className={styles.inputGroup}>
+          <AmountInput
+            label="Coffee"
+            amount={coffeeAmount}
+            units={coffeeUnits}
+            currentUnit={coffeeUnit}
+            onAmountChange={handleCoffeeInput}
+            onUnitChange={handleCoffeeUnit}
+          />
+          <AmountInput
+            label="Water"
+            amount={waterAmount}
+            units={waterUnits}
+            currentUnit={waterUnit}
+            onAmountChange={handleWaterInput}
+            onUnitChange={handleWaterUnit}
+          />
+        </div>
+        <div className={styles.buttonGroup}>
+          {method.strengths.map((s) => (
+            <Button key={s.name} onClick={() => handleStrength(s)} disabled={s.name === strength.name}>
+              {s.name} <small>1:{s.ratio}</small>
+            </Button>
+          ))}
+        </div>
       </div>
     </div>
   );
