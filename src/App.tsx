@@ -79,7 +79,7 @@ function App() {
     <div className={styles.container}>
       <div className={styles.header}>Coffee Ratio Calculator</div>
       <div className={styles.form}>
-        <div className={styles.buttonGroup}>
+        <div className={styles.methods}>
           {methods.map((m) => (
             <MethodButton key={m.name} onClick={() => handleMethod(m)} disabled={m.name === method.name}>
               <m.icon />
@@ -87,7 +87,7 @@ function App() {
             </MethodButton>
           ))}
         </div>
-        <div className={styles.inputGroup}>
+        <div className={styles.amounts}>
           <AmountInput
             label="Coffee"
             amount={coffeeAmount}
@@ -105,7 +105,7 @@ function App() {
             onUnitChange={handleWaterUnit}
           />
         </div>
-        <div className={styles.buttonGroup}>
+        <div className={styles.strength}>
           {method.strengths.map((s) => (
             <Button key={s.name} onClick={() => handleStrength(s)} disabled={s.name === strength.name}>
               {s.name} <small>1:{s.ratio}</small>
