@@ -71,7 +71,7 @@ function App() {
   };
 
   const coffeeUnits = units.filter((u) => u.unit !== 'c' && u.unit !== 'ml');
-  const waterUnits = units.filter((u) => u.unit !== 'cm');
+  const waterUnits = units.filter((u) => u.unit !== 'cs');
 
   return (
     <div className="App">

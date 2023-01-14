@@ -6,10 +6,10 @@ export const convert = (amount: number, from: Unit, to: Unit) => {
   switch (from) {
     case 'g':
     case 'ml':
-      if (to === 'cm') return amount / 7.5;
+      if (to === 'cs') return amount / 7.5;
       if (to === 'c') return amount / 125;
       return amount;
-    case 'cm':
+    case 'cs':
       if (to === 'g') return amount * 7.5;
       if (to === 'ml') return amount * 7.5;
       if (to === 'c') return (amount * 7.5) / 125;
@@ -17,7 +17,7 @@ export const convert = (amount: number, from: Unit, to: Unit) => {
     case 'c':
       if (to === 'g') return amount * 125;
       if (to === 'ml') return amount * 125;
-      if (to === 'cm') return (amount * 125) / 7.5;
+      if (to === 'cs') return (amount * 125) / 7.5;
       return amount;
   }
 };
