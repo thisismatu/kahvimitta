@@ -45,14 +45,14 @@ function App() {
   };
 
   const handleCoffeeUnit = (from: Unit, to: Unit) => {
-    if (!coffeeAmount) return;
+    if (!coffeeAmount) return setCoffeeUnit(to);
     const c = convert(coffeeAmount, from, to);
     setCoffeeAmount(round(c));
     setCoffeeUnit(to);
   };
 
   const handleWaterUnit = (from: Unit, to: Unit) => {
-    if (!waterAmount) return;
+    if (!waterAmount) return setWaterUnit(to);
     const w = convert(waterAmount, from, to);
     setWaterAmount(round(w));
     setWaterUnit(to);
