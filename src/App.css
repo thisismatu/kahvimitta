@@ -32,6 +32,7 @@ button, input {
   font-weight: 500;
   font-family: inherit;
   padding: 0.5rem 1rem;
+  transition: var(--ease);
 }
 
 button {
@@ -55,6 +56,11 @@ input {
   font-size: 1.25rem;
   padding: 1rem;
   width: 100%;
+}
+
+input:focus {
+  outline: 3px solid var(--accent-2);
+  border-color: var(--accent-1);
 }
 
 .group {

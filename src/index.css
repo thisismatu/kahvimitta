@@ -1,24 +1,18 @@
 @import url('https://cdn.jsdelivr.net/npm/modern-normalize/modern-normalize.min.css');
 @import url('https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;500;700&display=swap');
 
+/* https://colorbox.io/?c0=%26p%24s%24%3D5%26p%24h%24st%24%3D24%26p%24h%24e%24%3D28%26p%24h%24c%24%3Deqi%26p%24sa%24st%24%3D0.08%26p%24sa%24e%24%3D0.6%26p%24sa%24r%24%3D1%26p%24sa%24c%24%3Deqo%26p%24b%24st%24%3D1%26p%24b%24e%24%3D0.25%26p%24b%24c%24%3Dl%26o%24n%24%3DNew+Color%26o%24ro%24%3Dcw%26o%24ms%24%3D0%2C1%26o%24lockHex%24%3DFFE4C4 */
+
 :root {
-  --brown-1: #fff8ea;
-  --brown-2: #b39494;
-  --brown-3: #9e7676;
-  --brown-4: #815b5b;
-  --brown-5: #453535;
+  --brown-1: #faf0e6;
+  --brown-2: #e3ccb6;
+  --brown-3: #9e7452;
+  --brown-4: #6f4d30;
+  --brown-5: #402b1a;
+  --accent-1: #ffa500;
+  --accent-2: #ffcf7a;
   --font: 'M PLUS Rounded 1c', sans-serif;
   --ease: all .2s ease;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --brown-1: #453535;
-    --brown-2: #815b5b;
-    --brown-3: #9e7676;
-    --brown-4: #b39494;
-    --brown-5: #fff8ea;
-  }
 }
 
 
