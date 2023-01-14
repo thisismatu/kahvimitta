@@ -10,6 +10,7 @@
   --accent-1: #ffa500;
   --accent-2: #ffda99;
   --hover: rgba(64, 43, 26, 0.1);
+  --hover-dark: rgba(64, 43, 26, 0.25);
   --font: 'M PLUS Rounded 1c', sans-serif;
   --ease: all 0.2s ease;
 }
