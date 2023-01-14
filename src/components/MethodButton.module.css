@@ -5,8 +5,10 @@
 }
 
 .button svg {
-  width: 2rem;
-  height: 2rem;
-  stroke-width: 1.25px;
+  height: 4rem;
   margin-bottom: auto;
+}
+
+.button:disabled svg {
+  stroke-width: 1.5px;
 }

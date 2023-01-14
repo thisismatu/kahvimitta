@@ -1,18 +1,20 @@
-import { ReactComponent as CoffeeIcon } from 'assets/coffee.svg';
-import { ReactComponent as CheckIcon } from 'assets/check.svg';
+import { ReactComponent as AutodripIcon } from 'assets/autodrip.svg';
+import { ReactComponent as AeropressIcon } from 'assets/aeropress.svg';
+import { ReactComponent as FrenchPressIcon } from 'assets/french-press.svg';
+import { ReactComponent as PourOverIcon } from 'assets/pour-over.svg';
 import { WeightUnit, BrewMethod } from './types';
 
 export const units: WeightUnit[] = [
   { name: 'Gram', unit: 'g' },
-  { name: 'Coffee scoop', unit: 'cs', extra: '7.5 g' },
-  { name: 'Cup', unit: 'c', extra: '125 ml' },
+  { name: 'Coffee scoop', unit: 'cs', extra: '7.5\u2009g' },
+  { name: 'Cup', unit: 'c', extra: '125\u2009ml' },
   { name: 'Millilitre', unit: 'ml' },
 ];
 
 export const methods: BrewMethod[] = [
   {
     name: 'Drip coffee',
-    icon: CheckIcon,
+    icon: AutodripIcon,
     strengths: [
       { name: 'Mild', ratio: 18 },
       { name: 'Normal', ratio: 16.67 },
@@ -21,7 +23,7 @@ export const methods: BrewMethod[] = [
   },
   {
     name: 'Pour over',
-    icon: CoffeeIcon,
+    icon: PourOverIcon,
     strengths: [
       { name: 'Mild', ratio: 18 },
       { name: 'Normal', ratio: 16.67 },
@@ -30,7 +32,7 @@ export const methods: BrewMethod[] = [
   },
   {
     name: 'Aero\u200bpress',
-    icon: CoffeeIcon,
+    icon: AeropressIcon,
     strengths: [
       { name: 'Mild', ratio: 17 },
       { name: 'Normal', ratio: 15 },
@@ -39,7 +41,7 @@ export const methods: BrewMethod[] = [
   },
   {
     name: 'French press',
-    icon: CoffeeIcon,
+    icon: FrenchPressIcon,
     strengths: [
       { name: 'Mild', ratio: 17 },
       { name: 'Normal', ratio: 15 },
