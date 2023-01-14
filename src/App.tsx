@@ -30,7 +30,7 @@ function App() {
 
   const handleCoffeeInput = (e: React.ChangeEvent<HTMLInputElement>) => {
     const c = parseFloat(e.target.value);
-    if (isNaN(c)) return setCoffeeAmount(0);
+    if (isNaN(c) || c < 0) return setCoffeeAmount(0);
     setCoffeeAmount(c);
     coffeeToWater(c);
     setLastInput('coffee');
@@ -38,7 +38,7 @@ function App() {
 
   const handleWaterInput = (e: React.ChangeEvent<HTMLInputElement>) => {
     const w = parseFloat(e.target.value);
-    if (isNaN(w)) return setWaterAmount(0);
+    if (isNaN(w) || w < 0) return setWaterAmount(0);
     setWaterAmount(w);
     waterToCoffee(w);
     setLastInput('water');
@@ -84,7 +84,7 @@ function App() {
         ))}
       </div>
       <label>Coffee</label>
-      <input type="number" value={coffeeAmount || ''} onChange={handleCoffeeInput} />
+      <input type="number" value={coffeeAmount || ''} onChange={handleCoffeeInput} min={0} />
       <div className="group">
         {coffeeUnits.map((u) => (
           <Button
@@ -98,7 +98,7 @@ function App() {
         ))}
       </div>
       <label>Water</label>
-      <input type="number" value={waterAmount || ''} onChange={handleWaterInput} />
+      <input type="number" value={waterAmount || ''} onChange={handleWaterInput} min={0} />
       <div className="group">
         {waterUnits.map((u) => (
           <Button
