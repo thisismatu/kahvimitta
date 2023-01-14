@@ -11,10 +11,12 @@ export const convert = (amount: number, from: Unit, to: Unit) => {
       return amount;
     case 'cm':
       if (to === 'g') return amount * 7.5;
+      if (to === 'ml') return amount * 7.5;
       if (to === 'c') return (amount * 7.5) / 125;
       return amount;
     case 'c':
       if (to === 'g') return amount * 125;
+      if (to === 'ml') return amount * 125;
       if (to === 'cm') return (amount * 125) / 7.5;
       return amount;
   }
