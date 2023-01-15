@@ -128,6 +128,12 @@ function App() {
           ))}
         </div>
         <BrewDetails details={method.details} />
+        <small className={styles.byline}>
+          Made with ♥ by{' '}
+          <a href="https://mathiaslindholm.com/" target="_blank" rel="noopener noreferrer">
+            Mathias Lindholm
+          </a>
+        </small>
       </div>
     </div>
   );
