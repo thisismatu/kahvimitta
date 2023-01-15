@@ -69,9 +69,11 @@ input::placeholder {
   border-radius: 0.5rem;
   width: 100%;
   color: inherit;
+  font-weight: inherit;
 }
 
-.select:hover .select:active {
+.select:hover,
+.select:active {
   background-color: var(--brown-3);
 }
 
@@ -93,6 +95,7 @@ input::placeholder {
   box-shadow: 2px 0 8px var(--hover), 0 0 0 1px var(--hover);
   z-index: 10;
   opacity: 0;
+  transform: translateY(-8px);
   transition: var(--ease);
 }
 
@@ -102,6 +105,7 @@ input::placeholder {
 
 .popover[data-enter] {
   opacity: 1;
+  transform: translateY(0);
 }
 
 .item {

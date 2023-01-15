@@ -21,6 +21,11 @@ export const methods: BrewMethod[] = [
       { name: 'Normal', ratio: 16.67 },
       { name: 'Strong', ratio: 15 },
     ],
+    details: {
+      grind: 'Medium',
+      time: '4 – 5 min',
+      temp: '95°C',
+    },
   },
   {
     name: 'Pour over',
@@ -30,6 +35,11 @@ export const methods: BrewMethod[] = [
       { name: 'Normal', ratio: 16.67 },
       { name: 'Strong', ratio: 15 },
     ],
+    details: {
+      grind: 'Medium',
+      time: '3 – 4 min',
+      temp: '96°C',
+    },
   },
   {
     name: 'Aero\u200bpress',
@@ -39,6 +49,11 @@ export const methods: BrewMethod[] = [
       { name: 'Normal', ratio: 15 },
       { name: 'Strong', ratio: 10 },
     ],
+    details: {
+      grind: 'Medium fine',
+      time: '1:30 min',
+      temp: '90°C',
+    },
   },
   {
     name: 'French press',
@@ -48,6 +63,11 @@ export const methods: BrewMethod[] = [
       { name: 'Normal', ratio: 15 },
       { name: 'Strong', ratio: 12 },
     ],
+    details: {
+      grind: 'Medium coarse',
+      time: '4 min',
+      temp: '95°C',
+    },
   },
   {
     name: 'Moka pot',
@@ -57,5 +77,10 @@ export const methods: BrewMethod[] = [
       { name: 'Normal', ratio: 10 },
       { name: 'Strong', ratio: 7 },
     ],
+    details: {
+      grind: 'Fine',
+      time: '1 min',
+      temp: '99°C',
+    },
   },
 ];

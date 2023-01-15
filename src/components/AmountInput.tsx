@@ -56,6 +56,7 @@ export const AmountInput: React.FC<Props> = ({ label, amount, units, currentUnit
       <SelectPopover state={state} className={styles.popover}>
         {units.map((i) => (
           <SelectItem
+            as="a"
             key={i.unit}
             className={styles.item}
             value={i.unit}

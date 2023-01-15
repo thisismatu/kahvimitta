@@ -3,6 +3,7 @@ import { BrewMethod, Strength, Unit } from 'types';
 import { convert, round } from 'utils';
 import { methods, units } from 'data';
 import { AmountInput } from 'components/AmountInput';
+import { BrewDetails } from 'components/BrewDetails';
 import { Button } from 'components/Button';
 import { Header } from 'components/Header';
 import { InstallPwaButton } from 'components/InstallPwaButton';
@@ -126,6 +127,7 @@ function App() {
             </Button>
           ))}
         </div>
+        <BrewDetails details={method.details} />
       </div>
     </div>
   );

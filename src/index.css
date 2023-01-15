@@ -1,5 +1,5 @@
 @import url('https://cdn.jsdelivr.net/npm/modern-normalize/modern-normalize.min.css');
-@import url('https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;500;700&display=swap');
 
 :root {
   --brown-1: #fff9f2;
@@ -36,7 +36,11 @@ body {
 }
 
 @media (hover: none) and (pointer: coarse) {
-  * {
+  a,
+  button,
+  input,
+  label,
+  select {
     -webkit-tap-highlight-color: transparent;
     user-select: none;
   }

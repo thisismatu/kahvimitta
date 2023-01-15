@@ -8,6 +8,12 @@ export interface WeightUnit {
   extra?: string;
 }
 
+export interface Instruction {
+  grind: string;
+  temp: string;
+  time: string;
+}
+
 export interface Strength {
   name: 'Strong' | 'Normal' | 'Mild';
   ratio: number;
@@ -21,6 +27,7 @@ export interface BrewMethod {
       title?: string | undefined;
     }
   >;
+  details: Instruction;
 }
 
 export interface BeforeInstallPromptEvent extends Event {
