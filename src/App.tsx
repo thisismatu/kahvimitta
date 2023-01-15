@@ -38,7 +38,11 @@ function App() {
 
   const handleCoffeeInput = (e: React.ChangeEvent<HTMLInputElement>) => {
     const c = parseFloat(e.target.value);
-    if (isNaN(c) || c < 0) return setCoffeeAmount(0);
+    if (isNaN(c) || c < 0) {
+      setCoffeeAmount(0);
+      setWaterAmount(0);
+      return;
+    }
     setCoffeeAmount(c);
     coffeeToWater(c);
     setLastInput('coffee');
@@ -46,7 +50,11 @@ function App() {
 
   const handleWaterInput = (e: React.ChangeEvent<HTMLInputElement>) => {
     const w = parseFloat(e.target.value);
-    if (isNaN(w) || w < 0) return setWaterAmount(0);
+    if (isNaN(w) || w < 0) {
+      setWaterAmount(0);
+      setCoffeeAmount(0);
+      return;
+    }
     setWaterAmount(w);
     waterToCoffee(w);
     setLastInput('water');
