@@ -2,6 +2,8 @@
 
 > Kahvimitta; finnish for "coffee scoop"
 
+This project was bootstrapped with Create React App [PWA typescript template](https://cra.link/PWA).
+
 ## Development
 
 ```
