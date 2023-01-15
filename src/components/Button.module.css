@@ -2,7 +2,6 @@
   cursor: pointer;
   display: inline-flex;
   flex-direction: column;
-  flex-wrap: wrap;
   align-items: center;
   gap: 0.25rem;
   justify-content: center;
