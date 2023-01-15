@@ -68,9 +68,10 @@ input::placeholder {
   padding: 0.5rem;
   border-radius: 0.5rem;
   width: 100%;
+  color: inherit;
 }
 
-.select:hover {
+.select:hover .select:active {
   background-color: var(--brown-3);
 }
 
