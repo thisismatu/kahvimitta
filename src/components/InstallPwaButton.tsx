@@ -1,20 +1,42 @@
 import React, { useEffect, useState } from 'react';
-// import { Button } from 'components/Button';
-// import styles from './InstallPwaButton.module.css';
+import { BeforeInstallPromptEvent } from 'types';
+import { Button } from 'components/Button';
+import { ReactComponent as DownloadIcon } from 'assets/download.svg';
+import { ReactComponent as PlusIcon } from 'assets/plus-circle.svg';
+import styles from './InstallPwaButton.module.css';
 
 export const InstallPwaButton: React.FC = () => {
-  const [event, setEvent] = useState<Event>();
+  const [isMobile, setIsMobile] = useState<boolean>(true);
+  const [isVisible, setIsVisible] = useState<boolean>(false);
+  const [deferredPrompt, setDeferredPrompt] = useState<BeforeInstallPromptEvent>();
 
   useEffect(() => {
-    const handler = (e: Event) => {
+    const handler = (e: BeforeInstallPromptEvent) => {
       console.log(e);
-      setEvent(e);
+      setDeferredPrompt(e);
     };
+
+    setIsMobile(window.matchMedia('(hover: none)').matches);
+    setIsVisible(window.matchMedia('(display-mode: browser)').matches);
 
     window.addEventListener('beforeinstallprompt', handler);
     return () => window.removeEventListener('beforeinstallprompt', handler);
   }, []);
 
-  // return <Button className={styles.button}>Install</Button>;
-  return null;
+  const handleClick = async () => {
+    if (!deferredPrompt) return;
+    deferredPrompt.prompt();
+    const { outcome } = await deferredPrompt.userChoice;
+    setDeferredPrompt(undefined);
+    setIsVisible(outcome !== 'accepted');
+  };
+
+  if (!isVisible) return null;
+
+  return (
+    <Button className={styles.button} onClick={handleClick}>
+      {isMobile ? <DownloadIcon /> : <PlusIcon />}
+      {isMobile ? 'Get' : 'Install'} app
+    </Button>
+  );
 };
