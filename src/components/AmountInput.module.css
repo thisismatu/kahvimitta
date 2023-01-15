@@ -57,6 +57,15 @@ input::placeholder {
   background-color: var(--brown-3);
 }
 
+.select:focus {
+  outline-color: var(--accent-1);
+  outline-width: 2px;
+}
+
+.select:focus-visible {
+  outline-style: solid;
+}
+
 .popover {
   display: flex;
   flex-direction: column;
@@ -67,6 +76,10 @@ input::placeholder {
   z-index: 10;
   opacity: 0;
   transition: var(--ease);
+}
+
+.popover:focus {
+  outline: none;
 }
 
 .popover[data-enter] {
@@ -83,7 +96,8 @@ input::placeholder {
   line-height: 1.25;
 }
 
-.item:hover {
+.item:hover,
+.item[data-active-item] {
   background-color: var(--brown-2);
 }
 

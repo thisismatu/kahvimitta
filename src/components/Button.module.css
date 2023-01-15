@@ -20,6 +20,15 @@
   background-color: var(--brown-3);
 }
 
+.button:focus {
+  outline-color: var(--accent-1);
+  outline-width: 2px;
+}
+
+.select:focus-visible {
+  outline-style: solid;
+}
+
 .button:disabled {
   background-color: var(--brown-5);
   color: var(--brown-1);
