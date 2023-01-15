@@ -1,6 +1,6 @@
 {
-  "short_name": "Brew",
-  "name": "Coffee Ratio Calculator",
+  "short_name": "BrewCalc",
+  "name": "BrewCalc: A simple coffee ratio calculator",
   "icons": [
     {
       "src": "favicon.ico",
