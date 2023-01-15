@@ -30,7 +30,13 @@
   "description": "Use this calculator to brew a perfect cup of coffee. Convert weight and volume to the amount of coffee you need.",
   "screenshots": [
     {
-      "src": "screenshot.png",
+      "src": "screenshot-1.png",
+      "type": "image/png",
+      "sizes": "720x1280",
+      "form_factor": "narrow"
+    },
+    {
+      "src": "screenshot-2.png",
       "type": "image/png",
       "sizes": "720x1280",
       "form_factor": "narrow"
