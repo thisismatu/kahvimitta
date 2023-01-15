@@ -34,7 +34,7 @@ export const InstallPwaButton: React.FC = () => {
   if (!isVisible) return null;
 
   return (
-    <Button className={styles.button} onClick={handleClick}>
+    <Button className={styles.button} onClick={handleClick} tabIndex={-1}>
       {isMobile ? <DownloadIcon /> : <PlusIcon />}
       {isMobile ? 'Get' : 'Install'} app
     </Button>

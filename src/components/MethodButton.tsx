@@ -1,11 +1,8 @@
 import React from 'react';
-import { Button, ButtonProps } from 'components/Button';
+import { ButtonProps } from 'ariakit/button';
+import { Button } from 'components/Button';
 import styles from './MethodButton.module.css';
 
-export const MethodButton: React.FC<ButtonProps> = (props) => {
-  return (
-    <Button className={styles.button} {...props}>
-      {props.children}
-    </Button>
-  );
+export const MethodButton: React.FC<ButtonProps> = ({ children }) => {
+  return <Button className={styles.button}>{children}</Button>;
 };

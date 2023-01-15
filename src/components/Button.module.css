@@ -10,8 +10,8 @@
   border: none;
   border-radius: 0.75rem;
   color: inherit;
-  font-family: inherit;
-  padding: 0.75rem 0.5rem;
+  font-weight: inherit;
+  padding: 0.75rem;
   transition: var(--ease);
 }
 
@@ -25,7 +25,7 @@
   outline-width: 2px;
 }
 
-.select:focus-visible {
+.button:focus-visible {
   outline-style: solid;
 }
 
@@ -36,6 +36,7 @@
 
 .button small {
   font-size: 0.75em;
+  font-weight: 400;
   opacity: 0.75;
   white-space: nowrap;
 }
