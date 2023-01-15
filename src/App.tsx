@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { BrewMethod, Strength, Unit } from 'types';
 import { convert, round } from 'utils';
 import { methods, units } from 'data';
@@ -17,6 +17,10 @@ function App() {
   const [waterAmount, setWaterAmount] = useState<number>(0);
   const [waterUnit, setWaterUnit] = useState<Unit>('g');
   const [lastInput, setLastInput] = useState<'coffee' | 'water'>();
+
+  useEffect(() => {
+    document.title = 'BrewCalc';
+  }, []);
 
   const coffeeToWater = (c: number, r?: number) => {
     const cg = convert(c, coffeeUnit, 'g');
