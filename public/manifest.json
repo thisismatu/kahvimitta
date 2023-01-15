@@ -1,11 +1,16 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "Brew",
+  "name": "Coffee Ratio Calculator",
   "icons": [
     {
       "src": "favicon.ico",
       "sizes": "64x64 32x32 24x24 16x16",
       "type": "image/x-icon"
+    },
+    {
+      "src": "logo.svg",
+      "type": "image/svg+xml",
+      "sizes": "128x128"
     },
     {
       "src": "logo192.png",
@@ -19,7 +24,16 @@
     }
   ],
   "start_url": ".",
-  "display": "standalone",
-  "theme_color": "#000000",
-  "background_color": "#ffffff"
+  "display": "fullscreen",
+  "theme_color": "#403020",
+  "background_color": "#fff9f2",
+  "description": "Use this calculator to brew a perfect cup of coffee. Convert weight and volume to the amount of coffee you need.",
+  "screenshots": [
+    {
+      "src": "screenshot.png",
+      "type": "image/png",
+      "sizes": "720x1280",
+      "form_factor": "narrow"
+    }
+  ]
 }
