@@ -1,3 +1,8 @@
+:root {
+  /* Make sure to match with AmountInput `fontSize` variable */
+  --defaultSize: 36px;
+}
+
 .container {
   display: flex;
   flex-direction: column;
@@ -17,11 +22,12 @@
   background: none;
   border: none;
   text-align: center;
-  font-size: 2rem;
+  font-size: var(--defaultSize);
   color: var(--brown-5);
   height: 100%;
   width: 100%;
   padding: 2rem 0;
+  transition: var(--ease);
   -moz-appearance: textfield;
 }
 
@@ -36,6 +42,17 @@ input::placeholder {
 .input::-webkit-outer-spin-button,
 .input::-webkit-inner-spin-button {
   -webkit-appearance: none;
+}
+
+.txtWidth {
+  font-size: var(--defaultSize);
+  visibility: hidden;
+  height: 0;
+  opacity: 0;
+  position: absolute;
+  top: -100px;
+  left: 0;
+  white-space: nowrap;
 }
 
 .select {
