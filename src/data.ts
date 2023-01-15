@@ -54,8 +54,8 @@ export const methods: BrewMethod[] = [
     icon: MokaPotIcon,
     strengths: [
       { name: 'Mild', ratio: 17.25 },
-      { name: 'Normal', ratio: 15 },
-      { name: 'Strong', ratio: 12 },
+      { name: 'Normal', ratio: 10 },
+      { name: 'Strong', ratio: 7 },
     ],
   },
 ];
