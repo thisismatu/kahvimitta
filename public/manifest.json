@@ -30,7 +30,7 @@
   "orientation": "portrait",
   "theme_color": "#403020",
   "background_color": "#fff9f2",
-  "description": "Use this calculator to brew a perfect cup of coffee. Convert weight and volume to the amount of coffee you need.",
+  "description": "Use this calculator to brew a perfect cup of coffee. Calculate how much water or coffee you need for the given input and easily covert between common units.",
   "screenshots": [
     {
       "src": "screenshot-1.png",
