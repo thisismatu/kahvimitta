@@ -12,14 +12,12 @@ export const InstallPwaButton: React.FC = () => {
 
   useEffect(() => {
     const handler = (e: BeforeInstallPromptEvent) => {
-      console.log(e);
       setDeferredPrompt(e);
+      setIsVisible(true);
     };
 
     setIsMobile(window.matchMedia('(hover: none)').matches);
-    const m = window.matchMedia('(display-mode: browser)');
-    console.log(m, m.matches);
-    setIsVisible(m.matches);
+    setIsVisible(!window.matchMedia('(display-mode: standalone)').matches);
 
     window.addEventListener('beforeinstallprompt', handler);
     return () => window.removeEventListener('beforeinstallprompt', handler);
