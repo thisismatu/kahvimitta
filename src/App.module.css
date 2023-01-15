@@ -9,16 +9,6 @@
   }
 }
 
-.header {
-  padding: 1rem;
-  text-align: center;
-  font-weight: 700;
-  font-size: 1.25rem;
-  line-height: 1.5;
-  background-color: var(--brown-5);
-  color: var(--brown-1);
-}
-
 .form {
   display: flex;
   flex-direction: column;

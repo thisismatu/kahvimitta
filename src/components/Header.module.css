@@ -1,0 +1,46 @@
+.container {
+  display: grid;
+  align-items: center;
+  grid-template-columns: 1fr auto 1fr;
+  justify-content: space-between;
+  padding: 0 1.125rem;
+  text-align: center;
+  background-color: var(--brown-5);
+  color: var(--brown-1);
+  height: 64px;
+}
+
+.left,
+.right,
+.center {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.right {
+  justify-content: flex-end;
+}
+
+.center {
+  justify-content: center;
+}
+
+.title {
+  font-weight: 700;
+  font-size: 1.25rem;
+  line-height: 1.5;
+  margin: 0;
+}
+
+.description {
+  display: none;
+}
+
+@media only screen and (min-width: 768px) {
+  .description {
+    display: block;
+    margin: 0;
+    opacity: 0.75;
+  }
+}

@@ -6,6 +6,7 @@ import { AmountInput } from 'components/AmountInput';
 import { Button } from 'components/Button';
 import { MethodButton } from 'components/MethodButton';
 import styles from './App.module.css';
+import { Header } from 'components/Header';
 
 function App() {
   const [method, setMethod] = useState<BrewMethod>(methods[0]);
@@ -77,7 +78,7 @@ function App() {
 
   return (
     <div className={styles.container}>
-      <div className={styles.header}>Coffee Ratio Calculator</div>
+      <Header title="BrewCalc" description="A simple coffee ratio calculator" />
       <div className={styles.form}>
         <div className={styles.methods}>
           {methods.map((m) => (
