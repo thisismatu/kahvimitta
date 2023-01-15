@@ -16,7 +16,8 @@
   transition: var(--ease);
 }
 
-.button:hover {
+.button:hover,
+.button:active {
   background-color: var(--brown-3);
 }
 
