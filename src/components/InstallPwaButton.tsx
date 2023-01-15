@@ -17,7 +17,9 @@ export const InstallPwaButton: React.FC = () => {
     };
 
     setIsMobile(window.matchMedia('(hover: none)').matches);
-    setIsVisible(window.matchMedia('(display-mode: browser)').matches);
+    const m = window.matchMedia('(display-mode: browser)');
+    console.log(m, m.matches);
+    setIsVisible(m.matches);
 
     window.addEventListener('beforeinstallprompt', handler);
     return () => window.removeEventListener('beforeinstallprompt', handler);
