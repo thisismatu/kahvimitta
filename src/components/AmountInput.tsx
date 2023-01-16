@@ -15,7 +15,7 @@ interface Props {
 }
 
 export const AmountInput: React.FC<Props> = ({ label, amount, units, currentUnit, onUnitChange, onAmountChange }) => {
-  const state = useSelectState({ sameWidth: true, gutter: 4, animated: true });
+  const state = useSelectState({ defaultValue: currentUnit, sameWidth: true, gutter: 4, animated: true });
   const renderName = units.find((i) => i.unit === state.value)?.name;
   const widthRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);

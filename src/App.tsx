@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { BrewMethod, Strength, Unit } from 'types';
 import { convert, round } from 'utils/math';
+import { useLocalStorage } from 'utils/useLocalStorage';
 import { methods, units } from 'data';
 import { AmountInput } from 'components/AmountInput';
 import { BrewDetails } from 'components/BrewDetails';
@@ -11,12 +12,14 @@ import { MethodButton } from 'components/MethodButton';
 import styles from './App.module.css';
 
 function App() {
+  const [localCoffeeUnit, setLocalCoffeeUnit] = useLocalStorage<Unit>('coffeeUnit', 'g');
+  const [localWaterUnit, setLocalWaterUnit] = useLocalStorage<Unit>('waterUnit', 'ml');
   const [method, setMethod] = useState<BrewMethod>(methods[0]);
   const [strength, setStrength] = useState<Strength>(methods[0].strengths[1]);
   const [coffeeAmount, setCoffeeAmount] = useState<number>(0);
-  const [coffeeUnit, setCoffeeUnit] = useState<Unit>('g');
+  const [coffeeUnit, setCoffeeUnit] = useState<Unit>(localCoffeeUnit);
   const [waterAmount, setWaterAmount] = useState<number>(0);
-  const [waterUnit, setWaterUnit] = useState<Unit>('g');
+  const [waterUnit, setWaterUnit] = useState<Unit>(localWaterUnit);
   const [lastInput, setLastInput] = useState<'coffee' | 'water'>();
 
   useEffect(() => {
@@ -62,17 +65,19 @@ function App() {
   };
 
   const handleCoffeeUnit = (from: Unit, to: Unit) => {
-    if (!coffeeAmount) return setCoffeeUnit(to);
+    setCoffeeUnit(to);
+    setLocalCoffeeUnit(to);
+    if (!coffeeAmount) return;
     const c = convert(coffeeAmount, from, to);
     setCoffeeAmount(round(c));
-    setCoffeeUnit(to);
   };
 
   const handleWaterUnit = (from: Unit, to: Unit) => {
-    if (!waterAmount) return setWaterUnit(to);
+    setWaterUnit(to);
+    setLocalWaterUnit(to);
+    if (!waterAmount) return;
     const w = convert(waterAmount, from, to);
     setWaterAmount(round(w));
-    setWaterUnit(to);
   };
 
   const handleStrength = (s: Strength) => {
