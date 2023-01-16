@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { BrewMethod, Strength, Unit } from 'types';
 import { convert, round } from 'utils/math';
 import { useLocalStorage } from 'utils/useLocalStorage';
-import { methods, units } from 'data';
+import { brewMethods, coffeeUnits, waterUnits } from 'data';
 import { AmountInput } from 'components/AmountInput';
 import { BrewDetails } from 'components/BrewDetails';
 import { Button } from 'components/Button';
@@ -14,8 +14,8 @@ import styles from './App.module.css';
 function App() {
   const [localCoffeeUnit, setLocalCoffeeUnit] = useLocalStorage<Unit>('coffeeUnit', 'g');
   const [localWaterUnit, setLocalWaterUnit] = useLocalStorage<Unit>('waterUnit', 'ml');
-  const [method, setMethod] = useState<BrewMethod>(methods[0]);
-  const [strength, setStrength] = useState<Strength>(methods[0].strengths[1]);
+  const [method, setMethod] = useState<BrewMethod>(brewMethods[0]);
+  const [strength, setStrength] = useState<Strength>(brewMethods[0].strengths[1]);
   const [coffeeAmount, setCoffeeAmount] = useState<number>(0);
   const [coffeeUnit, setCoffeeUnit] = useState<Unit>(localCoffeeUnit);
   const [waterAmount, setWaterAmount] = useState<number>(0);
@@ -92,15 +92,12 @@ function App() {
     if (ns) handleStrength(ns);
   };
 
-  const coffeeUnits = units.filter((u) => u.unit !== 'c' && u.unit !== 'ml');
-  const waterUnits = units.filter((u) => u.unit !== 'cs');
-
   return (
     <div className={styles.container}>
       <Header title="BrewCalc" description="A simple coffee ratio calculator" rightAction={<InstallPwaButton />} />
       <div className={styles.form}>
         <div className={styles.methods}>
-          {methods.map((m) => (
+          {brewMethods.map((m) => (
             <MethodButton key={m.name} onClick={() => handleMethod(m)} disabled={m.name === method.name}>
               <m.icon />
               {m.name}

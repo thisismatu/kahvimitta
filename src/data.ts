@@ -7,14 +7,19 @@ import { WeightUnit, BrewMethod } from './types';
 
 // Note: remember to use thin space " "
 
-export const units: WeightUnit[] = [
+export const coffeeUnits: WeightUnit[] = [
   { name: 'Gram', unit: 'g' },
-  { name: 'Millilitre', unit: 'ml' },
   { name: 'Coffee scoop', unit: 'cs', extra: '7.5 ml' },
+];
+
+export const waterUnits: WeightUnit[] = [
+  { name: 'Gram', unit: 'g' },
+  { name: 'Milliliter', unit: 'ml' },
+  { name: 'Liter', unit: 'l' },
   { name: 'Cup', unit: 'c', extra: '125 ml' },
 ];
 
-export const methods: BrewMethod[] = [
+export const brewMethods: BrewMethod[] = [
   {
     name: 'Drip coffee',
     icon: AutodripIcon,
