@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { BrewMethod, Strength, Unit } from 'types';
-import { convert, round } from 'utils';
+import { convert, round } from 'utils/math';
 import { methods, units } from 'data';
 import { AmountInput } from 'components/AmountInput';
 import { BrewDetails } from 'components/BrewDetails';
