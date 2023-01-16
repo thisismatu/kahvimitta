@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { BrewMethod, Strength, Unit } from 'types';
+import { Amount, BrewMethod, Strength, Unit } from 'types';
 import { convert, round } from 'utils/math';
 import { useLocalStorage } from 'utils/useLocalStorage';
 import { brewMethods, coffeeUnits, waterUnits } from 'data';
@@ -16,9 +16,9 @@ function App() {
   const [localWaterUnit, setLocalWaterUnit] = useLocalStorage<Unit>('waterUnit', 'ml');
   const [method, setMethod] = useState<BrewMethod>(brewMethods[0]);
   const [strength, setStrength] = useState<Strength>(brewMethods[0].strengths[1]);
-  const [coffeeAmount, setCoffeeAmount] = useState<number>(0);
+  const [coffee, setCoffee] = useState<Amount>({ round: 0, exact: 0 });
+  const [water, setWater] = useState<Amount>({ round: 0, exact: 0 });
   const [coffeeUnit, setCoffeeUnit] = useState<Unit>(localCoffeeUnit);
-  const [waterAmount, setWaterAmount] = useState<number>(0);
   const [waterUnit, setWaterUnit] = useState<Unit>(localWaterUnit);
   const [lastInput, setLastInput] = useState<'coffee' | 'water'>();
 
@@ -30,24 +30,24 @@ function App() {
     const cg = convert(c, coffeeUnit, 'g');
     const wg = cg * (r || strength.ratio);
     const w = convert(wg, 'g', waterUnit);
-    setWaterAmount(round(w));
+    setWater({ round: round(w), exact: w });
   };
 
   const waterToCoffee = (w: number, r?: number) => {
     const wg = convert(w, waterUnit, 'g');
     const cg = wg / (r || strength.ratio);
     const c = convert(cg, 'g', coffeeUnit);
-    setCoffeeAmount(round(c));
+    setCoffee({ round: round(c), exact: c });
   };
 
   const handleCoffeeInput = (e: React.ChangeEvent<HTMLInputElement>) => {
     const c = parseFloat(e.target.value.replace(/,/, '.'));
     if (isNaN(c) || c < 0) {
-      setCoffeeAmount(0);
-      setWaterAmount(0);
+      setCoffee({ round: 0, exact: 0 });
+      setWater({ round: 0, exact: 0 });
       return;
     }
-    setCoffeeAmount(c);
+    setCoffee({ round: c, exact: c });
     coffeeToWater(c);
     setLastInput('coffee');
   };
@@ -55,11 +55,11 @@ function App() {
   const handleWaterInput = (e: React.ChangeEvent<HTMLInputElement>) => {
     const w = parseFloat(e.target.value.replace(/,/, '.'));
     if (isNaN(w) || w < 0) {
-      setWaterAmount(0);
-      setCoffeeAmount(0);
+      setWater({ round: 0, exact: 0 });
+      setCoffee({ round: 0, exact: 0 });
       return;
     }
-    setWaterAmount(w);
+    setWater({ round: w, exact: w });
     waterToCoffee(w);
     setLastInput('water');
   };
@@ -67,23 +67,23 @@ function App() {
   const handleCoffeeUnit = (from: Unit, to: Unit) => {
     setCoffeeUnit(to);
     setLocalCoffeeUnit(to);
-    if (!coffeeAmount) return;
-    const c = convert(coffeeAmount, from, to);
-    setCoffeeAmount(round(c));
+    if (!coffee.exact) return;
+    const c = convert(coffee.exact, from, to);
+    setCoffee({ round: round(c), exact: c });
   };
 
   const handleWaterUnit = (from: Unit, to: Unit) => {
     setWaterUnit(to);
     setLocalWaterUnit(to);
-    if (!waterAmount) return;
-    const w = convert(waterAmount, from, to);
-    setWaterAmount(round(w));
+    if (!water.exact) return;
+    const w = convert(water.exact, from, to);
+    setWater({ round: round(w), exact: w });
   };
 
   const handleStrength = (s: Strength) => {
     setStrength(s);
-    if (lastInput === 'coffee') coffeeToWater(coffeeAmount, s.ratio);
-    if (lastInput === 'water') waterToCoffee(waterAmount, s.ratio);
+    if (lastInput === 'coffee') coffeeToWater(coffee.exact, s.ratio);
+    if (lastInput === 'water') waterToCoffee(water.exact, s.ratio);
   };
 
   const handleMethod = (m: BrewMethod) => {
@@ -107,7 +107,7 @@ function App() {
         <div className={styles.amounts}>
           <AmountInput
             label="Coffee"
-            amount={coffeeAmount}
+            amount={coffee.round}
             units={coffeeUnits}
             currentUnit={coffeeUnit}
             onAmountChange={handleCoffeeInput}
@@ -115,7 +115,7 @@ function App() {
           />
           <AmountInput
             label="Water"
-            amount={waterAmount}
+            amount={water.round}
             units={waterUnits}
             currentUnit={waterUnit}
             onAmountChange={handleWaterInput}

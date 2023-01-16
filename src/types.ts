@@ -8,15 +8,20 @@ export interface WeightUnit {
   extra?: string;
 }
 
-export interface Instruction {
-  grind: string;
-  temp: string;
-  time: string;
+export interface Amount {
+  round: number;
+  exact: number;
 }
 
 export interface Strength {
   name: 'Strong' | 'Normal' | 'Mild';
   ratio: number;
+}
+
+export interface Instruction {
+  grind: string;
+  temp: string;
+  time: string;
 }
 
 export interface BrewMethod {
