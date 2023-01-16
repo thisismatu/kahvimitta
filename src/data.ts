@@ -5,11 +5,13 @@ import { ReactComponent as PourOverIcon } from 'assets/pour-over.svg';
 import { ReactComponent as MokaPotIcon } from 'assets/moka-pot.svg';
 import { WeightUnit, BrewMethod } from './types';
 
+// Note: remember to use thin space " "
+
 export const units: WeightUnit[] = [
   { name: 'Gram', unit: 'g' },
   { name: 'Millilitre', unit: 'ml' },
-  { name: 'Coffee scoop', unit: 'cs', extra: '7.5\u2009g' },
-  { name: 'Cup', unit: 'c', extra: '125\u2009ml' },
+  { name: 'Coffee scoop', unit: 'cs', extra: '7.5 ml' },
+  { name: 'Cup', unit: 'c', extra: '125 ml' },
 ];
 
 export const methods: BrewMethod[] = [
@@ -23,7 +25,7 @@ export const methods: BrewMethod[] = [
     ],
     details: {
       grind: 'Medium',
-      time: '4 – 5 min',
+      time: '4 – 5 min',
       temp: '95°C',
     },
   },
@@ -37,7 +39,7 @@ export const methods: BrewMethod[] = [
     ],
     details: {
       grind: 'Medium',
-      time: '3 – 4 min',
+      time: '3 – 4 min',
       temp: '96°C',
     },
   },
@@ -51,7 +53,7 @@ export const methods: BrewMethod[] = [
     ],
     details: {
       grind: 'Medium fine',
-      time: '1:30 min',
+      time: '1:30 min',
       temp: '90°C',
     },
   },
@@ -65,7 +67,7 @@ export const methods: BrewMethod[] = [
     ],
     details: {
       grind: 'Medium coarse',
-      time: '4 min',
+      time: '4 min',
       temp: '95°C',
     },
   },
@@ -79,7 +81,7 @@ export const methods: BrewMethod[] = [
     ],
     details: {
       grind: 'Fine',
-      time: '1 min',
+      time: '1 min',
       temp: '99°C',
     },
   },
