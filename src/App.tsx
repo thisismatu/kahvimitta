@@ -40,6 +40,26 @@ function App() {
     setCoffee({ round: round(c), exact: c });
   };
 
+  const handleCoffeeStepper = (e: React.SyntheticEvent<EventTarget>) => {
+    if (!(e.target instanceof HTMLButtonElement)) return;
+    const { direction } = e.target.dataset;
+    const c = direction === 'up' ? coffee.exact + 1 : coffee.exact - 1;
+    if (c < 0) return;
+    setCoffee({ round: round(c), exact: c });
+    coffeeToWater(c);
+    setLastInput('coffee');
+  };
+
+  const handleWaterStepper = (e: React.SyntheticEvent<EventTarget>) => {
+    if (!(e.target instanceof HTMLButtonElement)) return;
+    const { direction } = e.target.dataset;
+    const w = direction === 'up' ? water.exact + 1 : water.exact - 1;
+    if (w < 0) return;
+    setWater({ round: round(w), exact: w });
+    waterToCoffee(w);
+    setLastInput('water');
+  };
+
   const handleCoffeeInput = (e: React.ChangeEvent<HTMLInputElement>) => {
     const c = parseFloat(e.target.value.replace(/,/, '.'));
     if (isNaN(c) || c < 0) {
@@ -47,7 +67,7 @@ function App() {
       setWater({ round: 0, exact: 0 });
       return;
     }
-    setCoffee({ round: c, exact: c });
+    setCoffee({ round: round(c), exact: c });
     coffeeToWater(c);
     setLastInput('coffee');
   };
@@ -59,7 +79,7 @@ function App() {
       setCoffee({ round: 0, exact: 0 });
       return;
     }
-    setWater({ round: w, exact: w });
+    setWater({ round: round(w), exact: w });
     waterToCoffee(w);
     setLastInput('water');
   };
@@ -110,6 +130,7 @@ function App() {
             amount={coffee.round}
             units={coffeeUnits}
             currentUnit={coffeeUnit}
+            onSpinnerClick={handleCoffeeStepper}
             onAmountChange={handleCoffeeInput}
             onUnitChange={handleCoffeeUnit}
           />
@@ -118,6 +139,7 @@ function App() {
             amount={water.round}
             units={waterUnits}
             currentUnit={waterUnit}
+            onSpinnerClick={handleWaterStepper}
             onAmountChange={handleWaterInput}
             onUnitChange={handleWaterUnit}
           />

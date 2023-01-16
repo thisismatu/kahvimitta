@@ -1,8 +1,11 @@
 import React, { useEffect, useRef, useState } from 'react';
+import { Button } from 'ariakit/button';
 import { Select, SelectItem, SelectPopover, useSelectState } from 'ariakit/select';
 import { Unit, WeightUnit } from 'types';
 import { ReactComponent as CheckIcon } from 'assets/check.svg';
 import { ReactComponent as ChevronDown } from 'assets/chevron-down.svg';
+import { ReactComponent as PlusIcon } from 'assets/plus.svg';
+import { ReactComponent as MinusIcon } from 'assets/minus.svg';
 import styles from './AmountInput.module.css';
 
 interface Props {
@@ -10,11 +13,20 @@ interface Props {
   amount: number;
   units: WeightUnit[];
   currentUnit: Unit;
+  onSpinnerClick: React.MouseEventHandler<HTMLButtonElement>;
   onAmountChange: React.ChangeEventHandler<HTMLInputElement>;
   onUnitChange: (from: Unit, to: Unit) => void;
 }
 
-export const AmountInput: React.FC<Props> = ({ label, amount, units, currentUnit, onUnitChange, onAmountChange }) => {
+export const AmountInput: React.FC<Props> = ({
+  label,
+  amount,
+  units,
+  currentUnit,
+  onUnitChange,
+  onAmountChange,
+  onSpinnerClick,
+}) => {
   const state = useSelectState({ defaultValue: currentUnit, sameWidth: true, gutter: 4, animated: true });
   const renderName = units.find((i) => i.unit === state.value)?.name;
   const widthRef = useRef<HTMLDivElement>(null);
@@ -39,16 +51,24 @@ export const AmountInput: React.FC<Props> = ({ label, amount, units, currentUnit
       <div ref={widthRef} className={styles.txtWidth} style={{ fontSize }}>
         {amount}
       </div>
-      <input
-        ref={inputRef}
-        className={styles.input}
-        type="number"
-        value={amount || ''}
-        onChange={onAmountChange}
-        min={0}
-        placeholder="0"
-        style={{ fontSize }}
-      />
+      <div className={styles.inputContainer}>
+        <Button className={styles.stepper} data-direction="down" as="button" onClick={onSpinnerClick}>
+          <MinusIcon />
+        </Button>
+        <input
+          ref={inputRef}
+          className={styles.input}
+          type="number"
+          value={amount || ''}
+          onChange={onAmountChange}
+          min={0}
+          placeholder="0"
+          style={{ fontSize }}
+        />
+        <Button className={styles.stepper} data-direction="up" as="button" onClick={onSpinnerClick}>
+          <PlusIcon />
+        </Button>
+      </div>
       <Select state={state} className={styles.select}>
         {renderName || state.value}
         <ChevronDown width={16} height={16} strokeWidth={3} />

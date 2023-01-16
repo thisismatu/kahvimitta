@@ -6,14 +6,27 @@
 .container {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  justify-content: space-between;
   width: 100%;
   background-color: var(--brown-2);
-  padding: 0.5rem;
   border-radius: 0.75rem;
+  padding: 0.5rem;
+}
+
+.inputContainer {
+  display: flex;
+  flex-direction: column-reverse;
+  width: 100%;
+}
+
+@media only screen and (min-width: 768px) {
+  .inputContainer {
+    flex-direction: row;
+  }
 }
 
 .label {
+  text-align: center;
   padding: 0.5rem;
 }
 
@@ -26,9 +39,15 @@
   color: var(--brown-5);
   height: 100%;
   width: 100%;
-  padding: 2rem 0;
+  padding: 0.5rem 0;
   transition: var(--ease);
   -moz-appearance: textfield;
+}
+
+@media only screen and (min-width: 768px) {
+  .input {
+    padding: 2rem 0;
+  }
 }
 
 input::placeholder {
@@ -55,6 +74,41 @@ input::placeholder {
   white-space: nowrap;
 }
 
+.stepper {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  appearance: none;
+  border: none;
+  background: transparent;
+  padding: 8px;
+  border-radius: 100px;
+  color: var(--brown-5);
+  opacity: 0.5;
+  transition: var(--ease);
+}
+
+.stepper:hover,
+.stepper:active {
+  opacity: 1;
+}
+
+.stepper:focus {
+  outline-color: var(--accent-1);
+  outline-width: 2px;
+}
+
+.stepper:focus-visible {
+  opacity: 1;
+  outline-style: solid;
+}
+
+.stepper svg {
+  pointer-events: none;
+  display: block;
+}
+
 .select {
   display: flex;
   justify-content: center;
@@ -70,6 +124,7 @@ input::placeholder {
   width: 100%;
   color: inherit;
   font-weight: inherit;
+  white-space: nowrap;
 }
 
 .select:hover,
