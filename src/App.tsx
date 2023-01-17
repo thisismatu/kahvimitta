@@ -40,23 +40,25 @@ function App() {
     setCoffee({ round: round(c), exact: c });
   };
 
+  const adjustByOne = (currentValue: number, direction: string): Amount => {
+    const value = direction === 'up' ? Math.floor(currentValue + 1) : Math.ceil(currentValue - 1);
+    const posValue = value < 0 ? 0 : value;
+    return { round: round(posValue), exact: posValue };
+  };
+
   const handleCoffeeStepper = (e: React.SyntheticEvent<EventTarget>) => {
-    if (!(e.target instanceof HTMLButtonElement)) return;
-    const { direction } = e.target.dataset;
-    const c = direction === 'up' ? coffee.exact + 1 : coffee.exact - 1;
-    if (c < 0) return;
-    setCoffee({ round: round(c), exact: c });
-    coffeeToWater(c);
+    if (!(e.target instanceof HTMLButtonElement) || !e.target.dataset.direction) return;
+    const c = adjustByOne(coffee.exact, e.target.dataset.direction);
+    setCoffee(c);
+    coffeeToWater(c.exact);
     setLastInput('coffee');
   };
 
   const handleWaterStepper = (e: React.SyntheticEvent<EventTarget>) => {
-    if (!(e.target instanceof HTMLButtonElement)) return;
-    const { direction } = e.target.dataset;
-    const w = direction === 'up' ? water.exact + 1 : water.exact - 1;
-    if (w < 0) return;
-    setWater({ round: round(w), exact: w });
-    waterToCoffee(w);
+    if (!(e.target instanceof HTMLButtonElement) || !e.target.dataset.direction) return;
+    const w = adjustByOne(water.exact, e.target.dataset.direction);
+    setWater(w);
+    waterToCoffee(w.exact);
     setLastInput('water');
   };
 
