@@ -9,19 +9,25 @@
       "type": "image/x-icon"
     },
     {
-      "src": "logo-192.png",
+      "src": "icon.svg",
+      "type": "image/svg+xml",
+      "sizes": "any",
+      "purpose": "any"
+    },
+    {
+      "src": "icon-192.png",
       "type": "image/png",
       "sizes": "192x192",
       "purpose": "any"
     },
     {
-      "src": "logo-512.png",
+      "src": "icon-512.png",
       "type": "image/png",
       "sizes": "512x512",
       "purpose": "any"
     },
     {
-      "src": "logo-maskable-512.png",
+      "src": "icon-maskable-512.png",
       "type": "image/png",
       "sizes": "512x512",
       "purpose": "maskable"
@@ -37,13 +43,19 @@
     {
       "src": "screenshot-1.png",
       "type": "image/png",
-      "sizes": "720x1280",
+      "sizes": "800x1600",
       "form_factor": "narrow"
     },
     {
       "src": "screenshot-2.png",
       "type": "image/png",
-      "sizes": "720x1280",
+      "sizes": "800x1600",
+      "form_factor": "narrow"
+    },
+    {
+      "src": "screenshot-3.png",
+      "type": "image/png",
+      "sizes": "800x1600",
       "form_factor": "narrow"
     }
   ]
