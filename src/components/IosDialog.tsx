@@ -3,7 +3,6 @@ import { Dialog, DialogDismiss, DialogHeading, DialogProps } from 'ariakit/dialo
 import { ReactComponent as IosShareIcon } from 'assets/ios-share.svg';
 import a2hsSrc from 'assets/a2hs.png';
 import styles from './IosDialog.module.css';
-import clsx from 'clsx';
 
 interface Props extends DialogProps {
   onDontShowAgain: () => void;
@@ -25,7 +24,7 @@ export const IosDialog: React.FC<Props> = ({ state, onDontShowAgain }) => {
       <DialogDismiss as="button" className={styles.button}>
         OK
       </DialogDismiss>
-      <DialogDismiss as="button" className={clsx(styles.button, styles.dismiss)} onClick={onDontShowAgain}>
+      <DialogDismiss as="button" className={styles.dismiss} onClick={onDontShowAgain}>
         Don't show this again
       </DialogDismiss>
     </Dialog>
