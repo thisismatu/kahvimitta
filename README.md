@@ -21,7 +21,7 @@ npm start
 ## Deployment
 
 - Commits to `main` branch trigger a production deployment
-- Commits to a feature branch trigger a staging deployment, the preview link is in the PR
+- Commits to a feature branch trigger a preview deployment, the preview link is in the PR
 
 ## Design
 
