@@ -3,8 +3,13 @@ import { Dialog, DialogDismiss, DialogHeading, DialogProps } from 'ariakit/dialo
 import { ReactComponent as IosShareIcon } from 'assets/ios-share.svg';
 import a2hsSrc from 'assets/a2hs.png';
 import styles from './IosDialog.module.css';
+import clsx from 'clsx';
 
-export const IosDialog: React.FC<DialogProps> = ({ state }) => {
+interface Props extends DialogProps {
+  onDontShowAgain: () => void;
+}
+
+export const IosDialog: React.FC<Props> = ({ state, onDontShowAgain }) => {
   return (
     <Dialog state={state} className={styles.dialog}>
       <DialogHeading className={styles.heading}>Install BrewCalc</DialogHeading>
@@ -19,6 +24,9 @@ export const IosDialog: React.FC<DialogProps> = ({ state }) => {
       </div>
       <DialogDismiss as="button" className={styles.button}>
         OK
+      </DialogDismiss>
+      <DialogDismiss as="button" className={clsx(styles.button, styles.dismiss)} onClick={onDontShowAgain}>
+        Don't show this again
       </DialogDismiss>
     </Dialog>
   );

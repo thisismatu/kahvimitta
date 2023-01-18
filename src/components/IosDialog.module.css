@@ -4,8 +4,6 @@
   border-radius: 0.5rem;
   cursor: pointer;
   color: #fff;
-  flex-direction: row;
-  flex-shrink: 0;
   font-size: 1rem;
   font-weight: 700;
   outline: none;
@@ -22,6 +20,28 @@
 
 .button:active {
   background-color: var(--accent-2);
+}
+
+.dismiss {
+  cursor: pointer;
+  border: none;
+  background: transparent;
+  color: var(--brown-5);
+  font-weight: 500;
+  font-size: 0.875rem;
+  margin-top: 0.75rem;
+  padding: 0.5rem 1rem;
+  opacity: 0.75;
+}
+
+@media (hover: hover) {
+  .dismiss:hover {
+    background-color: var(--brown-2);
+  }
+}
+
+.dismiss:active {
+  background-color: var(--brown-2);
 }
 
 [data-backdrop] {
