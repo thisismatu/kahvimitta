@@ -158,6 +158,10 @@ function App() {
           Made with ♥ by{' '}
           <a href="https://mathiaslindholm.com/" target="_blank" rel="noopener noreferrer">
             Mathias Lindholm
+          </a>{' '}
+          &{' '}
+          <a href="https://aapokojo.com/" target="_blank" rel="noopener noreferrer">
+            Aapo Kojo
           </a>
         </small>
       </div>
