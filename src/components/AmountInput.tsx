@@ -3,7 +3,8 @@ import { Button } from 'ariakit/button';
 import { Select, SelectItem, SelectPopover, useSelectState } from 'ariakit/select';
 import { Unit, WeightUnit } from 'types';
 import { ReactComponent as CheckIcon } from 'assets/check.svg';
-import { ReactComponent as ChevronDown } from 'assets/chevron-down.svg';
+import { ReactComponent as ChevronUpIcon } from 'assets/chevron-up.svg';
+import { ReactComponent as ChevronDownIcon } from 'assets/chevron-down.svg';
 import { ReactComponent as PlusIcon } from 'assets/plus.svg';
 import { ReactComponent as MinusIcon } from 'assets/minus.svg';
 import styles from './AmountInput.module.css';
@@ -54,6 +55,7 @@ export const AmountInput: React.FC<Props> = ({
       <div className={styles.inputContainer}>
         <Button className={styles.stepper} data-direction="down" as="button" onClick={onSpinnerClick}>
           <MinusIcon />
+          <ChevronDownIcon />
         </Button>
         <input
           ref={inputRef}
@@ -67,11 +69,12 @@ export const AmountInput: React.FC<Props> = ({
         />
         <Button className={styles.stepper} data-direction="up" as="button" onClick={onSpinnerClick}>
           <PlusIcon />
+          <ChevronUpIcon />
         </Button>
       </div>
       <Select state={state} className={styles.select}>
         {renderName || state.value}
-        <ChevronDown width={16} height={16} strokeWidth={3} />
+        <ChevronDownIcon width={16} height={16} strokeWidth={3} />
       </Select>
       <SelectPopover state={state} className={styles.popover}>
         {units.map((i) => (

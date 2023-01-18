@@ -82,7 +82,7 @@ input::placeholder {
   appearance: none;
   border: none;
   background: transparent;
-  padding: 8px;
+  padding: 0.75rem 0.5rem;
   border-radius: 0.5rem;
   color: var(--brown-5);
   opacity: 0.5;
@@ -112,6 +112,19 @@ input::placeholder {
 .stepper svg {
   pointer-events: none;
   display: block;
+}
+
+.stepper svg:first-child {
+  display: none;
+}
+
+@media only screen and (min-width: 768px) {
+  .stepper svg:last-child {
+    display: none;
+  }
+  .stepper svg:first-child {
+    display: block;
+  }
 }
 
 .select {

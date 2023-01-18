@@ -1,7 +1,7 @@
 import React from 'react';
 import { Disclosure, DisclosureContent, useDisclosureState } from 'ariakit/disclosure';
 import { Instruction } from 'types';
-import { ReactComponent as ChevronDown } from 'assets/chevron-down.svg';
+import { ReactComponent as ChevronDownIcon } from 'assets/chevron-down.svg';
 import styles from './BrewDetails.module.css';
 import clsx from 'clsx';
 
@@ -15,7 +15,7 @@ export const BrewDetails: React.FC<Props> = ({ details }) => {
     <div className={styles.container}>
       <Disclosure state={disclosure} className={styles.title}>
         <span>Brewing details</span>
-        <ChevronDown
+        <ChevronDownIcon
           className={clsx(styles.icon, disclosure.open && styles['icon--rotate'])}
           width={16}
           height={16}
