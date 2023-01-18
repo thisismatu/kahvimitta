@@ -116,7 +116,7 @@ function App() {
 
   return (
     <div className={styles.container}>
-      <Header title="BrewCalc" description="A simple coffee ratio calculator" rightAction={<InstallPwaButton />} />
+      <Header title="BrewCalcTest" description="A simple coffee ratio calculator" rightAction={<InstallPwaButton />} />
       <div className={styles.form}>
         <div className={styles.methods}>
           {brewMethods.map((m) => (
