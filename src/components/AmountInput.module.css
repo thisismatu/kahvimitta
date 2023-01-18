@@ -89,7 +89,12 @@ input::placeholder {
   transition: var(--ease);
 }
 
-.stepper:hover,
+@media (hover: hover) {
+  .stepper:hover {
+    opacity: 1;
+  }
+}
+
 .stepper:active {
   opacity: 1;
 }
@@ -127,7 +132,12 @@ input::placeholder {
   white-space: nowrap;
 }
 
-.select:hover,
+@media (hover: hover) {
+  .select:hover {
+    background-color: var(--brown-3);
+  }
+}
+
 .select:active {
   background-color: var(--brown-3);
 }
@@ -173,7 +183,12 @@ input::placeholder {
   line-height: 1.25;
 }
 
-.item:hover,
+@media (hover: hover) {
+  .item:hover {
+    background-color: var(--brown-2);
+  }
+}
+
 .item[data-active-item] {
   background-color: var(--brown-2);
 }

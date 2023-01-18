@@ -4,7 +4,7 @@ BrewCalc is a coffee ratio calculator that helps you brew a perfect cup of coffe
 
 ## Development
 
-This project was bootstrapped with Create React App [PWA typescript template](https://cra.link/PWA) and UI components use [Ariakit](https://ariakit.org/). To run it you need Node v16 or later and `npm`.
+This project was bootstrapped with Create React App [PWA typescript template](https://cra.link/PWA). UI components are built uisng [Ariakit](https://ariakit.org/). To run the app you need Node v16 or later and `npm`.
 
 Install dependencies:
 

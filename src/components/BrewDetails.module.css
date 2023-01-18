@@ -20,7 +20,12 @@
   font-weight: inherit;
 }
 
-.title:hover,
+@media (hover: hover) {
+  .title:hover {
+    background-color: var(--brown-3);
+  }
+}
+
 .title:active {
   background-color: var(--brown-3);
 }
