@@ -1,10 +1,14 @@
 .button {
   background-color: var(--accent-1);
+  border: none;
   border-radius: 100px;
+  cursor: pointer;
+  color: #fff;
   flex-direction: row;
   flex-shrink: 0;
-  font-weight: 700;
   font-size: 0.875rem;
+  font-weight: 700;
+  outline: none;
   padding: 0.5rem 0.75rem;
 }
 
