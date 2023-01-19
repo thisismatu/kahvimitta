@@ -31,9 +31,7 @@
 }
 
 .input {
-  appearance: none;
-  background: none;
-  border: none;
+  background: transparent;
   text-align: center;
   font-size: var(--defaultSize);
   color: var(--brown-5);
@@ -41,7 +39,6 @@
   width: 100%;
   padding: 0.5rem 0;
   transition: var(--ease);
-  -moz-appearance: textfield;
 }
 
 @media only screen and (min-width: 768px) {
@@ -78,14 +75,11 @@ input::placeholder {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  cursor: pointer;
-  appearance: none;
-  border: none;
-  background: transparent;
-  padding: 0.75rem 0.5rem;
+  background-color: transparent;
   border-radius: 0.5rem;
   color: var(--brown-5);
   opacity: 0.5;
+  padding: 0.75rem 0.5rem;
   transition: var(--ease);
 }
 
@@ -97,16 +91,6 @@ input::placeholder {
 
 .stepper:active {
   opacity: 1;
-}
-
-.stepper:focus {
-  outline-color: var(--accent-1);
-  outline-width: 2px;
-}
-
-.stepper:focus-visible {
-  opacity: 1;
-  outline-style: solid;
 }
 
 .stepper svg {
@@ -132,17 +116,13 @@ input::placeholder {
   justify-content: center;
   align-items: center;
   gap: 0.5rem;
-  appearance: none;
-  background: none;
-  border: none;
-  line-height: 1.25;
-  transition: var(--ease);
-  padding: 0.5rem;
+  background-color: transparent;
   border-radius: 0.5rem;
-  width: 100%;
-  color: inherit;
-  font-weight: inherit;
+  line-height: 1.25;
+  padding: 0.5rem;
+  transition: var(--ease);
   white-space: nowrap;
+  width: 100%;
 }
 
 @media (hover: hover) {
@@ -153,15 +133,6 @@ input::placeholder {
 
 .select:active {
   background-color: var(--brown-3);
-}
-
-.select:focus {
-  outline-color: var(--accent-1);
-  outline-width: 2px;
-}
-
-.select:focus-visible {
-  outline-style: solid;
 }
 
 .popover {
@@ -191,7 +162,6 @@ input::placeholder {
   align-items: center;
   justify-content: space-between;
   gap: 0.5rem;
-  cursor: pointer;
   padding: 0.75rem 1rem;
   line-height: 1.25;
 }
