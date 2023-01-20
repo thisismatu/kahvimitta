@@ -12,10 +12,11 @@ import { MethodButton } from 'components/MethodButton';
 import styles from './App.module.css';
 
 function App() {
+  const [localBrewMethod, setLocalBrewMethod] = useLocalStorage<number>('brewMethod', 0);
   const [localCoffeeUnit, setLocalCoffeeUnit] = useLocalStorage<Unit>('coffeeUnit', 'g');
   const [localWaterUnit, setLocalWaterUnit] = useLocalStorage<Unit>('waterUnit', 'ml');
-  const [method, setMethod] = useState<BrewMethod>(brewMethods[0]);
-  const [strength, setStrength] = useState<Strength>(brewMethods[0].strengths[1]);
+  const [method, setMethod] = useState<BrewMethod>(brewMethods[localBrewMethod]);
+  const [strength, setStrength] = useState<Strength>(brewMethods[localBrewMethod].strengths[1]);
   const [coffee, setCoffee] = useState<Amount>({ round: 0, exact: 0 });
   const [water, setWater] = useState<Amount>({ round: 0, exact: 0 });
   const [coffeeUnit, setCoffeeUnit] = useState<Unit>(localCoffeeUnit);
@@ -108,8 +109,9 @@ function App() {
     if (lastInput === 'water') waterToCoffee(water.exact, s.ratio);
   };
 
-  const handleMethod = (m: BrewMethod) => {
+  const handleMethod = (m: BrewMethod, i: number) => {
     setMethod(m);
+    setLocalBrewMethod(i);
     const ns = m.strengths.find((s) => s.name === strength.name);
     if (ns) handleStrength(ns);
   };
@@ -119,8 +121,8 @@ function App() {
       <Header title="BrewCalc" description="A simple coffee ratio calculator" rightAction={<InstallPwaButton />} />
       <div className={styles.form}>
         <div className={styles.methods}>
-          {brewMethods.map((m) => (
-            <MethodButton key={m.name} onClick={() => handleMethod(m)} disabled={m.name === method.name}>
+          {brewMethods.map((m, i) => (
+            <MethodButton key={m.name} onClick={() => handleMethod(m, i)} disabled={m.name === method.name}>
               <m.icon />
               {m.name}
             </MethodButton>
