@@ -14,7 +14,7 @@ export interface Amount {
 }
 
 export interface Strength {
-  name: 'Strong' | 'Normal' | 'Mild';
+  name: string;
   ratio: number;
 }
 

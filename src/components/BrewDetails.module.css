@@ -48,7 +48,7 @@
 }
 
 .table td {
-  padding: 0;
+  padding: 0.125rem 0;
   line-height: 1.5;
 }
 
@@ -58,7 +58,7 @@
 
 .note {
   opacity: 0.75;
-  margin: 0.125rem 0;
+  margin-top: 0.25rem;
   line-height: 1.5;
   max-width: 40em;
   font-size: 0.875rem;

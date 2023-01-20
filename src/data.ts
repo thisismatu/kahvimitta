@@ -3,6 +3,7 @@ import { ReactComponent as AeropressIcon } from 'assets/aeropress.svg';
 import { ReactComponent as FrenchPressIcon } from 'assets/french-press.svg';
 import { ReactComponent as PourOverIcon } from 'assets/pour-over.svg';
 import { ReactComponent as MokaPotIcon } from 'assets/moka-pot.svg';
+import { ReactComponent as EspressoIcon } from 'assets/espresso.svg';
 import { WeightUnit, BrewMethod } from './types';
 
 // Note: remember to use thin space " "
@@ -89,6 +90,20 @@ export const brewMethods: BrewMethod[] = [
       grind: 'Fine',
       time: '1 min',
       temp: '96°C',
+    },
+  },
+  {
+    name: 'Espresso',
+    icon: EspressoIcon,
+    strengths: [
+      { name: 'Lungo', ratio: 3 },
+      { name: 'Espresso', ratio: 2 },
+      { name: 'Ristretto', ratio: 1 },
+    ],
+    details: {
+      grind: 'Extra fine',
+      time: '25 – 30 sec',
+      temp: '92 – 96°C',
     },
   },
 ];
