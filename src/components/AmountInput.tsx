@@ -87,7 +87,9 @@ export const AmountInput: React.FC<Props> = ({
           >
             {i.name}
             {i.extra && <small>{i.extra}</small>}
-            {i.unit === state.value && <CheckIcon width={16} height={16} strokeWidth={3} />}
+            <span className={styles.itemIcon}>
+              {i.unit === state.value && <CheckIcon width={16} height={16} strokeWidth={3} />}
+            </span>
           </SelectItem>
         ))}
       </SelectPopover>

@@ -1,6 +1,6 @@
 import React from 'react';
 
-export type Unit = 'g' | 'cs' | 'c' | 'ml' | 'l';
+export type Unit = 'g' | 'cs' | 'tbsp' | 'c' | 'ml' | 'l';
 
 export interface WeightUnit {
   name: string;
