@@ -34,6 +34,7 @@
   background: transparent;
   text-align: center;
   font-size: var(--defaultSize);
+  font-weight: 500;
   color: var(--brown-5);
   height: 100%;
   width: 100%;
