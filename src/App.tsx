@@ -130,7 +130,7 @@ function App() {
           {brewMethods.map((m, i) => (
             <MethodButton key={m.name} onClick={() => handleMethod(m, i)} disabled={m.name === method.name}>
               <m.icon />
-              {m.name}
+              <span>{m.name}</span>
             </MethodButton>
           ))}
         </div>

@@ -6,9 +6,12 @@
 
 .button svg {
   height: 4rem;
-  margin-bottom: auto;
 }
 
 .button:disabled svg {
   stroke-width: 1.5px;
+}
+
+.button span {
+  margin: auto;
 }
