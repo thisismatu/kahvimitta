@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { Amount, BrewMethod, Strength, Unit } from 'types';
 import { convert, round } from 'utils/math';
 import { useLocalStorage } from 'utils/useLocalStorage';
@@ -22,10 +22,16 @@ function App() {
   const [coffeeUnit, setCoffeeUnit] = useState<Unit>(localCoffeeUnit);
   const [waterUnit, setWaterUnit] = useState<Unit>(localWaterUnit);
   const [lastInput, setLastInput] = useState<'coffee' | 'water'>();
+  const scrollRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     document.title = 'BrewCalc';
   }, []);
+
+  useEffect(() => {
+    const child = scrollRef.current?.children[localBrewMethod];
+    if (child) child.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  }, [localBrewMethod]);
 
   const coffeeToWater = (c: number, r?: number) => {
     const cg = convert(c, coffeeUnit, 'g');
@@ -120,7 +126,7 @@ function App() {
     <div className={styles.container}>
       <Header title="BrewCalc" description="A simple coffee ratio calculator" rightAction={<InstallPwaButton />} />
       <div className={styles.form}>
-        <div className={styles.methods}>
+        <div className={styles.methods} ref={scrollRef}>
           {brewMethods.map((m, i) => (
             <MethodButton key={m.name} onClick={() => handleMethod(m, i)} disabled={m.name === method.name}>
               <m.icon />
