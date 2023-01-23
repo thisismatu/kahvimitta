@@ -25,12 +25,20 @@ export const InstallPwaButton: React.FC = () => {
   }, []);
 
   const handleClick = async () => {
-    if (isIOS) return dialog.toggle();
+    if (isIOS) {
+      ReactGA.event({ category: 'PWA', action: 'App install', label: 'dialog' });
+      return dialog.toggle();
+    }
     if (!deferredPrompt) return;
     deferredPrompt.prompt();
     const { outcome } = await deferredPrompt.userChoice;
     ReactGA.event({ category: 'PWA', action: 'App install', label: outcome });
     setDeferredPrompt(undefined);
+  };
+
+  const handleDisablePrompt = () => {
+    ReactGA.event({ category: 'PWA', action: 'App install', label: 'disable' });
+    setIsPromptEnabled(0);
   };
 
   if (isBrowser || isInstalled) return null;
@@ -41,7 +49,7 @@ export const InstallPwaButton: React.FC = () => {
       <Button as="button" className={styles.button} onClick={handleClick} tabIndex={-1}>
         <DownloadIcon /> Get app
       </Button>
-      <IosDialog state={dialog} onDontShowAgain={() => setIsPromptEnabled(0)} />
+      <IosDialog state={dialog} onDontShowAgain={handleDisablePrompt} />
     </>
   );
 };
