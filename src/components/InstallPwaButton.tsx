@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useDialogState } from 'ariakit/dialog';
 import { isIOS, isBrowser } from 'react-device-detect';
+import ReactGA from 'react-ga4';
 import { BeforeInstallPromptEvent } from 'types';
 import { getParam } from 'utils/misc';
 import { useLocalStorage } from 'utils/useLocalStorage';
@@ -28,9 +29,8 @@ export const InstallPwaButton: React.FC = () => {
     if (!deferredPrompt) return;
     deferredPrompt.prompt();
     const { outcome } = await deferredPrompt.userChoice;
-    if (outcome !== 'accepted') {
-      setDeferredPrompt(undefined);
-    }
+    ReactGA.event({ category: 'PWA', action: 'App install', label: outcome });
+    setDeferredPrompt(undefined);
   };
 
   if (isBrowser || isInstalled) return null;
