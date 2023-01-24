@@ -3,7 +3,7 @@ import React from 'react';
 export type Unit = 'g' | 'cs' | 'tbsp' | 'c' | 'ml' | 'l';
 
 export interface WeightUnit {
-  name: string;
+  label: string;
   unit: Unit;
   extra?: string;
 }
@@ -14,7 +14,8 @@ export interface Amount {
 }
 
 export interface Strength {
-  name: string;
+  type: 'mild' | 'normal' | 'strong';
+  label: string;
   ratio: number;
 }
 
@@ -25,7 +26,7 @@ export interface Instruction {
 }
 
 export interface BrewMethod {
-  name: string;
+  label: string;
   strengths: Strength[];
   icon: React.FunctionComponent<
     React.SVGProps<SVGSVGElement> & {

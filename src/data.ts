@@ -9,26 +9,26 @@ import { WeightUnit, BrewMethod } from './types';
 // Note: remember to use thin space " "
 
 export const coffeeUnits: WeightUnit[] = [
-  { name: 'Gram', unit: 'g' },
-  { name: 'Coffee scoop', unit: 'cs', extra: '7.5 g' },
-  { name: 'Table\u200bspoon', unit: 'tbsp', extra: '15 g' },
+  { label: 'Gram', unit: 'g' },
+  { label: 'Coffee scoop', unit: 'cs', extra: '7.5 g' },
+  { label: 'Table\u200bspoon', unit: 'tbsp', extra: '15 g' },
 ];
 
 export const waterUnits: WeightUnit[] = [
-  { name: 'Gram', unit: 'g' },
-  { name: 'Milliliter', unit: 'ml' },
-  { name: 'Liter', unit: 'l' },
-  { name: 'Cup', unit: 'c', extra: '125 ml' },
+  { label: 'Gram', unit: 'g' },
+  { label: 'Milliliter', unit: 'ml' },
+  { label: 'Liter', unit: 'l' },
+  { label: 'Cup', unit: 'c', extra: '125 ml' },
 ];
 
 export const brewMethods: BrewMethod[] = [
   {
-    name: 'Drip coffee',
+    label: 'Drip coffee',
     icon: AutodripIcon,
     strengths: [
-      { name: 'Mild', ratio: 18 },
-      { name: 'Normal', ratio: 16.67 },
-      { name: 'Strong', ratio: 15 },
+      { type: 'mild', label: 'Mild', ratio: 18 },
+      { type: 'normal', label: 'Normal', ratio: 16.67 },
+      { type: 'strong', label: 'Strong', ratio: 15 },
     ],
     details: {
       grind: 'Medium',
@@ -37,12 +37,12 @@ export const brewMethods: BrewMethod[] = [
     },
   },
   {
-    name: 'Pour over',
+    label: 'Pour over',
     icon: PourOverIcon,
     strengths: [
-      { name: 'Mild', ratio: 18 },
-      { name: 'Normal', ratio: 16.67 },
-      { name: 'Strong', ratio: 15 },
+      { type: 'mild', label: 'Mild', ratio: 18 },
+      { type: 'normal', label: 'Normal', ratio: 16.67 },
+      { type: 'strong', label: 'Strong', ratio: 15 },
     ],
     details: {
       grind: 'Medium',
@@ -51,12 +51,12 @@ export const brewMethods: BrewMethod[] = [
     },
   },
   {
-    name: 'Aero\u200bpress',
+    label: 'Aero\u200bpress',
     icon: AeropressIcon,
     strengths: [
-      { name: 'Mild', ratio: 17 },
-      { name: 'Normal', ratio: 15 },
-      { name: 'Strong', ratio: 10 },
+      { type: 'mild', label: 'Mild', ratio: 17 },
+      { type: 'normal', label: 'Normal', ratio: 15 },
+      { type: 'strong', label: 'Strong', ratio: 10 },
     ],
     details: {
       grind: 'Medium fine',
@@ -65,12 +65,12 @@ export const brewMethods: BrewMethod[] = [
     },
   },
   {
-    name: 'French press',
+    label: 'French press',
     icon: FrenchPressIcon,
     strengths: [
-      { name: 'Mild', ratio: 17 },
-      { name: 'Normal', ratio: 15 },
-      { name: 'Strong', ratio: 12 },
+      { type: 'mild', label: 'Mild', ratio: 17 },
+      { type: 'normal', label: 'Normal', ratio: 15 },
+      { type: 'strong', label: 'Strong', ratio: 12 },
     ],
     details: {
       grind: 'Medium coarse',
@@ -79,12 +79,12 @@ export const brewMethods: BrewMethod[] = [
     },
   },
   {
-    name: 'Moka pot',
+    label: 'Moka pot',
     icon: MokaPotIcon,
     strengths: [
-      { name: 'Mild', ratio: 15 },
-      { name: 'Normal', ratio: 10 },
-      { name: 'Strong', ratio: 7 },
+      { type: 'mild', label: 'Mild', ratio: 15 },
+      { type: 'normal', label: 'Normal', ratio: 10 },
+      { type: 'strong', label: 'Strong', ratio: 7 },
     ],
     details: {
       grind: 'Fine',
@@ -93,12 +93,12 @@ export const brewMethods: BrewMethod[] = [
     },
   },
   {
-    name: 'Espresso',
+    label: 'Espresso',
     icon: EspressoIcon,
     strengths: [
-      { name: 'Lungo', ratio: 3 },
-      { name: 'Espresso', ratio: 2 },
-      { name: 'Ristretto', ratio: 1 },
+      { type: 'mild', label: 'Lungo', ratio: 3 },
+      { type: 'normal', label: 'Espresso', ratio: 2 },
+      { type: 'strong', label: 'Ristretto', ratio: 1 },
     ],
     details: {
       grind: 'Extra fine',

@@ -121,8 +121,8 @@ function App() {
   const handleMethod = (m: BrewMethod, i: number) => {
     setMethod(m);
     setLocalBrewMethod(i);
-    trackEvent('UI', 'Method selection', m.name);
-    const ns = m.strengths.find((s) => s.name === strength.name);
+    trackEvent('UI', 'Method selection', m.label);
+    const ns = m.strengths.find((s) => s.type === strength.type);
     if (ns) handleStrength(ns);
   };
 
@@ -132,9 +132,9 @@ function App() {
       <div className={styles.form}>
         <div className={styles.methods} ref={scrollRef}>
           {brewMethods.map((m, i) => (
-            <MethodButton key={m.name} onClick={() => handleMethod(m, i)} disabled={m.name === method.name}>
+            <MethodButton key={m.label} onClick={() => handleMethod(m, i)} disabled={m.label === method.label}>
               <m.icon />
-              <span>{m.name}</span>
+              <span>{m.label}</span>
             </MethodButton>
           ))}
         </div>
@@ -160,8 +160,8 @@ function App() {
         </div>
         <div className={styles.strength}>
           {method.strengths.map((s) => (
-            <Button key={s.name} onClick={() => handleStrength(s)} disabled={s.name === strength.name}>
-              {s.name} <small>1:{s.ratio}</small>
+            <Button key={s.type} onClick={() => handleStrength(s)} disabled={s.type === strength.type}>
+              {s.label} <small>1:{s.ratio}</small>
             </Button>
           ))}
         </div>

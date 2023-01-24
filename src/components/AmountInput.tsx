@@ -29,7 +29,7 @@ export const AmountInput: React.FC<Props> = ({
   onSpinnerClick,
 }) => {
   const state = useSelectState({ defaultValue: currentUnit, sameWidth: true, gutter: 4, animated: true });
-  const renderName = units.find((i) => i.unit === state.value)?.name;
+  const renderName = units.find((i) => i.unit === state.value)?.label;
   const widthRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
   const [fontSize, setFontSize] = useState(36);
@@ -85,7 +85,7 @@ export const AmountInput: React.FC<Props> = ({
             value={i.unit}
             onClick={() => onUnitChange(currentUnit, i.unit)}
           >
-            {i.name}
+            {i.label}
             {i.extra && <small>{i.extra}</small>}
             <span className={styles.itemIcon}>
               {i.unit === state.value && <CheckIcon width={16} height={16} strokeWidth={3} />}
