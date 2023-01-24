@@ -1,5 +1,4 @@
 import React, { useEffect, useRef, useState } from 'react';
-import ReactGA from 'react-ga4';
 import { Amount, BrewMethod, Strength, Unit } from 'types';
 import { convert, round } from 'utils/math';
 import { useLocalStorage } from 'utils/useLocalStorage';
@@ -11,6 +10,7 @@ import { Header } from 'components/Header';
 import { InstallPwaButton } from 'components/InstallPwaButton';
 import { MethodButton } from 'components/MethodButton';
 import styles from './App.module.css';
+import { trackEvent } from 'utils/misc';
 
 function App() {
   const [localBrewMethod, setLocalBrewMethod] = useLocalStorage<number>('brewMethod', 0);
@@ -27,7 +27,6 @@ function App() {
 
   useEffect(() => {
     document.title = 'BrewCalc';
-    ReactGA.send({ hitType: 'pageview', page: '/' });
   }, []);
 
   useEffect(() => {
@@ -98,7 +97,7 @@ function App() {
   const handleCoffeeUnit = (from: Unit, to: Unit) => {
     setCoffeeUnit(to);
     setLocalCoffeeUnit(to);
-    ReactGA.event({ category: 'UI', action: 'Unit selection', label: to });
+    trackEvent('UI', 'Unit selection', to);
     if (!coffee.exact) return;
     const c = convert(coffee.exact, from, to);
     setCoffee({ round: round(c), exact: c });
@@ -107,7 +106,7 @@ function App() {
   const handleWaterUnit = (from: Unit, to: Unit) => {
     setWaterUnit(to);
     setLocalWaterUnit(to);
-    ReactGA.event({ category: 'UI', action: 'Unit selection', label: to });
+    trackEvent('UI', 'Unit selection', to);
     if (!water.exact) return;
     const w = convert(water.exact, from, to);
     setWater({ round: round(w), exact: w });
@@ -122,7 +121,7 @@ function App() {
   const handleMethod = (m: BrewMethod, i: number) => {
     setMethod(m);
     setLocalBrewMethod(i);
-    ReactGA.event({ category: 'UI', action: 'Method selection', label: m.name });
+    trackEvent('UI', 'Method selection', m.name);
     const ns = m.strengths.find((s) => s.name === strength.name);
     if (ns) handleStrength(ns);
   };

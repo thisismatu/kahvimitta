@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { useDialogState } from 'ariakit/dialog';
 import { isIOS, isBrowser } from 'react-device-detect';
-import ReactGA from 'react-ga4';
 import { BeforeInstallPromptEvent } from 'types';
-import { getParam } from 'utils/misc';
+import { getParam, trackEvent } from 'utils/misc';
 import { useLocalStorage } from 'utils/useLocalStorage';
 import { Button } from 'components/Button';
 import { IosDialog } from 'components/IosDialog';
@@ -26,18 +25,18 @@ export const InstallPwaButton: React.FC = () => {
 
   const handleClick = async () => {
     if (isIOS) {
-      ReactGA.event({ category: 'PWA', action: 'App install', label: 'dialog' });
+      trackEvent('PWA', 'App install', 'dialog');
       return dialog.toggle();
     }
     if (!deferredPrompt) return;
     deferredPrompt.prompt();
     const { outcome } = await deferredPrompt.userChoice;
-    ReactGA.event({ category: 'PWA', action: 'App install', label: outcome });
+    trackEvent('PWA', 'App install', outcome);
     setDeferredPrompt(undefined);
   };
 
   const handleDisablePrompt = () => {
-    ReactGA.event({ category: 'PWA', action: 'App install', label: 'disable' });
+    trackEvent('PWA', 'App install', 'disable');
     setIsPromptEnabled(0);
   };
 
