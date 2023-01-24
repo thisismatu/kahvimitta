@@ -57,7 +57,7 @@
 }
 
 .note {
-  opacity: 0.75;
+  color: var(--brown-4);
   margin-top: 0.25rem;
   line-height: 1.5;
   max-width: 40em;

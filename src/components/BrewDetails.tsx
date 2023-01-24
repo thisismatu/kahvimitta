@@ -41,7 +41,7 @@ export const BrewDetails: React.FC<Props> = ({ details }) => {
         </table>
         <span className={styles.note}>
           Note: Coffee scoops, tablespoons and cups are based on common european sizes. They are useful tools when you
-          don't have access to a scale, but still need to measure out coffee.
+          don't have access to a scale.
         </span>
       </DisclosureContent>
     </div>
