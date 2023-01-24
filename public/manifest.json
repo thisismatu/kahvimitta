@@ -1,7 +1,7 @@
 {
   "short_name": "BrewCalc",
   "name": "BrewCalc",
-  "description": "BrewCalc is a coffee to water ratio calculator that helps you brew a perfect cup of coffee. Figure out how much water you need for a given amount of coffee, or the other way around. BrewCalc also supports converting between common units and provides brewing instructions for common methods.",
+  "description": "BrewCalc is a coffee to water ratio calculator that helps you brew a perfect cup of coffee. Easily figure out how much water you need for a given amount of coffee, or the other way around. BrewCalc also supports converting between common units and provides brewing instructions for common methods.",
   "icons": [
     {
       "src": "favicon.ico",
