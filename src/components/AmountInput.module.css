@@ -57,7 +57,7 @@
   }
 }
 
-input::placeholder {
+.input::placeholder {
   color: var(--brown-4);
 }
 
