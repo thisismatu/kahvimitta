@@ -1,5 +1,5 @@
 .button {
-  background-color: var(--accent-1);
+  background-color: var(--accent);
   border-radius: 100px;
   color: #fff;
   flex-direction: row;
@@ -11,12 +11,12 @@
 
 @media (hover: hover) {
   .button:hover {
-    background-color: var(--accent-2);
+    background-color: var(--accent-light);
   }
 }
 
 .button:active {
-  background-color: var(--accent-2);
+  background-color: var(--accent-light);
 }
 
 .button svg {

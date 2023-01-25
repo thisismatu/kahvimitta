@@ -1,5 +1,15 @@
+:root {
+  --dialog-bg: #fff;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --dialog-bg: #222;
+  }
+}
+
 .button {
-  background-color: var(--accent-1);
+  background-color: var(--accent);
   border-radius: 0.5rem;
   color: #fff;
   font-size: 1rem;
@@ -12,12 +22,12 @@
 
 @media (hover: hover) {
   .button:hover {
-    background-color: var(--accent-2);
+    background-color: var(--accent-light);
   }
 }
 
 .button:active {
-  background-color: var(--accent-2);
+  background-color: var(--accent-light);
 }
 
 .dismiss {
@@ -74,7 +84,7 @@
   max-width: calc(100% - 1.25rem * 2);
   overflow: auto;
   border-radius: 1rem;
-  background-color: #fff;
+  background-color: var(--brown-1);
   padding: 1.5rem;
   color: hsl(204 10% 10%);
   box-shadow: 0 25px 50px -12px var(--shadow-dark);

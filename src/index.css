@@ -7,12 +7,24 @@
   --brown-3: #dfd8d0;
   --brown-4: #40302099;
   --brown-5: #403020;
-  --accent-1: #ffa500;
-  --accent-2: #ffb833;
-  --shadow: rgba(64, 43, 26, 0.1);
-  --shadow-dark: rgba(64, 43, 26, 0.25);
+  --accent: #ffa500;
+  --accent-light: #ffb833;
+  --shadow: rgba(0, 0, 0, 0.05);
+  --shadow-dark: rgba(0, 0, 0, 0.2);
   --font: 'M PLUS Rounded 1c', sans-serif;
   --ease: all 0.2s ease;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --brown-1: #201c17;
+    --brown-2: #29231d;
+    --brown-3: #322b22;
+    --brown-4: #efe8e199;
+    --brown-5: #efe8e1;
+    --shadow: rgba(255, 255, 255, 0.08);
+    --shadow-dark: rgba(0, 0, 0, 0.3);
+  }
 }
 
 html {

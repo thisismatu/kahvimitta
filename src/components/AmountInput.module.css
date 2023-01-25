@@ -1,6 +1,15 @@
 :root {
   /* Make sure to match with AmountInput `fontSize` variable */
-  --defaultSize: 36px;
+  --default-font-size: 36px;
+  --popover-bg: var(--brown-1);
+  --popover-active: var(--brown-2);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --popover-bg: var(--brown-2);
+    --popover-active: var(--brown-3);
+  }
 }
 
 .container {
@@ -33,7 +42,7 @@
 .input {
   background: transparent;
   text-align: center;
-  font-size: var(--defaultSize);
+  font-size: var(--default-font-size);
   font-weight: 500;
   color: var(--brown-5);
   height: 100%;
@@ -62,7 +71,7 @@ input::placeholder {
 }
 
 .txtWidth {
-  font-size: var(--defaultSize);
+  font-size: var(--default-font-size);
   visibility: hidden;
   height: 0;
   opacity: 0;
@@ -140,10 +149,10 @@ input::placeholder {
 .popover {
   display: flex;
   flex-direction: column;
-  background-color: var(--brown-1);
+  background-color: var(--popover-bg);
   border-radius: 0.75rem;
   padding: 0.5rem 0;
-  box-shadow: 2px 0 8px var(--shadow), 0 0 0 1px var(--shadow);
+  box-shadow: 2px 0 16px var(--shadow-dark), 0 0 0 1px var(--shadow);
   z-index: 10;
   opacity: 0;
   transform: translateY(-8px);
@@ -169,12 +178,12 @@ input::placeholder {
 
 @media (hover: hover) {
   .item:hover {
-    background-color: var(--brown-2);
+    background-color: var(--popover-active);
   }
 }
 
 .item[data-active-item] {
-  background-color: var(--brown-2);
+  background-color: var(--popover-active);
 }
 
 .item small {

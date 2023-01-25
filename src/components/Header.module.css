@@ -1,3 +1,17 @@
+:root {
+  --header-bg: var(--brown-5);
+  --header-primary: var(--brown-1);
+  --header-secondary: var(--brown-3);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --header-bg: var(--brown-2);
+    --header-primary: var(--brown-5);
+    --header-secondary: var(--brown-4);
+  }
+}
+
 .container {
   display: grid;
   align-items: center;
@@ -5,8 +19,8 @@
   justify-content: space-between;
   padding: 0 1rem;
   text-align: center;
-  background-color: var(--brown-5);
-  color: var(--brown-1);
+  background-color: var(--header-bg);
+  color: var(--header-primary);
   height: 64px;
 }
 
@@ -41,6 +55,6 @@
   .description {
     display: block;
     margin: 0;
-    color: var(--brown-3);
+    color: var(--header-secondary);
   }
 }
