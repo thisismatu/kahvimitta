@@ -3,13 +3,6 @@
   --stroke-selected: 1.5px;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --stroke: 1.5px;
-    --stroke-selected: 2px;
-  }
-}
-
 .button {
   padding-top: 1rem;
   padding-bottom: 1rem;

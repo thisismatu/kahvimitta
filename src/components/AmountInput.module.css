@@ -1,15 +1,6 @@
 :root {
   /* Make sure to match with AmountInput `fontSize` variable */
   --default-font-size: 36px;
-  --popover-bg: var(--brown-1);
-  --popover-active: var(--brown-2);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --popover-bg: var(--brown-2);
-    --popover-active: var(--brown-3);
-  }
 }
 
 .container {
@@ -149,7 +140,7 @@
 .popover {
   display: flex;
   flex-direction: column;
-  background-color: var(--popover-bg);
+  background-color: var(--brown-1);
   border-width: 1px;
   border-color: var(--brown-4);
   border-radius: 0.75rem;
@@ -180,12 +171,12 @@
 
 @media (hover: hover) {
   .item:hover {
-    background-color: var(--popover-active);
+    background-color: var(--brown-2);
   }
 }
 
 .item[data-active-item] {
-  background-color: var(--popover-active);
+  background-color: var(--brown-2);
 }
 
 .item small {
