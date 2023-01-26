@@ -23,16 +23,16 @@
 }
 
 .button:disabled {
-  background-color: var(--brown-5);
+  background-color: var(--brown-6);
   color: var(--brown-1);
 }
 
 .button:disabled small {
-  color: var(--brown-3);
+  color: var(--brown-4);
 }
 
 .button small {
-  color: var(--dim);
+  color: var(--brown-5);
   font-size: 0.75em;
   font-weight: 400;
   white-space: nowrap;

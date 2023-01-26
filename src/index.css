@@ -3,11 +3,11 @@
 
 :root {
   --brown-1: #fff8f0;
-  --brown-2: #f0e8e0;
-  --brown-3: #e3d9cf;
-  --brown-4: #d2c9c1;
-  --brown-5: #403020;
-  --dim: #40302099;
+  --brown-2: #f0e9e0;
+  --brown-3: #e3d9ce;
+  --brown-4: #d2cac1;
+  --brown-5: #7e7062;
+  --brown-6: #403020;
   --accent: #ffa500;
   --accent-light: #ffb833;
   --shadow: rgba(0, 0, 0, 0.05);
@@ -23,7 +23,6 @@
     --brown-3: #3b3026;
     --brown-4: #473b2e;
     --brown-5: #efe8e1;
-    --dim: #efe8e188;
     --accent: #e69500;
     --accent-light: #ffa500;
     --shadow: rgba(255, 255, 255, 0.08);
@@ -43,7 +42,7 @@ html {
 
 body {
   background-color: var(--brown-1);
-  color: var(--brown-5);
+  color: var(--brown-6);
   font-family: var(--font);
   font-weight: 500;
   text-rendering: optimizeLegibility;

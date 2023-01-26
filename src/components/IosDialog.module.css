@@ -23,7 +23,7 @@
 .dismiss {
   background: transparent;
   border-radius: 0.5rem;
-  color: var(--dim);
+  color: var(--brown-5);
   font-size: 0.875rem;
   font-weight: 500;
   margin-top: 0.75rem;
@@ -100,7 +100,7 @@
 .heading {
   font-size: 1.25rem;
   font-weight: 700;
-  color: var(--brown-5);
+  color: var(--brown-6);
   margin: 0;
 }
 
@@ -108,7 +108,7 @@
   display: grid;
   gap: 0.75rem;
   align-items: center;
-  color: var(--brown-5);
+  color: var(--brown-6);
   font-weight: 400;
   line-height: 1.334;
   margin-top: 1.25rem;
