@@ -35,7 +35,7 @@
   text-align: center;
   font-size: var(--default-font-size);
   font-weight: 500;
-  color: var(--brown-6);
+  color: var(--brown-7);
   height: 100%;
   width: 100%;
   padding: 0.5rem 0;
@@ -78,21 +78,20 @@
   justify-content: center;
   background-color: transparent;
   border-radius: 0.5rem;
-  color: var(--brown-6);
-  opacity: 0.5;
+  color: var(--brown-5);
   padding: 0.75rem 0.5rem;
   transition: var(--ease);
 }
 
 @media (hover: hover) {
   .stepper:hover {
-    opacity: 1;
+    color: var(--brown-7);
   }
 }
 
 .stepper:active,
 .stepper:focus {
-  opacity: 1;
+  color: var(--brown-7);
 }
 
 .stepper svg {
@@ -180,7 +179,7 @@
 }
 
 .item small {
-  color: var(--brown-5);
+  color: var(--brown-6);
   font-size: 0.75em;
   margin-right: auto;
   white-space: nowrap;
