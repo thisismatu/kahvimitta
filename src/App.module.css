@@ -76,7 +76,7 @@
 }
 
 .byline {
-  color: var(--brown-4);
+  color: var(--dim);
   font-size: 0.75rem;
   font-weight: 400;
   text-align: center;

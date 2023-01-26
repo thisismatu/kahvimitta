@@ -58,7 +58,7 @@
 }
 
 .input::placeholder {
-  color: var(--brown-4);
+  color: var(--dim);
 }
 
 .input:focus {
@@ -150,9 +150,11 @@
   display: flex;
   flex-direction: column;
   background-color: var(--popover-bg);
+  border-width: 1px;
+  border-color: var(--brown-4);
   border-radius: 0.75rem;
   padding: 0.5rem 0;
-  box-shadow: 2px 0 16px var(--shadow-dark), 0 0 0 1px var(--shadow);
+  box-shadow: 0 8px 24px var(--shadow-dark);
   z-index: 10;
   opacity: 0;
   transform: translateY(-8px);
@@ -187,7 +189,7 @@
 }
 
 .item small {
-  color: var(--brown-4);
+  color: var(--dim);
   font-size: 0.75em;
   margin-right: auto;
   white-space: nowrap;

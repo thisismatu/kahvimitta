@@ -32,7 +32,7 @@
 }
 
 .button small {
-  color: var(--brown-4);
+  color: var(--dim);
   font-size: 0.75em;
   font-weight: 400;
   white-space: nowrap;

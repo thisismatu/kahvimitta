@@ -58,7 +58,7 @@
 }
 
 .note {
-  color: var(--brown-4);
+  color: var(--dim);
   margin-top: 0.125rem;
   line-height: 1.5;
   max-width: 40em;

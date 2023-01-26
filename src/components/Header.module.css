@@ -1,14 +1,12 @@
 :root {
   --header-bg: var(--brown-5);
   --header-primary: var(--brown-1);
-  --header-secondary: var(--brown-3);
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
     --header-bg: var(--brown-2);
     --header-primary: var(--brown-5);
-    --header-secondary: var(--brown-4);
   }
 }
 
@@ -55,6 +53,6 @@
   .description {
     display: block;
     margin: 0;
-    color: var(--header-secondary);
+    opacity: 0.7;
   }
 }
