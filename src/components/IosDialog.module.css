@@ -1,5 +1,5 @@
 .button {
-  background-color: var(--accent-1);
+  background-color: var(--accent);
   border-radius: 0.5rem;
   color: #fff;
   font-size: 1rem;
@@ -12,22 +12,21 @@
 
 @media (hover: hover) {
   .button:hover {
-    background-color: var(--accent-2);
+    background-color: var(--accent-light);
   }
 }
 
 .button:active {
-  background-color: var(--accent-2);
+  background-color: var(--accent-light);
 }
 
 .dismiss {
   background: transparent;
   border-radius: 0.5rem;
-  color: var(--brown-5);
+  color: var(--dim);
   font-size: 0.875rem;
   font-weight: 500;
   margin-top: 0.75rem;
-  opacity: 0.75;
   padding: 0.5rem 1rem;
   text-align: center;
   width: 100%;
@@ -47,7 +46,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: var(--hover);
+  background-color: var(--shadow);
   opacity: 0;
   transition-property: opacity, backdrop-filter;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
@@ -75,10 +74,10 @@
   max-width: calc(100% - 1.25rem * 2);
   overflow: auto;
   border-radius: 1rem;
-  background-color: #fff;
+  background-color: var(--brown-1);
   padding: 1.5rem;
   color: hsl(204 10% 10%);
-  box-shadow: 0 25px 50px -12px var(--hover-dark);
+  box-shadow: 0 25px 50px -12px var(--shadow-dark);
   transform-origin: center;
   opacity: 0;
   transition-property: opacity, transform;

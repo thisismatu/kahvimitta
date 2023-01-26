@@ -1,6 +1,6 @@
 :root {
   /* Make sure to match with AmountInput `fontSize` variable */
-  --defaultSize: 36px;
+  --default-font-size: 36px;
 }
 
 .container {
@@ -33,7 +33,7 @@
 .input {
   background: transparent;
   text-align: center;
-  font-size: var(--defaultSize);
+  font-size: var(--default-font-size);
   font-weight: 500;
   color: var(--brown-5);
   height: 100%;
@@ -48,8 +48,8 @@
   }
 }
 
-input::placeholder {
-  color: var(--hover-dark);
+.input::placeholder {
+  color: var(--dim);
 }
 
 .input:focus {
@@ -62,7 +62,7 @@ input::placeholder {
 }
 
 .txtWidth {
-  font-size: var(--defaultSize);
+  font-size: var(--default-font-size);
   visibility: hidden;
   height: 0;
   opacity: 0;
@@ -90,7 +90,8 @@ input::placeholder {
   }
 }
 
-.stepper:active {
+.stepper:active,
+.stepper:focus {
   opacity: 1;
 }
 
@@ -140,9 +141,11 @@ input::placeholder {
   display: flex;
   flex-direction: column;
   background-color: var(--brown-1);
+  border-width: 1px;
+  border-color: var(--brown-4);
   border-radius: 0.75rem;
   padding: 0.5rem 0;
-  box-shadow: 2px 0 8px var(--hover), 0 0 0 1px var(--hover);
+  box-shadow: 0 8px 24px var(--shadow-dark);
   z-index: 10;
   opacity: 0;
   transform: translateY(-8px);
@@ -177,9 +180,9 @@ input::placeholder {
 }
 
 .item small {
+  color: var(--dim);
   font-size: 0.75em;
   margin-right: auto;
-  opacity: 0.75;
   white-space: nowrap;
 }
 

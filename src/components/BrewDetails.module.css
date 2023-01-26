@@ -38,13 +38,14 @@
   justify-content: space-between;
   flex-wrap: wrap;
   gap: 0.75rem 2rem;
+  font-size: 0.875rem;
+  font-weight: 400;
   padding: 0 2rem 1.25rem 1.25rem;
   user-select: auto;
 }
 
 .table {
   flex-shrink: 0;
-  font-weight: 400;
 }
 
 .table td {
@@ -57,10 +58,8 @@
 }
 
 .note {
-  opacity: 0.75;
-  margin-top: 0.25rem;
+  color: var(--dim);
+  margin-top: 0.125rem;
   line-height: 1.5;
   max-width: 40em;
-  font-size: 0.875rem;
-  font-weight: 400;
 }

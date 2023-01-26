@@ -2,18 +2,34 @@
 @import url('reset.css');
 
 :root {
-  --brown-1: #fff9f2;
-  --brown-2: #efe8e1;
-  --brown-3: #dfd8d0;
-  --brown-4: #cfc6bd;
+  --brown-1: #fff8f0;
+  --brown-2: #f0e8e0;
+  --brown-3: #e3d9cf;
+  --brown-4: #d2c9c1;
   --brown-5: #403020;
-  --accent-1: #ffa500;
-  --accent-2: #ffb833;
-  --hover: rgba(64, 43, 26, 0.1);
-  --hover-dark: rgba(64, 43, 26, 0.25);
+  --dim: #40302099;
+  --accent: #ffa500;
+  --accent-light: #ffb833;
+  --shadow: rgba(0, 0, 0, 0.05);
+  --shadow-dark: rgba(0, 0, 0, 0.2);
   --font: 'M PLUS Rounded 1c', sans-serif;
   --ease: all 0.2s ease;
 }
+
+/* @media (prefers-color-scheme: dark) {
+  :root {
+    --brown-1: #221c16;
+    --brown-2: #2e261e;
+    --brown-3: #3b3026;
+    --brown-4: #473b2e;
+    --brown-5: #efe8e1;
+    --dim: #efe8e188;
+    --accent: #e69500;
+    --accent-light: #ffa500;
+    --shadow: rgba(255, 255, 255, 0.08);
+    --shadow-dark: rgba(0, 0, 0, 0.3);
+  }
+} */
 
 html {
   font-size: 17px;

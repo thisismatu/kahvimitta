@@ -323,7 +323,7 @@ button,
 a:focus-visible,
 button:focus-visible,
 [role='button']:focus-visible {
-  outline-color: var(--accent-2);
+  outline-color: var(--accent-light);
   outline-style: solid;
   outline-width: 2px;
 }

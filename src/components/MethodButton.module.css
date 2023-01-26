@@ -1,3 +1,8 @@
+:root {
+  --stroke: 2px;
+  --stroke-selected: 1.5px;
+}
+
 .button {
   padding-top: 1rem;
   padding-bottom: 1rem;
@@ -6,10 +11,11 @@
 
 .button svg {
   height: 4rem;
+  stroke-width: var(--stroke);
 }
 
 .button:disabled svg {
-  stroke-width: 1.5px;
+  stroke-width: var(--stroke-selected);
 }
 
 .button span {
