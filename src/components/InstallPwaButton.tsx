@@ -40,8 +40,8 @@ export const InstallPwaButton: React.FC = () => {
     setIsPromptEnabled(0);
   };
 
-  // if (isBrowser || isInstalled) return null;
-  // if (!isPromptEnabled || deferredPrompt === undefined) return null;
+  if (isBrowser || isInstalled) return null;
+  if (!isPromptEnabled || deferredPrompt === undefined) return null;
 
   return (
     <>
