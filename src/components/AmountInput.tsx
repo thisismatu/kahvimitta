@@ -58,6 +58,7 @@ export const AmountInput: React.FC<Props> = ({
           <ChevronDownIcon />
         </Button>
         <input
+          data-testid={`${label}Input`}
           ref={inputRef}
           className={styles.input}
           type="number"

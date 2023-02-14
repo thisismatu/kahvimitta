@@ -2,8 +2,12 @@ import React from 'react';
 import { render, screen } from '@testing-library/react';
 import App from './App';
 
-test('renders learn react link', () => {
+window.HTMLElement.prototype.scrollIntoView = jest.fn();
+
+test('renders inputs', () => {
   render(<App />);
-  const linkElement = screen.getByText(/learn react/i);
-  expect(linkElement).toBeInTheDocument();
+  const coffeeInput = screen.getByTestId('CoffeeInput');
+  const waterInput = screen.getByTestId('WaterInput');
+  expect(coffeeInput).toBeInTheDocument();
+  expect(waterInput).toBeInTheDocument();
 });
