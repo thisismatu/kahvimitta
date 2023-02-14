@@ -2,7 +2,7 @@ import React from 'react';
 import { Disclosure, DisclosureContent, useDisclosureState } from 'ariakit/disclosure';
 import { Instruction } from 'types';
 import { ReactComponent as ChevronDownIcon } from 'assets/chevron-down.svg';
-import { ReactComponent as CoarsnessIcon } from 'assets/sliders.svg';
+import { ReactComponent as CoarsenessIcon } from 'assets/sliders.svg';
 import { ReactComponent as TemperatureIcon } from 'assets/thermometer.svg';
 import { ReactComponent as TimeIcon } from 'assets/clock.svg';
 import styles from './BrewDetails.module.css';
@@ -30,7 +30,7 @@ export const BrewDetails: React.FC<Props> = ({ details }) => {
           <tbody>
             <tr>
               <td>
-                <CoarsnessIcon />
+                <CoarsenessIcon />
               </td>
               <td>Grind coarseness:</td>
               <td>{details.grind}</td>
