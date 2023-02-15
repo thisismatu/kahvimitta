@@ -2,9 +2,9 @@ import React from 'react';
 import { Disclosure, DisclosureContent, useDisclosureState } from 'ariakit/disclosure';
 import { Instruction } from 'types';
 import { ReactComponent as ChevronDownIcon } from 'assets/chevron-down.svg';
-import { ReactComponent as CoarsenessIcon } from 'assets/sliders.svg';
-import { ReactComponent as TemperatureIcon } from 'assets/thermometer.svg';
-import { ReactComponent as TimeIcon } from 'assets/clock.svg';
+import { ReactComponent as SliderIcon } from 'assets/sliders.svg';
+import { ReactComponent as ThermometerIcon } from 'assets/thermometer.svg';
+import { ReactComponent as ClockIcon } from 'assets/clock.svg';
 import styles from './BrewDetails.module.css';
 import clsx from 'clsx';
 
@@ -30,21 +30,21 @@ export const BrewDetails: React.FC<Props> = ({ details }) => {
           <tbody>
             <tr>
               <td>
-                <CoarsenessIcon />
+                <SliderIcon />
               </td>
               <td>Grind coarseness:</td>
               <td>{details.grind}</td>
             </tr>
             <tr>
               <td>
-                <TemperatureIcon />
+                <ThermometerIcon />
               </td>
               <td>Water temperature:</td>
               <td>{details.temp}</td>
             </tr>
             <tr>
               <td>
-                <TimeIcon />
+                <ClockIcon />
               </td>
               <td>Brew time:</td>
               <td>{details.time}</td>
