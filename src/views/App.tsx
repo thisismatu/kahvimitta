@@ -27,6 +27,12 @@ function App() {
 
   useEffect(() => {
     document.title = 'BrewCalc';
+    const updateFavicon = (dark: boolean) => {
+      const link = document.getElementById('favicon') as HTMLLinkElement;
+      if (link) link.href = dark ? 'favicon-dark.ico' : 'favicon.ico';
+    };
+    const usesDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches || false;
+    updateFavicon(usesDarkMode);
   }, []);
 
   useEffect(() => {
