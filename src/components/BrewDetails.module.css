@@ -2,6 +2,7 @@
   width: 100%;
   background-color: var(--brown-2);
   border-radius: 0.75rem;
+  overflow: hidden;
 }
 
 .title {
@@ -9,20 +10,8 @@
   align-items: center;
   justify-content: space-between;
   background-color: transparent;
-  border-radius: 0.75rem;
   padding: 1.125rem 1.5rem;
-  transition: var(--ease);
   width: 100%;
-}
-
-@media (hover: hover) {
-  .title:hover {
-    background-color: var(--brown-3);
-  }
-}
-
-.title:active {
-  background-color: var(--brown-3);
 }
 
 .icon {
