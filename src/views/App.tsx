@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import { Amount, BrewMethod, Strength, Unit } from 'types';
 import { convert, round } from 'utils/math';
 import { useLocalStorage } from 'utils/useLocalStorage';
+import { trackEvent } from 'utils/misc';
 import { brewMethods, coffeeUnits, waterUnits } from 'data';
 import { AmountInput } from 'components/AmountInput';
 import { BrewDetails } from 'components/BrewDetails';
@@ -10,7 +11,6 @@ import { Header } from 'components/Header';
 import { InstallPwaButton } from 'components/InstallPwaButton';
 import { MethodButton } from 'components/MethodButton';
 import styles from './App.module.css';
-import { trackEvent } from 'utils/misc';
 
 function App() {
   const [localBrewMethod, setLocalBrewMethod] = useLocalStorage<number>('brewMethod', 0);
