@@ -23,6 +23,15 @@ npm start
 - Commits to `main` branch trigger a production deployment
 - Commits to a feature branch trigger a preview deployment, the preview link is in the PR
 
+## Roadmap
+
+- [x] Espresso brew method
+- [x] Tablespoon measurement 
+- [x] Imrpove brew instructions
+- [ ] Custom ratio
+- [ ] Settings: rounding precision, method order & other
+- [ ] Brew timer?
+
 ## Design
 
 - [Figma mockup][figma]
