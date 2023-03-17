@@ -134,11 +134,22 @@ function App() {
 
   return (
     <div className={styles.container}>
-      <Header title="BrewCalc" description="A simple coffee ratio calculator" rightAction={<InstallPwaButton />} />
+      <Header
+        title="BrewCalc"
+        description="A simple coffee ratio calculator"
+        rightAction={<InstallPwaButton />}
+      />
       <div className={styles.form}>
-        <div className={styles.methods} ref={scrollRef}>
+        <div
+          className={styles.methods}
+          ref={scrollRef}
+        >
           {brewMethods.map((m, i) => (
-            <MethodButton key={m.label} onClick={() => handleMethod(m, i)} disabled={m.label === method.label}>
+            <MethodButton
+              key={m.label}
+              onClick={() => handleMethod(m, i)}
+              disabled={m.label === method.label}
+            >
               <m.icon />
               <span>{m.label}</span>
             </MethodButton>
@@ -166,7 +177,11 @@ function App() {
         </div>
         <div className={styles.strength}>
           {method.strengths.map((s) => (
-            <Button key={s.type} onClick={() => handleStrength(s)} disabled={s.type === strength.type}>
+            <Button
+              key={s.type}
+              onClick={() => handleStrength(s)}
+              disabled={s.type === strength.type}
+            >
               {s.label} <small>1:{s.ratio}</small>
             </Button>
           ))}
@@ -174,11 +189,19 @@ function App() {
         <BrewDetails details={method.details} />
         <small className={styles.byline}>
           Made with ♥ by{' '}
-          <a href="https://mathiaslindholm.com/" target="_blank" rel="noopener noreferrer">
+          <a
+            href="https://mathiaslindholm.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             Mathias Lindholm
           </a>{' '}
           &{' '}
-          <a href="https://aapokojo.com/" target="_blank" rel="noopener noreferrer">
+          <a
+            href="https://aapokojo.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             Aapo Kojo
           </a>
         </small>
