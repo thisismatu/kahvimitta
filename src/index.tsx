@@ -5,6 +5,7 @@ import ReactGA from 'react-ga4';
 import App from 'views/App';
 import reportWebVitals from './reportWebVitals';
 import { sendToVercelAnalytics } from './vitals';
+import { registerSW } from 'virtual:pwa-register';
 import './index.css';
 
 const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement);
@@ -14,6 +15,9 @@ root.render(
     <Analytics />
   </React.StrictMode>
 );
+
+// Register service worker
+registerSW({ immediate: true });
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))

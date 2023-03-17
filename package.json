@@ -21,7 +21,8 @@
     "vite": "^4.2.0",
     "vite-plugin-pwa": "^0.14.4",
     "vite-plugin-svgr": "^2.4.0",
-    "vite-tsconfig-paths": "^4.0.7"
+    "vite-tsconfig-paths": "^4.0.7",
+    "workbox-window": "^6.5.4"
   },
   "scripts": {
     "start": "vite",
