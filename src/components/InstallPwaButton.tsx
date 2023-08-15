@@ -25,18 +25,16 @@ export const InstallPwaButton: React.FC = () => {
 
   const handleClick = async () => {
     if (isIOS) {
-      trackEvent('PWA', 'App install', 'dialog');
       return dialog.toggle();
     }
     if (!deferredPrompt) return;
     deferredPrompt.prompt();
     const { outcome } = await deferredPrompt.userChoice;
-    trackEvent('PWA', 'App install', outcome);
+    trackEvent('pwa-install', outcome);
     setDeferredPrompt(undefined);
   };
 
   const handleDisablePrompt = () => {
-    trackEvent('PWA', 'App install', 'disable');
     setIsPromptEnabled(0);
   };
 

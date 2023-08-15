@@ -1,7 +1,12 @@
-import ReactGA from 'react-ga4';
+declare global {
+  interface Window {
+    goatcounter: any;
+  }
+}
 
-export const trackEvent = (category: string, action: string, label: string) =>
-  ReactGA.event({ category, action, label });
+export const trackEvent = (path: string, title: string) => {
+  if (window.goatcounter) window.goatcounter.count({ path, title, event: true });
+};
 
 export const getParam = (prop: string) => {
   const queryParams = new URLSearchParams(window.location.search);

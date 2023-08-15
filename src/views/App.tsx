@@ -103,7 +103,6 @@ function App() {
   const handleCoffeeUnit = (from: Unit, to: Unit) => {
     setCoffeeUnit(to);
     setLocalCoffeeUnit(to);
-    trackEvent('UI', 'Unit selection', to);
     if (!coffee.exact) return;
     const c = convert(coffee.exact, from, to);
     setCoffee({ round: round(c), exact: c });
@@ -112,7 +111,6 @@ function App() {
   const handleWaterUnit = (from: Unit, to: Unit) => {
     setWaterUnit(to);
     setLocalWaterUnit(to);
-    trackEvent('UI', 'Unit selection', to);
     if (!water.exact) return;
     const w = convert(water.exact, from, to);
     setWater({ round: round(w), exact: w });
@@ -127,7 +125,7 @@ function App() {
   const handleMethod = (m: BrewMethod, i: number) => {
     setMethod(m);
     setLocalBrewMethod(i);
-    trackEvent('UI', 'Method selection', m.label);
+    trackEvent('brew-method', m.label);
     const ns = m.strengths.find((s) => s.type === strength.type);
     if (ns) handleStrength(ns);
   };

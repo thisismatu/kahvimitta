@@ -23,6 +23,3 @@ registerSW({ immediate: true });
 // to log results (for example: reportWebVitals(console.log))
 // or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
 reportWebVitals(sendToVercelAnalytics);
-
-// Google Analytics 4
-ReactGA.initialize('G-50S8KF7VFB');
