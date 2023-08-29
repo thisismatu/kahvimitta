@@ -89,4 +89,7 @@ export default defineConfig({
     open: true,
     port: 3000,
   },
+  define: {
+    'import.meta.env.VITE_VERCEL_ANALYTICS_ID': JSON.stringify(process.env.VERCEL_ANALYTICS_ID),
+  },
 });
