@@ -1,3 +1,5 @@
+import { onCLS, onFCP, onFID, onLCP, onTTFB } from 'web-vitals';
+
 const vitalsUrl = 'https://vitals.vercel-analytics.com/v1/vitals';
 
 function getConnectionSpeed() {
@@ -8,7 +10,7 @@ function getConnectionSpeed() {
     : '';
 }
 
-export function sendToVercelAnalytics(metric) {
+function sendToAnalytics(metric) {
   const analyticsId = import.meta.env.VITE_VERCEL_ANALYTICS_ID;
   if (!analyticsId) {
     return;
@@ -37,4 +39,16 @@ export function sendToVercelAnalytics(metric) {
       credentials: 'omit',
       keepalive: true,
     });
+}
+
+export function webVitals() {
+  try {
+    onFID((metric) => sendToAnalytics(metric));
+    onTTFB((metric) => sendToAnalytics(metric));
+    onLCP((metric) => sendToAnalytics(metric));
+    onCLS((metric) => sendToAnalytics(metric));
+    onFCP((metric) => sendToAnalytics(metric));
+  } catch (err) {
+    console.error('[Analytics]', err);
+  }
 }
