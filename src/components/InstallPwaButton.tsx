@@ -6,7 +6,7 @@ import { getParam, trackEvent } from 'utils/misc';
 import { useLocalStorage } from 'utils/useLocalStorage';
 import { Button } from 'components/Button';
 import { IosDialog } from 'components/IosDialog';
-import { ReactComponent as DownloadIcon } from 'assets/download.svg';
+import { DownloadIcon } from 'assets/icons';
 import styles from './InstallPwaButton.module.css';
 
 export const InstallPwaButton: React.FC = () => {
