@@ -2,11 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import { Button } from 'ariakit/button';
 import { Select, SelectItem, SelectPopover, useSelectState } from 'ariakit/select';
 import { Unit, WeightUnit } from 'types';
-import { ReactComponent as CheckIcon } from 'assets/check.svg';
-import { ReactComponent as ChevronUpIcon } from 'assets/chevron-up.svg';
-import { ReactComponent as ChevronDownIcon } from 'assets/chevron-down.svg';
-import { ReactComponent as PlusIcon } from 'assets/plus.svg';
-import { ReactComponent as MinusIcon } from 'assets/minus.svg';
+import { CheckIcon, ChevronUpIcon, ChevronDownIcon, PlusIcon, MinusIcon } from 'assets/icons';
 import styles from './AmountInput.module.css';
 
 interface Props {
@@ -28,7 +24,12 @@ export const AmountInput: React.FC<Props> = ({
   onAmountChange,
   onSpinnerClick,
 }) => {
-  const state = useSelectState({ defaultValue: currentUnit, sameWidth: true, gutter: 4, animated: true });
+  const state = useSelectState({
+    defaultValue: currentUnit,
+    sameWidth: true,
+    gutter: 4,
+    animated: true,
+  });
   const renderName = units.find((i) => i.unit === state.value)?.label;
   const widthRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
@@ -53,7 +54,12 @@ export const AmountInput: React.FC<Props> = ({
         {amount}
       </div>
       <div className={styles.inputContainer}>
-        <Button className={styles.stepper} data-direction="down" as="button" onClick={onSpinnerClick}>
+        <Button
+          className={styles.stepper}
+          data-direction="down"
+          as="button"
+          onClick={onSpinnerClick}
+        >
           <MinusIcon />
           <ChevronDownIcon />
         </Button>
@@ -75,7 +81,7 @@ export const AmountInput: React.FC<Props> = ({
       </div>
       <Select state={state} className={styles.select}>
         {renderName || state.value}
-        <ChevronDownIcon width={16} height={16} strokeWidth={3} />
+        <ChevronDownIcon width={16} height={16} />
       </Select>
       <SelectPopover state={state} className={styles.popover}>
         {units.map((i) => (
@@ -89,7 +95,7 @@ export const AmountInput: React.FC<Props> = ({
             {i.label}
             {i.extra && <small>{i.extra}</small>}
             <span className={styles.itemIcon}>
-              {i.unit === state.value && <CheckIcon width={16} height={16} strokeWidth={3} />}
+              {i.unit === state.value && <CheckIcon width={16} height={16} />}
             </span>
           </SelectItem>
         ))}

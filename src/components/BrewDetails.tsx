@@ -1,10 +1,7 @@
 import React from 'react';
 import { Disclosure, DisclosureContent, useDisclosureState } from 'ariakit/disclosure';
 import { Instruction } from 'types';
-import { ReactComponent as ChevronDownIcon } from 'assets/chevron-down.svg';
-import { ReactComponent as SliderIcon } from 'assets/sliders.svg';
-import { ReactComponent as ThermometerIcon } from 'assets/thermometer.svg';
-import { ReactComponent as ClockIcon } from 'assets/clock.svg';
+import { ChevronDownIcon, SlidersIcon, ThermometerIcon, ClockIcon } from 'assets/icons';
 import styles from './BrewDetails.module.css';
 import clsx from 'clsx';
 
@@ -22,7 +19,6 @@ export const BrewDetails: React.FC<Props> = ({ details }) => {
           className={clsx(styles.icon, disclosure.open && styles['icon--rotate'])}
           width={16}
           height={16}
-          strokeWidth={3}
         />
       </Disclosure>
       <DisclosureContent state={disclosure} className={styles.content}>
@@ -30,7 +26,7 @@ export const BrewDetails: React.FC<Props> = ({ details }) => {
           <tbody>
             <tr>
               <td>
-                <SliderIcon />
+                <SlidersIcon />
               </td>
               <td>Grind coarseness:</td>
               <td>{details.grind}</td>
@@ -52,8 +48,8 @@ export const BrewDetails: React.FC<Props> = ({ details }) => {
           </tbody>
         </table>
         <p className={styles.note}>
-          Note: Coffee scoops, tablespoons and cups are based on european sizes. They are useful tools when you don't
-          have access to a scale.
+          Note: Coffee scoops, tablespoons and cups are based on european sizes. They are useful
+          tools when you don't have access to a scale.
         </p>
       </DisclosureContent>
     </div>
