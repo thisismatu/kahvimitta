@@ -1,9 +1,9 @@
-import { ReactComponent as AutodripIcon } from 'assets/autodrip.svg';
-import { ReactComponent as AeropressIcon } from 'assets/aeropress.svg';
-import { ReactComponent as FrenchPressIcon } from 'assets/french-press.svg';
-import { ReactComponent as PourOverIcon } from 'assets/pour-over.svg';
-import { ReactComponent as MokaPotIcon } from 'assets/moka-pot.svg';
-import { ReactComponent as EspressoIcon } from 'assets/espresso.svg';
+import AutodripIcon from 'assets/autodrip.svg?react';
+import AeropressIcon from 'assets/aeropress.svg?react';
+import FrenchPressIcon from 'assets/french-press.svg?react';
+import PourOverIcon from 'assets/pour-over.svg?react';
+import MokaPotIcon from 'assets/moka-pot.svg?react';
+import EspressoIcon from 'assets/espresso.svg?react';
 import { WeightUnit, BrewMethod } from './types';
 
 // Note: remember to use thin space " "

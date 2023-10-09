@@ -1,6 +1,6 @@
 import React from 'react';
 import { Dialog, DialogDismiss, DialogHeading, DialogProps } from 'ariakit/dialog';
-import { ReactComponent as IosShareIcon } from 'assets/ios-share.svg';
+import IosShareIcon from 'assets/ios-share.svg?react';
 import a2hsSrc from 'assets/a2hs.png';
 import styles from './IosDialog.module.css';
 
