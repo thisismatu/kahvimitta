@@ -9,7 +9,7 @@ interface Props extends DialogProps {
 export const DomainDialog: React.FC<Props> = ({ state, onDontShowAgain }) => {
   const handleRedirectAndClose = () => {
     onDontShowAgain();
-    window.open('https://example.com', '_blank');
+    window.open('https://brewcalc.vercel.app', '_blank');
   };
 
   return (
