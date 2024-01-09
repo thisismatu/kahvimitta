@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
+import { useDialogState } from 'ariakit/dialog';
 import { Amount, BrewMethod, Strength, Unit } from 'types';
 import { convert, round } from 'utils/math';
 import { useLocalStorage } from 'utils/useLocalStorage';
@@ -10,6 +11,7 @@ import { Button } from 'components/Button';
 import { Header } from 'components/Header';
 import { InstallPwaButton } from 'components/InstallPwaButton';
 import { MethodButton } from 'components/MethodButton';
+import { DomainDialog } from 'components/DomainDialog';
 import styles from './App.module.css';
 
 function App() {
@@ -24,6 +26,11 @@ function App() {
   const [waterUnit, setWaterUnit] = useState<Unit>(localWaterUnit);
   const [lastInput, setLastInput] = useState<'coffee' | 'water'>();
   const scrollRef = useRef<HTMLDivElement>(null);
+  const [isPromptEnabled, setIsPromptEnabled] = useLocalStorage<number>('domainChange', 1);
+  const dialog = useDialogState({
+    animated: true,
+    defaultOpen: window.location.hostname === 'brewcalc.online' && Boolean(isPromptEnabled),
+  });
 
   useEffect(() => {
     document.title = 'BrewCalc';
@@ -138,10 +145,7 @@ function App() {
         rightAction={<InstallPwaButton />}
       />
       <div className={styles.form}>
-        <div
-          className={styles.methods}
-          ref={scrollRef}
-        >
+        <div className={styles.methods} ref={scrollRef}>
           {brewMethods.map((m, i) => (
             <MethodButton
               key={m.label}
@@ -187,23 +191,16 @@ function App() {
         <BrewDetails details={method.details} />
         <small className={styles.byline}>
           Made with ♥ by{' '}
-          <a
-            href="https://mathiaslindholm.com/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
+          <a href="https://mathiaslindholm.com/" target="_blank" rel="noopener noreferrer">
             Mathias Lindholm
           </a>{' '}
           &{' '}
-          <a
-            href="https://aapokojo.com/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
+          <a href="https://aapokojo.com/" target="_blank" rel="noopener noreferrer">
             Aapo Kojo
           </a>
         </small>
       </div>
+      <DomainDialog state={dialog} onDontShowAgain={() => setIsPromptEnabled(0)} />
     </div>
   );
 }

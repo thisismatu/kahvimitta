@@ -75,7 +75,7 @@
   overflow: auto;
   border-radius: 1rem;
   background-color: var(--brown-1);
-  padding: 1.5rem;
+  padding: 2rem;
   color: hsl(204 10% 10%);
   box-shadow: 0 25px 50px -12px var(--shadow-dark);
   transform-origin: center;
