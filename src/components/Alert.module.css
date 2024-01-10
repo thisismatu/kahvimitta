@@ -1,0 +1,43 @@
+.alert {
+  background-color: var(--accent-light);
+}
+
+.container {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  max-width: 62rem;
+  margin: 0 auto;
+  padding: 1.25rem 2rem;
+  font-size: 0.875rem;
+  line-height: 1.375;
+}
+
+.button {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  flex-shrink: 0;
+  background-color: transparent;
+  border-width: 1px;
+  border-color: var(--brown-7);
+  border-radius: 0.5rem;
+  font-weight: 700;
+  font-size: 0.8125rem;
+  outline: none;
+  padding: 0 0.75rem;
+  height: 2.25rem;
+  transition: var(--ease);
+}
+
+.button svg {
+  width: 1rem;
+  height: 1rem;
+  stroke-width: 2.25;
+}
+
+@media (hover: hover) {
+  .button:hover {
+    background-color: var(--shadow);
+  }
+}
