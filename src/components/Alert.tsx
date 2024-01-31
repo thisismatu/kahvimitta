@@ -7,9 +7,9 @@ export const Alert = () => {
     <div className={styles.alert}>
       <div className={styles.container}>
         <p>
-          After January 25th the <strong>brewcalc.online</strong> domain will stop working, but you
-          can find BrewCalc at <strong>brewcalc.vercel.app</strong>. This is one of my hobby
-          projects and I need to cut costs where i can.
+          The <strong>brewcalc.online</strong> domain will soon stop working, but you can find
+          BrewCalc at <strong>brewcalc.vercel.app</strong>. Sorry for the inconvenience, but this is
+          one of my hobby projects and I need to cut costs where i can.
         </p>
         <a
           href="https://brewcalc.vercel.app"
