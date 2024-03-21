@@ -1,8 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { Analytics } from '@vercel/analytics/react';
+import { injectSpeedInsights } from '@vercel/speed-insights';
 import App from 'views/App';
-import { webVitals } from './vitals';
 import { registerSW } from 'virtual:pwa-register';
 import './index.css';
 
@@ -18,4 +18,4 @@ root.render(
 registerSW({ immediate: true });
 
 // Vercel Speed Insight
-webVitals();
+injectSpeedInsights();
