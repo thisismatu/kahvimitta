@@ -1,4 +1,3 @@
-import { Button } from './Button';
 import { ArrowUpRightIcon } from 'assets/icons';
 import styles from './Alert.module.css';
 
