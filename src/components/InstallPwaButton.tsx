@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useDialogState } from 'ariakit/dialog';
-import { isIOS, isBrowser } from 'react-device-detect';
+import { isIOS, MobileView } from 'react-device-detect';
 import { BeforeInstallPromptEvent } from 'types';
 import { getParam, trackEvent } from 'utils/misc';
 import { useLocalStorage } from 'utils/useLocalStorage';
@@ -38,15 +38,14 @@ export const InstallPwaButton: React.FC = () => {
     setIsPromptEnabled(0);
   };
 
-  if (isBrowser || isInstalled) return null;
-  if (!isPromptEnabled || deferredPrompt === undefined) return null;
+  if (isInstalled || !isPromptEnabled || deferredPrompt === undefined) return null;
 
   return (
-    <>
+    <MobileView>
       <Button as="button" className={styles.button} onClick={handleClick} tabIndex={-1}>
         <DownloadIcon /> Get app
       </Button>
       <IosDialog state={dialog} onDontShowAgain={handleDisablePrompt} />
-    </>
+    </MobileView>
   );
 };
