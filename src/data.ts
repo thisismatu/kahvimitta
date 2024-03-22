@@ -60,7 +60,7 @@ export const brewMethods: BrewMethod[] = [
     ],
     details: {
       grind: 'Medium fine',
-      time: '1:30 min',
+      time: '1 min 30 sec',
       temp: '90 – 96°C',
     },
   },
