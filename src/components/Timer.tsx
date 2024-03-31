@@ -6,60 +6,72 @@ import glassSrc from 'assets/glass.m4a';
 import styles from './Timer.module.css';
 
 interface Props {
-  duration: number;
+  durationMs: number;
+  durationIncrement: number;
 }
 
-export const Timer: React.FC<Props> = ({ duration }) => {
+export const Timer: React.FC<Props> = ({ durationMs, durationIncrement }) => {
   const glass = new Audio(glassSrc);
-  const [time, setTime] = useState(duration);
+  const [duration, setDuration] = useState(durationMs);
+  const [timeLeft, setTimeLeft] = useState(durationMs);
   const [isActive, setIsActive] = useState(false);
 
   useEffect(() => {
-    setTime(duration);
+    setTimeLeft(durationMs);
+    setDuration(durationMs);
     setIsActive(false);
-  }, [duration]);
+  }, [durationMs]);
 
   useEffect(() => {
     if (!isActive) return;
-    if (time === 0) {
+    if (timeLeft === 0) {
       glass.play();
       window.navigator.vibrate([2000]);
     }
     const timer = setTimeout(() => {
-      setTime(time - 100);
+      setTimeLeft(timeLeft - 100);
     }, 100);
     return () => clearTimeout(timer);
-  }, [time, isActive]);
+  }, [timeLeft, isActive]);
 
   const handleStartStop = () => setIsActive(!isActive);
 
   const handleReset = () => {
+    setTimeLeft(durationMs);
+    setDuration(durationMs);
     setIsActive(false);
-    setTime(duration);
   };
 
-  const add30 = () => setTime(time + 30000);
+  const add30 = () => {
+    setTimeLeft(timeLeft + durationIncrement);
+    setDuration(duration + durationIncrement);
+  };
 
-  const sub30 = () => time - 30000 > 0 && setTime(time - 30000);
+  const sub30 = () => {
+    if (timeLeft - durationIncrement > 0) {
+      setTimeLeft(timeLeft - durationIncrement);
+      setDuration(duration - durationIncrement);
+    }
+  };
 
-  const timeLeftPercentage = (time / duration) * 100;
+  const timeLeftPercentage = (timeLeft / duration) * 100;
 
   return (
     <div className={styles.container}>
       <div className={styles.progress} style={{ width: `${timeLeftPercentage}%` }} />
       <span className={styles.title}>Timer</span>
       <div className={styles.timer}>
-        <span className={styles.time}>{formatDuration(time, { leading: false })}</span>
+        <span className={styles.time}>{formatDuration(timeLeft)}</span>
         <Button onClick={handleStartStop} className={styles.startButton}>
           {isActive ? <SquareIcon /> : <PlayIcon />}
         </Button>
       </div>
       <div className={styles.secondaryActions}>
         <Button onClick={sub30} className={styles.textButton}>
-          -0:30
+          -{formatDuration(durationIncrement)}
         </Button>
         <Button onClick={add30} className={styles.textButton}>
-          +0:30
+          +{formatDuration(durationIncrement)}
         </Button>
         <Button onClick={handleReset} className={styles.textButton}>
           Reset

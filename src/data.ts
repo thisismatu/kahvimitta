@@ -34,7 +34,8 @@ export const brewMethods: BrewMethod[] = [
       grind: 'Medium',
       time: '4 – 5 min',
       temp: '96°C',
-      duration: 240000,
+      durationMs: 240000,
+      durationIncrement: 30000,
     },
   },
   {
@@ -49,7 +50,8 @@ export const brewMethods: BrewMethod[] = [
       grind: 'Medium',
       time: '3 – 4 min',
       temp: '90 – 96°C',
-      duration: 180000,
+      durationMs: 180000,
+      durationIncrement: 15000,
     },
   },
   {
@@ -64,7 +66,8 @@ export const brewMethods: BrewMethod[] = [
       grind: 'Medium fine',
       time: '1 min 30 sec',
       temp: '90 – 96°C',
-      duration: 90000,
+      durationMs: 90000,
+      durationIncrement: 15000,
     },
   },
   {
@@ -79,7 +82,8 @@ export const brewMethods: BrewMethod[] = [
       grind: 'Medium coarse',
       time: '4 min',
       temp: '96°C',
-      duration: 240000,
+      durationMs: 240000,
+      durationIncrement: 30000,
     },
   },
   {
@@ -94,7 +98,8 @@ export const brewMethods: BrewMethod[] = [
       grind: 'Fine',
       time: '1 min',
       temp: '96°C',
-      duration: 60000,
+      durationMs: 60000,
+      durationIncrement: 15000,
     },
   },
   {
@@ -109,7 +114,8 @@ export const brewMethods: BrewMethod[] = [
       grind: 'Extra fine',
       time: '25 – 30 sec',
       temp: '92 – 96°C',
-      duration: 25000,
+      durationMs: 25000,
+      durationIncrement: 1000,
     },
   },
 ];

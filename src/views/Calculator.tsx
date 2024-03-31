@@ -174,7 +174,10 @@ function Calculator() {
           </Button>
         ))}
       </div>
-      <Timer duration={method.details.duration || 0} />
+      <Timer
+        durationMs={method.details.durationMs}
+        durationIncrement={method.details.durationIncrement}
+      />
       <BrewDetails details={method.details} />
     </div>
   );
