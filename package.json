@@ -15,12 +15,12 @@
     "web-vitals": "^3.5.2"
   },
   "devDependencies": {
-    "@types/node": "^20.11.30",
-    "@types/react": "^18.2.67",
-    "@types/react-dom": "^18.2.22",
+    "@types/node": "^20.12.2",
+    "@types/react": "^18.2.73",
+    "@types/react-dom": "^18.2.23",
     "@vitejs/plugin-react": "^4.2.1",
-    "vite": "^5.2.2",
-    "vite-plugin-pwa": "^0.19.6",
+    "vite": "^5.2.7",
+    "vite-plugin-pwa": "^0.19.7",
     "vite-plugin-svgr": "^4.2.0",
     "vite-tsconfig-paths": "^4.3.2",
     "workbox-window": "^7.0.0"
