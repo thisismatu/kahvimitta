@@ -33,7 +33,7 @@ export const AmountInput: React.FC<Props> = ({
   const renderName = units.find((i) => i.unit === state.value)?.label;
   const widthRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
-  const [fontSize, setFontSize] = useState(36);
+  const [fontSize, setFontSize] = useState(32);
 
   useEffect(() => {
     if (widthRef.current && inputRef.current) {
@@ -42,7 +42,7 @@ export const AmountInput: React.FC<Props> = ({
       if (tw >= iw) {
         setFontSize((current) => current - current / 6);
       } else if (tw < iw - iw / 3) {
-        setFontSize(36);
+        setFontSize(32);
       }
     }
   }, [amount]);

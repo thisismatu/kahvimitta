@@ -1,9 +1,9 @@
 import React from 'react';
 import { Disclosure, DisclosureContent, useDisclosureState } from 'ariakit/disclosure';
 import { Instruction } from 'types';
+import clsx from 'clsx';
 import { ChevronDownIcon, SlidersIcon, ThermometerIcon, ClockIcon } from 'assets/icons';
 import styles from './BrewDetails.module.css';
-import clsx from 'clsx';
 
 interface Props {
   details: Instruction;

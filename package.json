@@ -8,6 +8,7 @@
     "@vercel/speed-insights": "^1.0.10",
     "ariakit": "^2.0.0-next.43",
     "clsx": "^2.1.0",
+    "format-duration": "^3.0.2",
     "react": "^18.2.0",
     "react-device-detect": "^2.2.3",
     "react-dom": "^18.2.0",
@@ -26,7 +27,7 @@
     "workbox-window": "^7.0.0"
   },
   "scripts": {
-    "start": "vite",
+    "start": "vite --host",
     "build": "tsc && vite build",
     "serve": "vite preview"
   },
