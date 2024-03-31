@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import { Button } from 'ariakit/button';
 import { Select, SelectItem, SelectPopover, useSelectState } from 'ariakit/select';
 import { Unit, WeightUnit } from 'types';
-import { CheckIcon, ChevronUpIcon, ChevronDownIcon, PlusIcon, MinusIcon } from 'assets/icons';
+import { CheckIcon, ChevronUpIcon, ChevronDownIcon, PlusIcon, MinusIcon } from 'lucide-react';
 import styles from './AmountInput.module.css';
 
 interface Props {

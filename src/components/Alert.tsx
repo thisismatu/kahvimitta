@@ -1,4 +1,4 @@
-import { ArrowUpRightIcon } from 'assets/icons';
+import { ArrowUpRightIcon } from 'lucide-react';
 import styles from './Alert.module.css';
 
 export const Alert = () => {

@@ -9,6 +9,7 @@
     "ariakit": "^2.0.0-next.43",
     "clsx": "^2.1.0",
     "format-duration": "^3.0.2",
+    "lucide-react": "^0.363.0",
     "react": "^18.2.0",
     "react-device-detect": "^2.2.3",
     "react-dom": "^18.2.0",

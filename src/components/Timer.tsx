@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import formatDuration from 'format-duration';
 import { Button } from './Button';
-import { PlayIcon, SquareIcon } from 'assets/icons';
+import { PlayIcon, SquareIcon } from 'lucide-react';
 import glassSrc from 'assets/glass.m4a';
 import styles from './Timer.module.css';
 

@@ -2,7 +2,7 @@ import React from 'react';
 import { Disclosure, DisclosureContent, useDisclosureState } from 'ariakit/disclosure';
 import { Instruction } from 'types';
 import clsx from 'clsx';
-import { ChevronDownIcon, SlidersIcon, ThermometerIcon, ClockIcon } from 'assets/icons';
+import { ChevronDownIcon, SlidersIcon, ThermometerIcon, ClockIcon } from 'lucide-react';
 import styles from './BrewDetails.module.css';
 
 interface Props {
