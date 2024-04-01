@@ -6,7 +6,7 @@ import MokaPotIcon from 'assets/moka-pot.svg?react';
 import EspressoIcon from 'assets/espresso.svg?react';
 import { WeightUnit, BrewMethod } from './types';
 
-// Note: remember to use thin space " "
+// Note: remember to use thin space " " and that duration is milliseconds
 
 export const coffeeUnits: WeightUnit[] = [
   { label: 'Gram', unit: 'g' },
@@ -34,6 +34,8 @@ export const brewMethods: BrewMethod[] = [
       grind: 'Medium',
       time: '4 – 5 min',
       temp: '96°C',
+      durationMs: 240000,
+      durationIncrement: 30000,
     },
   },
   {
@@ -48,6 +50,8 @@ export const brewMethods: BrewMethod[] = [
       grind: 'Medium',
       time: '3 – 4 min',
       temp: '90 – 96°C',
+      durationMs: 180000,
+      durationIncrement: 15000,
     },
   },
   {
@@ -62,6 +66,8 @@ export const brewMethods: BrewMethod[] = [
       grind: 'Medium fine',
       time: '1 min 30 sec',
       temp: '90 – 96°C',
+      durationMs: 90000,
+      durationIncrement: 15000,
     },
   },
   {
@@ -76,6 +82,8 @@ export const brewMethods: BrewMethod[] = [
       grind: 'Medium coarse',
       time: '4 min',
       temp: '96°C',
+      durationMs: 240000,
+      durationIncrement: 30000,
     },
   },
   {
@@ -90,6 +98,8 @@ export const brewMethods: BrewMethod[] = [
       grind: 'Fine',
       time: '1 min',
       temp: '96°C',
+      durationMs: 60000,
+      durationIncrement: 15000,
     },
   },
   {
@@ -104,6 +114,8 @@ export const brewMethods: BrewMethod[] = [
       grind: 'Extra fine',
       time: '25 – 30 sec',
       temp: '92 – 96°C',
+      durationMs: 25000,
+      durationIncrement: 1000,
     },
   },
 ];

@@ -1,9 +1,9 @@
 import React from 'react';
 import { Disclosure, DisclosureContent, useDisclosureState } from 'ariakit/disclosure';
 import { Instruction } from 'types';
-import { ChevronDownIcon, SlidersIcon, ThermometerIcon, ClockIcon } from 'assets/icons';
-import styles from './BrewDetails.module.css';
 import clsx from 'clsx';
+import { ChevronDownIcon, SlidersIcon, ThermometerIcon, ClockIcon } from 'lucide-react';
+import styles from './BrewDetails.module.css';
 
 interface Props {
   details: Instruction;

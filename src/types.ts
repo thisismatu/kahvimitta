@@ -23,6 +23,8 @@ export interface Instruction {
   grind: string;
   temp: string;
   time: string;
+  durationMs: number;
+  durationIncrement: number;
 }
 
 export interface BrewMethod {

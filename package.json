@@ -8,6 +8,8 @@
     "@vercel/speed-insights": "^1.0.10",
     "ariakit": "^2.0.0-next.43",
     "clsx": "^2.1.0",
+    "format-duration": "^3.0.2",
+    "lucide-react": "^0.363.0",
     "react": "^18.2.0",
     "react-device-detect": "^2.2.3",
     "react-dom": "^18.2.0",
@@ -15,18 +17,18 @@
     "web-vitals": "^3.5.2"
   },
   "devDependencies": {
-    "@types/node": "^20.11.30",
-    "@types/react": "^18.2.67",
-    "@types/react-dom": "^18.2.22",
+    "@types/node": "^20.12.2",
+    "@types/react": "^18.2.73",
+    "@types/react-dom": "^18.2.23",
     "@vitejs/plugin-react": "^4.2.1",
-    "vite": "^5.2.2",
-    "vite-plugin-pwa": "^0.19.6",
+    "vite": "^5.2.7",
+    "vite-plugin-pwa": "^0.19.7",
     "vite-plugin-svgr": "^4.2.0",
     "vite-tsconfig-paths": "^4.3.2",
     "workbox-window": "^7.0.0"
   },
   "scripts": {
-    "start": "vite",
+    "start": "vite --host",
     "build": "tsc && vite build",
     "serve": "vite preview"
   },

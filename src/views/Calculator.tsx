@@ -8,6 +8,7 @@ import { AmountInput } from 'components/AmountInput';
 import { BrewDetails } from 'components/BrewDetails';
 import { Button } from 'components/Button';
 import { MethodButton } from 'components/MethodButton';
+import { Timer } from 'components/Timer';
 import styles from './Calculator.module.css';
 
 function Calculator() {
@@ -22,7 +23,6 @@ function Calculator() {
   const [waterUnit, setWaterUnit] = useState<Unit>(localWaterUnit);
   const [lastInput, setLastInput] = useState<'coffee' | 'water'>();
   const scrollRef = useRef<HTMLDivElement>(null);
-  const showDomainAlert = window.location.hostname === 'brewcalc.online';
 
   useEffect(() => {
     document.title = 'BrewCalc';
@@ -174,6 +174,10 @@ function Calculator() {
           </Button>
         ))}
       </div>
+      <Timer
+        durationMs={method.details.durationMs}
+        durationIncrement={method.details.durationIncrement}
+      />
       <BrewDetails details={method.details} />
     </div>
   );
