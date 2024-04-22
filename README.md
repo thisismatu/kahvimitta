@@ -28,10 +28,10 @@ npm start
 - [x] Espresso brew method
 - [x] Tablespoon measurement 
 - [x] Improve brew instructions
-- [ ] Upgrade to Ariakit 0.4.4 or switch to Radix
+- [x] Brew timer
+- [ ] Switch to Radix
 - [ ] Custom ratio
 - [ ] Settings: rounding precision, method order & other
-- [ ] Brew timer?
 
 ## Design
 
