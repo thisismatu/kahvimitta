@@ -36,13 +36,16 @@
 @media only screen and (min-width: 768px) {
   .title {
     text-align: left;
+    width: 25%;
   }
 }
 
 .timer {
   display: flex;
+  justify-content: center;
   align-items: center;
   gap: 1rem;
+  flex-grow: 1;
   padding: 0.5rem;
   position: relative;
 }
@@ -52,16 +55,10 @@
   font-weight: 500;
 }
 
-@media only screen and (min-width: 768px) {
-  .time {
-    font-size: 1.5rem;
-  }
-}
-
 .startButton {
   background-color: transparent;
   border-radius: 9999px;
-  padding: 0.5rem;
+  padding: 0.75rem;
   background-color: var(--brown-7);
   color: var(--brown-1);
 }
@@ -91,10 +88,22 @@
   min-width: 10rem;
 }
 
+@media only screen and (min-width: 768px) {
+  .secondaryActions {
+    width: 25%;
+  }
+}
+
 .textButton {
   background-color: transparent;
   font-size: 0.875rem;
   padding: 0.5rem;
   height: 2rem;
   color: var(--brown-6);
+}
+
+@media (hover: hover) {
+  .textButton:hover {
+    background-color: hsla(30, 33%, 19%, 0.1);
+  }
 }
