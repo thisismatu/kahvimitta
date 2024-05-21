@@ -90,6 +90,7 @@
 
 @media only screen and (min-width: 768px) {
   .secondaryActions {
+    justify-content: end;
     width: 25%;
   }
 }
