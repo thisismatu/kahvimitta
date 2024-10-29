@@ -1,17 +1,18 @@
-import { useEffect } from 'react';
-import { Header } from 'components/Header';
-import { InstallPwaButton } from 'components/InstallPwaButton';
-import Calculator from './Calculator';
-import styles from './App.module.css';
+import { useEffect } from "react";
+import { Header } from "components/Header";
+import { InstallPwaButton } from "components/InstallPwaButton";
+import Calculator from "./Calculator";
+import styles from "./App.module.css";
 
 function App() {
   useEffect(() => {
-    document.title = 'BrewCalc';
+    document.title = "BrewCalc";
     const updateFavicon = (dark: boolean) => {
-      const link = document.getElementById('favicon') as HTMLLinkElement;
-      if (link) link.href = dark ? 'favicon-dark.ico' : 'favicon.ico';
+      const link = document.getElementById("favicon") as HTMLLinkElement;
+      if (link) link.href = dark ? "favicon-dark.ico" : "favicon.ico";
     };
-    const usesDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches || false;
+    const usesDarkMode =
+      window.matchMedia("(prefers-color-scheme: dark)").matches || false;
     updateFavicon(usesDarkMode);
   }, []);
 
