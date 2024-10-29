@@ -59,6 +59,7 @@ export const AmountInput: React.FC<Props> = ({
           data-direction="down"
           as="button"
           onClick={onSpinnerClick}
+          tabIndex={-1}
         >
           <MinusIcon />
           <ChevronDownIcon />
@@ -73,13 +74,20 @@ export const AmountInput: React.FC<Props> = ({
           min={0}
           placeholder="0"
           style={{ fontSize }}
+          tabIndex={1}
         />
-        <Button className={styles.stepper} data-direction="up" as="button" onClick={onSpinnerClick}>
+        <Button
+          className={styles.stepper}
+          data-direction="up"
+          as="button"
+          onClick={onSpinnerClick}
+          tabIndex={-1}
+        >
           <PlusIcon />
           <ChevronUpIcon />
         </Button>
       </div>
-      <Select state={state} className={styles.select}>
+      <Select state={state} className={styles.select} tabIndex={2}>
         {renderName || state.value}
         <ChevronDownIcon width={16} height={16} />
       </Select>

@@ -137,6 +137,7 @@ function Calculator() {
             key={m.label}
             onClick={() => handleMethod(m, i)}
             disabled={m.label === method.label}
+            tabIndex={-1}
           >
             <m.icon />
             <span>{m.label}</span>
@@ -169,6 +170,7 @@ function Calculator() {
             key={s.type}
             onClick={() => handleStrength(s)}
             disabled={s.type === strength.type}
+            tabIndex={3}
           >
             {s.label} <small>1:{s.ratio}</small>
           </Button>

@@ -25,12 +25,22 @@ function App() {
       <div className={styles.wrapper}>
         <Calculator />
         <div className={styles.footer}>
-          Made with ♥ by{' '}
-          <a href="https://mathiaslindholm.com/" target="_blank" rel="noopener noreferrer">
+          Made with ♥ by{" "}
+          <a
+            href="https://mathiaslindholm.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+            tabIndex={-1}
+          >
             Mathias Lindholm
-          </a>{' '}
-          &{' '}
-          <a href="https://aapokojo.com/" target="_blank" rel="noopener noreferrer">
+          </a>{" "}
+          &{" "}
+          <a
+            href="https://aapokojo.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+            tabIndex={-1}
+          >
             Aapo Kojo
           </a>
         </div>
