@@ -20,4 +20,6 @@
 
 .button span {
   margin: auto;
+  line-height: 1.125;
+  padding-bottom: 0.25rem;
 }
