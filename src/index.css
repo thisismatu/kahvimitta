@@ -1,9 +1,9 @@
-@import url('reset.css');
+@import url("reset.css");
 
 :root {
   --brown-1: #fff8f0;
   --brown-2: #f0e9e0;
-  --brown-3: #e3d9ce;
+  --brown-3: #e5dcd2;
   --brown-4: #d2cac1;
   --brown-5: #aea397;
   --brown-6: #7e7062;
@@ -12,7 +12,7 @@
   --accent-light: #ffb833;
   --shadow: rgba(0, 0, 0, 0.05);
   --shadow-dark: rgba(0, 0, 0, 0.2);
-  --font: 'M PLUS Rounded 1c', sans-serif;
+  --font: "M PLUS Rounded 1c", sans-serif;
   --ease: all 0.2s ease;
 }
 

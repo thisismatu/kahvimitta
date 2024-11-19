@@ -105,6 +105,6 @@
 
 @media (hover: hover) {
   .textButton:hover {
-    background-color: hsla(30, 33%, 19%, 0.1);
+    background-color: var(--brown-3);
   }
 }
