@@ -1,20 +1,19 @@
 .calculator {
   display: flex;
   flex-direction: column;
-  gap: 0.75rem;
+  gap: 1rem;
   padding: 1rem;
 }
 
 @media only screen and (min-width: 768px) {
   .calculator {
     padding: 2rem;
-    gap: 1rem;
   }
 }
 
 .methods {
   display: flex;
-  gap: 0.75rem;
+  gap: 1rem;
   max-width: 100vw;
   margin: -2px -1rem;
   padding: 2px 1rem;
@@ -29,7 +28,6 @@
   .methods {
     margin: -2px;
     padding: 2px;
-    gap: 1rem;
   }
 }
 
@@ -45,24 +43,12 @@
 .amounts {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 0.75rem;
-}
-
-@media only screen and (min-width: 768px) {
-  .amounts {
-    gap: 1rem;
-  }
+  gap: 1rem;
 }
 
 .strength {
   display: flex;
-  gap: 0.75rem;
-}
-
-@media only screen and (min-width: 768px) {
-  .strength {
-    gap: 1rem;
-  }
+  gap: 1rem;
 }
 
 .strength button {
