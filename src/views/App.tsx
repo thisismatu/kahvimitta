@@ -5,6 +5,8 @@ import Calculator from "./Calculator";
 import styles from "./App.module.css";
 
 function App() {
+  const isPWA = window.matchMedia("(display-mode: standalone)").matches;
+
   useEffect(() => {
     document.title = "BrewCalc";
     const updateFavicon = (dark: boolean) => {
@@ -18,11 +20,13 @@ function App() {
 
   return (
     <div className={styles.container}>
-      <Header
-        title="BrewCalc"
-        description="A simple coffee ratio calculator"
-        rightAction={<InstallPwaButton />}
-      />
+      {!isPWA && (
+        <Header
+          title="BrewCalc"
+          description="A simple coffee ratio calculator"
+          rightAction={<InstallPwaButton />}
+        />
+      )}
       <div className={styles.wrapper}>
         <Calculator />
         <div className={styles.footer}>
