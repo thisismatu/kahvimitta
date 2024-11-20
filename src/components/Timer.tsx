@@ -45,6 +45,7 @@ export const Timer: React.FC<Props> = ({ durationMs, durationIncrement }) => {
     }
     setIsActive(!isActive);
   };
+
   const handleReset = () => {
     setTimeLeft(durationMs);
     setDuration(durationMs);
