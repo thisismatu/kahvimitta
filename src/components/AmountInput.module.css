@@ -78,9 +78,7 @@
   align-items: center;
   justify-content: center;
   background-color: transparent;
-  border-radius: 0.5rem;
   color: var(--brown-5);
-  padding: 0.5rem;
   transition: var(--ease);
 }
 
@@ -96,18 +94,28 @@
 }
 
 .stepper svg {
-  pointer-events: none;
   display: block;
+  border-radius: 999px;
+  height: 2.5rem;
+  width: 2.5rem;
+  padding: 0.5rem;
+  pointer-events: none;
+  transition: var(--ease);
 }
 
 .stepper svg:first-child {
   display: none;
 }
 
+.stepper:active svg {
+  background-color: var(--brown-3);
+}
+
 @media only screen and (min-width: 768px) {
   .stepper svg:last-child {
     display: none;
   }
+
   .stepper svg:first-child {
     display: block;
   }
