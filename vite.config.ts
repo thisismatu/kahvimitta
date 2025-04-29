@@ -21,7 +21,7 @@ export default defineConfig({
         'icon-maskable-512.png',
         'screenshot-1.png',
         'screenshot-2.png',
-        'screenshot-3.png',
+        'screenshot-3.png'
       ],
       manifest: {
         short_name: 'BrewCalc',
@@ -38,58 +38,55 @@ export default defineConfig({
           {
             src: 'favicon.ico',
             sizes: '64x64',
-            type: 'image/x-icon',
+            type: 'image/x-icon'
           },
           {
             src: 'icon.svg',
             type: 'image/svg+xml',
             sizes: 'any',
-            purpose: 'any',
+            purpose: 'any'
           },
           {
             src: 'icon-192.png',
             type: 'image/png',
             sizes: '192x192',
-            purpose: 'any',
+            purpose: 'any'
           },
           {
             src: 'icon-512.png',
             type: 'image/png',
             sizes: '512x512',
-            purpose: 'any',
+            purpose: 'any'
           },
           {
             src: 'icon-maskable-512.png',
             type: 'image/png',
             sizes: '512x512',
-            purpose: 'maskable',
-          },
+            purpose: 'maskable'
+          }
         ],
         screenshots: [
           {
             src: 'screenshot-1.png',
             type: 'image/png',
-            sizes: '800x1600',
+            sizes: '800x1600'
           },
           {
             src: 'screenshot-2.png',
             type: 'image/png',
-            sizes: '800x1600',
+            sizes: '800x1600'
           },
           {
             src: 'screenshot-3.png',
             type: 'image/png',
-            sizes: '800x1600',
-          },
-        ],
-      },
-    }),
+            sizes: '800x1600'
+          }
+        ]
+      }
+    })
   ],
   server: {
     open: true,
-    port: 3000,
-  },
-  define: {
-    'import.meta.env.VITE_VERCEL_ANALYTICS_ID': JSON.stringify(process.env.VERCEL_ANALYTICS_ID),
-  },
+    port: 3000
+  }
 });

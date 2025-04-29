@@ -4,8 +4,6 @@
   "private": true,
   "type": "module",
   "dependencies": {
-    "@vercel/analytics": "^1.5.0",
-    "@vercel/speed-insights": "^1.2.0",
     "ariakit": "^2.0.0-next.44",
     "clsx": "^2.1.1",
     "format-duration": "^3.0.2",
