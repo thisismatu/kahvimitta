@@ -191,7 +191,7 @@ function Calculator() {
             disabled={s.type === strength.type}
             tabIndex={3}
           >
-            {s.label} <small>1:{s.ratio}</small>
+            {s.label} <small>1:{round(s.ratio)}</small>
           </Button>
         ))}
       </div>
