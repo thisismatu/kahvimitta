@@ -1,20 +1,9 @@
-import React, { useEffect, useRef, useState } from "react";
-import { Button } from "ariakit/button";
-import {
-  Select,
-  SelectItem,
-  SelectPopover,
-  useSelectState,
-} from "ariakit/select";
-import { Unit, WeightUnit } from "types";
-import {
-  CheckIcon,
-  ChevronUpIcon,
-  ChevronDownIcon,
-  PlusIcon,
-  MinusIcon,
-} from "lucide-react";
-import styles from "./AmountInput.module.css";
+import React, { useEffect, useRef, useState } from 'react';
+import { Button } from 'ariakit/button';
+import { Select, SelectItem, SelectPopover, useSelectState } from 'ariakit/select';
+import { Unit, WeightUnit } from 'types';
+import { CheckIcon, ChevronUpIcon, ChevronDownIcon, PlusIcon, MinusIcon } from 'lucide-react';
+import styles from './AmountInput.module.css';
 
 interface Props {
   label: string;
@@ -33,13 +22,13 @@ export const AmountInput: React.FC<Props> = ({
   currentUnit,
   onUnitChange,
   onAmountChange,
-  onSpinnerClick,
+  onSpinnerClick
 }) => {
   const state = useSelectState({
     defaultValue: currentUnit,
     sameWidth: true,
     gutter: 4,
-    animated: true,
+    animated: true
   });
   const renderName = units.find((i) => i.unit === state.value)?.label;
   const widthRef = useRef<HTMLDivElement>(null);
@@ -80,7 +69,7 @@ export const AmountInput: React.FC<Props> = ({
           ref={inputRef}
           className={styles.input}
           type="number"
-          value={amount || ""}
+          value={amount || ''}
           onChange={onAmountChange}
           min={0}
           placeholder="0"

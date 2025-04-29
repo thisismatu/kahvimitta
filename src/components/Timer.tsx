@@ -1,11 +1,11 @@
-import React, { useEffect, useState } from "react";
-import formatDuration from "format-duration";
-import { PlayIcon, SquareIcon } from "lucide-react";
-import { useWakeLock } from "utils/useWakeLock";
-import { Button } from "./Button";
-import glassSrc from "assets/glass.m4a";
-import styles from "./Timer.module.css";
-import { trackEvent } from "utils/misc";
+import React, { useEffect, useState } from 'react';
+import formatDuration from 'format-duration';
+import { PlayIcon, SquareIcon } from 'lucide-react';
+import { useWakeLock } from 'utils/useWakeLock';
+import { Button } from './Button';
+import glassSrc from 'assets/glass.m4a';
+import styles from './Timer.module.css';
+import { trackEvent } from 'utils/misc';
 
 interface Props {
   durationMs: number;
@@ -15,7 +15,7 @@ interface Props {
 export const Timer: React.FC<Props> = ({ durationMs, durationIncrement }) => {
   const glass = new Audio(glassSrc);
   const { isSupported, released, request, release } = useWakeLock({
-    onError: () => trackEvent("error", "Screen Wake Lock API"),
+    onError: () => trackEvent('error', 'Screen Wake Lock API')
   });
   const [duration, setDuration] = useState(durationMs);
   const [timeLeft, setTimeLeft] = useState(durationMs);
@@ -68,10 +68,7 @@ export const Timer: React.FC<Props> = ({ durationMs, durationIncrement }) => {
 
   return (
     <div className={styles.container}>
-      <div
-        className={styles.progress}
-        style={{ width: `${timeLeftPercentage}%` }}
-      />
+      <div className={styles.progress} style={{ width: `${timeLeftPercentage}%` }} />
       <span className={styles.title}>Timer</span>
       <div className={styles.timer}>
         <span className={styles.time}>{formatDuration(timeLeft)}</span>

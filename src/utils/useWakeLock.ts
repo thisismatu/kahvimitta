@@ -1,9 +1,8 @@
 // https://github.com/jorisre/react-screen-wake-lock/
 
-import * as React from "react";
+import * as React from 'react';
 
-const warn = (content: string) =>
-  console.warn("[react-screen-wake-lock]: " + content);
+const warn = (content: string) => console.warn('[react-screen-wake-lock]: ' + content);
 
 export interface WakeLockOptions {
   onError?: (error: Error) => void;
@@ -14,26 +13,24 @@ export interface WakeLockOptions {
 export const useWakeLock = ({
   onError,
   onRequest,
-  onRelease,
+  onRelease
 }: WakeLockOptions | undefined = {}) => {
   const [released, setReleased] = React.useState<boolean | undefined>();
   const wakeLock = React.useRef<WakeLockSentinel | null>(null);
 
   // https://caniuse.com/mdn-api_wakelock
-  const isSupported = typeof window !== "undefined" && "wakeLock" in navigator;
+  const isSupported = typeof window !== 'undefined' && 'wakeLock' in navigator;
 
   const request = React.useCallback(
-    async (type: WakeLockType = "screen") => {
+    async (type: WakeLockType = 'screen') => {
       const isWakeLockAlreadyDefined = wakeLock.current != null;
       if (!isSupported) {
         return warn(
-          "Calling the `request` function has no effect, Wake Lock Screen API isn't supported",
+          "Calling the `request` function has no effect, Wake Lock Screen API isn't supported"
         );
       }
       if (isWakeLockAlreadyDefined) {
-        return warn(
-          "Calling `request` multiple times without `release` has no effect",
-        );
+        return warn('Calling `request` multiple times without `release` has no effect');
       }
 
       try {
@@ -52,19 +49,19 @@ export const useWakeLock = ({
         onError && onError(error);
       }
     },
-    [isSupported, onRequest, onError, onRelease],
+    [isSupported, onRequest, onError, onRelease]
   );
 
   const release = React.useCallback(async () => {
     const isWakeLockUndefined = wakeLock.current == null;
     if (!isSupported) {
       return warn(
-        "Calling the `release` function has no effect, Wake Lock Screen API isn't supported",
+        "Calling the `release` function has no effect, Wake Lock Screen API isn't supported"
       );
     }
 
     if (isWakeLockUndefined) {
-      return warn("Calling `release` before `request` has no effect.");
+      return warn('Calling `release` before `request` has no effect.');
     }
 
     wakeLock.current && (await wakeLock.current.release());
@@ -75,6 +72,6 @@ export const useWakeLock = ({
     request,
     released,
     release,
-    type: (wakeLock.current && wakeLock.current.type) || undefined,
+    type: (wakeLock.current && wakeLock.current.type) || undefined
   };
 };
