@@ -80,7 +80,7 @@ export const AmountInput: React.FC<Props> = ({
           <ChevronUpIcon />
         </Button>
       </div>
-      <SelectProvider defaultValue={currentUnit} gutter={4} sameWidth>
+      <SelectProvider defaultValue={currentUnit} sameWidth>
         <Select className={styles.select} tabIndex={2}>
           {renderName || value}
           <ChevronDownIcon width={16} height={16} />
