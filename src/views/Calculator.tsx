@@ -43,25 +43,25 @@ function Calculator() {
     const cg = convert(c, coffeeUnit, 'g');
     const wg = cg * (r || strength.ratio);
     const w = convert(wg, 'g', waterUnit);
-    setWater({ round: round(w), exact: w });
+    setWater({ round: round(w, waterUnit), exact: w });
   };
 
   const waterToCoffee = (w: number, r?: number) => {
     const wg = convert(w, waterUnit, 'g');
     const cg = wg / (r || strength.ratio);
     const c = convert(cg, 'g', coffeeUnit);
-    setCoffee({ round: round(c), exact: c });
+    setCoffee({ round: round(c, coffeeUnit), exact: c });
   };
 
-  const adjustByOne = (currentValue: number, direction: string): Amount => {
+  const adjustByOne = (currentValue: number, direction: string, unit: Unit): Amount => {
     const value = direction === 'up' ? Math.floor(currentValue + 1) : Math.ceil(currentValue - 1);
     const posValue = value < 0 ? 0 : value;
-    return { round: round(posValue), exact: posValue };
+    return { round: round(posValue, unit), exact: posValue };
   };
 
   const handleCoffeeStepper = (e: React.SyntheticEvent<EventTarget>) => {
     if (!(e.target instanceof HTMLButtonElement) || !e.target.dataset.direction) return;
-    const c = adjustByOne(coffee.exact, e.target.dataset.direction);
+    const c = adjustByOne(coffee.exact, e.target.dataset.direction, coffeeUnit);
     setCoffee(c);
     coffeeToWater(c.exact);
     setLastInput('coffee');
@@ -69,7 +69,7 @@ function Calculator() {
 
   const handleWaterStepper = (e: React.SyntheticEvent<EventTarget>) => {
     if (!(e.target instanceof HTMLButtonElement) || !e.target.dataset.direction) return;
-    const w = adjustByOne(water.exact, e.target.dataset.direction);
+    const w = adjustByOne(water.exact, e.target.dataset.direction, waterUnit);
     setWater(w);
     waterToCoffee(w.exact);
     setLastInput('water');
@@ -82,7 +82,7 @@ function Calculator() {
       setWater({ round: 0, exact: 0 });
       return;
     }
-    setCoffee({ round: round(c), exact: c });
+    setCoffee({ round: round(c, coffeeUnit), exact: c });
     coffeeToWater(c);
     setLastInput('coffee');
   };
@@ -94,7 +94,7 @@ function Calculator() {
       setCoffee({ round: 0, exact: 0 });
       return;
     }
-    setWater({ round: round(w), exact: w });
+    setWater({ round: round(w, waterUnit), exact: w });
     waterToCoffee(w);
     setLastInput('water');
   };
@@ -104,7 +104,7 @@ function Calculator() {
     setLocalCoffeeUnit(to);
     if (!coffee.exact) return;
     const c = convert(coffee.exact, from, to);
-    setCoffee({ round: round(c), exact: c });
+    setCoffee({ round: round(c, to), exact: c });
   };
 
   const handleWaterUnit = (from: Unit, to: Unit) => {
@@ -112,7 +112,7 @@ function Calculator() {
     setLocalWaterUnit(to);
     if (!water.exact) return;
     const w = convert(water.exact, from, to);
-    setWater({ round: round(w), exact: w });
+    setWater({ round: round(w, to), exact: w });
   };
 
   const handleStrength = (s: Strength) => {
