@@ -82,7 +82,7 @@ function Calculator() {
       setWater({ round: 0, exact: 0 });
       return;
     }
-    setCoffee({ round: round(c, coffeeUnit), exact: c });
+    setCoffee({ round: round(c), exact: c });
     coffeeToWater(c);
     setLastInput('coffee');
   };
@@ -94,7 +94,7 @@ function Calculator() {
       setCoffee({ round: 0, exact: 0 });
       return;
     }
-    setWater({ round: round(w, waterUnit), exact: w });
+    setWater({ round: round(w), exact: w });
     waterToCoffee(w);
     setLastInput('water');
   };
