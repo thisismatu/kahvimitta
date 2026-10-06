@@ -1,7 +1,7 @@
 import { Unit } from '../types';
 
 export const round = (num: number, unit?: Unit) =>
-  unit === 'g' || unit === 'ml' ? Math.round(num) : Math.round(num * 10) / 10;
+  unit === 'g' || unit === 'ml' ? Math.round(num) : Math.round(num * 100) / 100;
 
 export const convert = (amount: number, from: Unit, to: Unit) => {
   switch (from) {
