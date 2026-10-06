@@ -31,7 +31,9 @@ export const Timer: React.FC<Props> = ({ durationMs, durationIncrement }) => {
     if (!isActive) return;
     if (timeLeft === 0) {
       glass.play();
-      window.navigator.vibrate([2000]);
+      if (window.navigator.vibrate) {
+        window.navigator.vibrate([2000]);
+      }
     }
     const timer = setTimeout(() => {
       setTimeLeft(timeLeft - 100);

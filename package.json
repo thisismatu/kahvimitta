@@ -4,7 +4,7 @@
   "private": true,
   "type": "module",
   "dependencies": {
-    "ariakit": "^2.0.0-next.44",
+    "@ariakit/react": "^0.4.41",
     "clsx": "^2.1.1",
     "format-duration": "^3.0.2",
     "lucide-react": "^0.577.0",

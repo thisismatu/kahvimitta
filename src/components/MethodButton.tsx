@@ -1,5 +1,5 @@
 import React from 'react';
-import { ButtonProps } from 'ariakit/button';
+import { ButtonProps } from '@ariakit/react';
 import { Button } from 'components/Button';
 import styles from './MethodButton.module.css';
 

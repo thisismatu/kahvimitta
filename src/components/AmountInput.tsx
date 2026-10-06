@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { Button } from 'ariakit/button';
-import { Select, SelectItem, SelectPopover, useSelectState } from 'ariakit/select';
+import { Button } from '@ariakit/react';
+import { Select, SelectItem, SelectPopover, SelectProvider } from '@ariakit/react';
 import { Unit, WeightUnit } from 'types';
 import { CheckIcon, ChevronUpIcon, ChevronDownIcon, PlusIcon, MinusIcon } from 'lucide-react';
 import styles from './AmountInput.module.css';
@@ -24,13 +24,8 @@ export const AmountInput: React.FC<Props> = ({
   onAmountChange,
   onSpinnerClick
 }) => {
-  const state = useSelectState({
-    defaultValue: currentUnit,
-    sameWidth: true,
-    gutter: 4,
-    animated: true
-  });
-  const renderName = units.find((i) => i.unit === state.value)?.label;
+  const [value, setValue] = useState(currentUnit);
+  const renderName = units.find((i) => i.unit === value)?.label;
   const widthRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
   const [fontSize, setFontSize] = useState(32);
@@ -57,7 +52,6 @@ export const AmountInput: React.FC<Props> = ({
         <Button
           className={styles.stepper}
           data-direction="down"
-          as="button"
           onClick={onSpinnerClick}
           tabIndex={-1}
         >
@@ -79,7 +73,6 @@ export const AmountInput: React.FC<Props> = ({
         <Button
           className={styles.stepper}
           data-direction="up"
-          as="button"
           onClick={onSpinnerClick}
           tabIndex={-1}
         >
@@ -87,27 +80,31 @@ export const AmountInput: React.FC<Props> = ({
           <ChevronUpIcon />
         </Button>
       </div>
-      <Select state={state} className={styles.select} tabIndex={2}>
-        {renderName || state.value}
-        <ChevronDownIcon width={16} height={16} />
-      </Select>
-      <SelectPopover state={state} className={styles.popover}>
-        {units.map((i) => (
-          <SelectItem
-            as="a"
-            key={i.unit}
-            className={styles.item}
-            value={i.unit}
-            onClick={() => onUnitChange(currentUnit, i.unit)}
-          >
-            {i.label}
-            {i.extra && <small>{i.extra}</small>}
-            <span className={styles.itemIcon}>
-              {i.unit === state.value && <CheckIcon width={16} height={16} />}
-            </span>
-          </SelectItem>
-        ))}
-      </SelectPopover>
+      <SelectProvider defaultValue={currentUnit} gutter={4} sameWidth>
+        <Select className={styles.select} tabIndex={2}>
+          {renderName || value}
+          <ChevronDownIcon width={16} height={16} />
+        </Select>
+        <SelectPopover className={styles.popover}>
+          {units.map((i) => (
+            <SelectItem
+              key={i.unit}
+              className={styles.item}
+              value={i.unit}
+              onClick={() => {
+                setValue(i.unit);
+                onUnitChange(currentUnit, i.unit);
+              }}
+            >
+              {i.label}
+              {i.extra && <small>{i.extra}</small>}
+              <span className={styles.itemIcon}>
+                {i.unit === value && <CheckIcon width={16} height={16} />}
+              </span>
+            </SelectItem>
+          ))}
+        </SelectPopover>
+      </SelectProvider>
     </div>
   );
 };
