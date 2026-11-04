@@ -1,0 +1,62 @@
+.addButton {
+  width: 100%;
+}
+
+.ratioWrapper {
+  position: relative;
+  width: 100%;
+}
+
+.ratioButton {
+  width: 100%;
+}
+
+.addForm {
+  display: flex;
+  gap: 0.5rem;
+  width: 100%;
+}
+
+.input {
+  flex: 1;
+  padding: 0.5rem;
+  border: 2px solid var(--brown-5);
+  border-radius: 0.5rem;
+  background-color: var(--brown-1);
+  color: var(--brown-8);
+  font-size: 1rem;
+  text-align: center;
+}
+
+.input:focus {
+  outline: none;
+  border-color: var(--brown-7);
+}
+
+.submitButton {
+  flex: 0 0 20%;
+}
+
+.cancelButton {
+  flex: 0 0 20%;
+}
+
+.deleteButton {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background-color: var(--brown-7);
+  color: var(--brown-1);
+  border: none;
+  border-radius: 0.5rem;
+  padding: 0.5rem;
+  margin-top: 0.25rem;
+  cursor: pointer;
+  font-size: 0.75rem;
+  z-index: 10;
+}
+
+.deleteButton:active {
+  background-color: var(--brown-8);
+}
