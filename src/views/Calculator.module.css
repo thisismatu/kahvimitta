@@ -49,41 +49,27 @@
 .strength {
   display: flex;
   gap: 1rem;
-  flex-wrap: wrap;
+  overflow-x: auto;
+  padding-bottom: 0.5rem;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  -webkit-overflow-scrolling: touch;
+}
+
+.strength::-webkit-scrollbar {
+  display: none;
 }
 
 .strength button {
-  width: 100%;
+  flex: 0 0 auto;
+  width: auto;
 }
 
 .addButton {
   flex: 0 0 auto;
 }
 
-.ratioWrapper {
-  position: relative;
-  width: 100%;
-}
 
-.deleteButton {
-  position: absolute;
-  top: 100%;
-  left: 0;
-  right: 0;
-  background-color: var(--brown-7);
-  color: var(--brown-1);
-  border: none;
-  border-radius: 0.5rem;
-  padding: 0.5rem;
-  margin-top: 0.25rem;
-  cursor: pointer;
-  font-size: 0.75rem;
-  z-index: 10;
-}
-
-.deleteButton:active {
-  background-color: var(--brown-8);
-}
 
 .dialogOverlay {
   position: fixed;
@@ -114,12 +100,12 @@
 
 .dialogInputs {
   display: flex;
+  flex-direction: column;
   gap: 0.75rem;
   margin-bottom: 1rem;
 }
 
 .dialogInput {
-  flex: 1;
   padding: 0.75rem;
   border: 2px solid var(--brown-5);
   border-radius: 0.5rem;
@@ -142,4 +128,24 @@
 
 .dialogActions button {
   flex: 0 0 auto;
+}
+
+.actionBar {
+  position: fixed;
+  bottom: 8px;
+  left: 8px;
+  right: 8px;
+  height: 48px;
+  display: flex;
+  gap: 0.75rem;
+  background-color: var(--brown-2);
+  border-radius: 0.75rem;
+  padding: 0.25rem;
+  z-index: 1000;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.actionButton {
+  flex: 1;
+  height: 100%;
 }

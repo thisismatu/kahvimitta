@@ -21,6 +21,7 @@ function Calculator() {
   const [strength, setStrength] = useState<Strength>(brewMethods[localBrewMethod].strengths[1]);
   const [selectedCustomRatio, setSelectedCustomRatio] = useState<CustomRatio | null>(null);
   const [showAddDialog, setShowAddDialog] = useState(false);
+  const [editingRatio, setEditingRatio] = useState<CustomRatio | null>(null);
   const [coffee, setCoffee] = useState<Amount>({ round: 0, exact: 0 });
   const [water, setWater] = useState<Amount>({ round: 0, exact: 0 });
   const [coffeeUnit, setCoffeeUnit] = useState<Unit>(localCoffeeUnit);
@@ -28,7 +29,7 @@ function Calculator() {
   const [lastInput, setLastInput] = useState<'coffee' | 'water'>();
   const [newLabel, setNewLabel] = useState('');
   const [newRatio, setNewRatio] = useState('');
-  const [showDelete, setShowDelete] = useState<string | null>(null);
+  const [showActions, setShowActions] = useState<CustomRatio | null>(null);
   const deleteTimerRef = useRef<NodeJS.Timeout | null>(null);
   const scrollRef = useRef<HTMLDivElement>(null);
 
@@ -149,16 +150,20 @@ function Calculator() {
     const ratioValue = parseFloat(newRatio);
     if (newLabel.trim() && !isNaN(ratioValue) && ratioValue > 0) {
       const newRatioObj: CustomRatio = {
-        id: Date.now().toString(),
+        id: editingRatio?.id || Date.now().toString(),
         label: newLabel.trim(),
         ratio: ratioValue
       };
       const methodRatios = getCurrentMethodRatios();
+      const updatedRatios = editingRatio
+        ? methodRatios.map((r) => (r.id === editingRatio.id ? newRatioObj : r))
+        : [...methodRatios, newRatioObj];
       setCustomRatios({
         ...customRatios,
-        [localBrewMethod]: [...methodRatios, newRatioObj]
+        [localBrewMethod]: updatedRatios
       });
       setSelectedCustomRatio(newRatioObj);
+      setEditingRatio(null);
       setShowAddDialog(false);
       setNewLabel('');
       setNewRatio('');
@@ -198,13 +203,15 @@ function Calculator() {
 
   const handleCloseAddDialog = () => {
     setShowAddDialog(false);
+    setEditingRatio(null);
     setNewLabel('');
     setNewRatio('');
+    setShowActions(null);
   };
 
-  const handleLongPressStart = (id: string) => {
+  const handleLongPressStart = (ratio: CustomRatio) => {
     deleteTimerRef.current = setTimeout(() => {
-      setShowDelete(id);
+      setShowActions(ratio);
     }, 1000);
   };
 
@@ -215,10 +222,17 @@ function Calculator() {
     }
   };
 
-  const handleDelete = (id: string, e: React.MouseEvent) => {
-    e.stopPropagation();
-    handleDeleteCustomRatio(id);
-    setShowDelete(null);
+  const handleEdit = (ratio: CustomRatio) => {
+    setEditingRatio(ratio);
+    setNewLabel(ratio.label);
+    setNewRatio(ratio.ratio.toString());
+    setShowAddDialog(true);
+    setShowActions(null);
+  };
+
+  const handleDeleteFromActions = (ratio: CustomRatio) => {
+    handleDeleteCustomRatio(ratio.id);
+    setShowActions(null);
   };
 
   return (
@@ -268,29 +282,20 @@ function Calculator() {
           </Button>
         ))}
         {getCurrentMethodRatios().map((ratio) => (
-          <div key={ratio.id} className={styles.ratioWrapper}>
-            <Button
-              onClick={() => handleCustomRatioSelect(ratio)}
-              disabled={selectedCustomRatio?.id === ratio.id}
-              tabIndex={3}
-              onTouchStart={() => handleLongPressStart(ratio.id)}
-              onTouchEnd={handleLongPressEnd}
-              onTouchCancel={handleLongPressEnd}
-              onMouseDown={() => handleLongPressStart(ratio.id)}
-              onMouseUp={handleLongPressEnd}
-              onMouseLeave={handleLongPressEnd}
-            >
-              {ratio.label} <small>1:{round(ratio.ratio)}</small>
-            </Button>
-            {showDelete === ratio.id && (
-              <button
-                className={styles.deleteButton}
-                onClick={(e) => handleDelete(ratio.id, e)}
-              >
-                Delete
-              </button>
-            )}
-          </div>
+          <Button
+            key={ratio.id}
+            onClick={() => handleCustomRatioSelect(ratio)}
+            disabled={selectedCustomRatio?.id === ratio.id}
+            tabIndex={3}
+            onTouchStart={() => handleLongPressStart(ratio)}
+            onTouchEnd={handleLongPressEnd}
+            onTouchCancel={handleLongPressEnd}
+            onMouseDown={() => handleLongPressStart(ratio)}
+            onMouseUp={handleLongPressEnd}
+            onMouseLeave={handleLongPressEnd}
+          >
+            {ratio.label} <small>1:{round(ratio.ratio)}</small>
+          </Button>
         ))}
         <Button onClick={handleOpenAddDialog} className={styles.addButton} tabIndex={3}>
           + Add
@@ -304,7 +309,7 @@ function Calculator() {
       {showAddDialog && (
         <div className={styles.dialogOverlay} onClick={handleCloseAddDialog}>
           <div className={styles.dialog} onClick={(e) => e.stopPropagation()}>
-            <h3>Add Custom Ratio</h3>
+            <h3>{editingRatio ? 'Edit Custom Ratio' : 'Add Custom Ratio'}</h3>
             <div className={styles.dialogInputs}>
               <input
                 type="text"
@@ -329,10 +334,20 @@ function Calculator() {
                 Cancel
               </Button>
               <Button onClick={handleAddCustomRatio} className={styles.submitButton} tabIndex={3}>
-                Add
+                {editingRatio ? 'Save' : 'Add'}
               </Button>
             </div>
           </div>
+        </div>
+      )}
+      {showActions && (
+        <div className={styles.actionBar}>
+          <Button onClick={() => handleEdit(showActions)} className={styles.actionButton} tabIndex={3}>
+            Edit
+          </Button>
+          <Button onClick={() => handleDeleteFromActions(showActions)} className={styles.actionButton} tabIndex={3}>
+            Delete
+          </Button>
         </div>
       )}
     </div>
