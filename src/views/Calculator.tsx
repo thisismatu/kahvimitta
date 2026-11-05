@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { Amount, BrewMethod, Strength, Unit } from 'types';
+import { Amount, BrewMethod, Strength, Unit, CustomRatio } from 'types';
 import { convert, round } from 'utils/math';
 import { useLocalStorage } from 'utils/useLocalStorage';
 import { trackEvent } from 'utils/misc';
@@ -9,14 +9,17 @@ import { BrewDetails } from 'components/BrewDetails';
 import { Button } from 'components/Button';
 import { MethodButton } from 'components/MethodButton';
 import { Timer } from 'components/Timer';
+import { CustomRatioManager } from 'components/CustomRatioManager';
 import styles from './Calculator.module.css';
 
 function Calculator() {
   const [localBrewMethod, setLocalBrewMethod] = useLocalStorage<number>('brewMethod', 0);
   const [localCoffeeUnit, setLocalCoffeeUnit] = useLocalStorage<Unit>('coffeeUnit', 'g');
   const [localWaterUnit, setLocalWaterUnit] = useLocalStorage<Unit>('waterUnit', 'ml');
+  const [customRatios, setCustomRatios] = useLocalStorage<CustomRatio[]>('customRatios', []);
   const [method, setMethod] = useState<BrewMethod>(brewMethods[localBrewMethod]);
   const [strength, setStrength] = useState<Strength>(brewMethods[localBrewMethod].strengths[1]);
+  const [selectedCustomRatio, setSelectedCustomRatio] = useState<CustomRatio | null>(null);
   const [coffee, setCoffee] = useState<Amount>({ round: 0, exact: 0 });
   const [water, setWater] = useState<Amount>({ round: 0, exact: 0 });
   const [coffeeUnit, setCoffeeUnit] = useState<Unit>(localCoffeeUnit);
@@ -39,16 +42,21 @@ function Calculator() {
     if (child) child.scrollIntoView({ behavior: 'smooth', block: 'center' });
   }, [localBrewMethod]);
 
+  const getActiveRatio = () => {
+    if (selectedCustomRatio) return selectedCustomRatio.ratio;
+    return strength.ratio;
+  };
+
   const coffeeToWater = (c: number, r?: number) => {
     const cg = convert(c, coffeeUnit, 'g');
-    const wg = cg * (r || strength.ratio);
+    const wg = cg * (r || getActiveRatio());
     const w = convert(wg, 'g', waterUnit);
     setWater({ round: round(w, waterUnit), exact: w });
   };
 
   const waterToCoffee = (w: number, r?: number) => {
     const wg = convert(w, waterUnit, 'g');
-    const cg = wg / (r || strength.ratio);
+    const cg = wg / (r || getActiveRatio());
     const c = convert(cg, 'g', coffeeUnit);
     setCoffee({ round: round(c, coffeeUnit), exact: c });
   };
@@ -116,14 +124,39 @@ function Calculator() {
   };
 
   const handleStrength = (s: Strength) => {
+    setSelectedCustomRatio(null);
     setStrength(s);
     if (lastInput === 'coffee') coffeeToWater(coffee.exact, s.ratio);
     if (lastInput === 'water') waterToCoffee(water.exact, s.ratio);
   };
 
+  const handleCustomRatioSelect = (ratio: CustomRatio) => {
+    setSelectedCustomRatio(ratio);
+    if (lastInput === 'coffee') coffeeToWater(coffee.exact, ratio.ratio);
+    if (lastInput === 'water') waterToCoffee(water.exact, ratio.ratio);
+  };
+
+  const handleAddCustomRatio = (ratio: CustomRatio) => {
+    setCustomRatios([...customRatios, ratio]);
+    setSelectedCustomRatio(ratio);
+    if (lastInput === 'coffee') coffeeToWater(coffee.exact, ratio.ratio);
+    if (lastInput === 'water') waterToCoffee(water.exact, ratio.ratio);
+  };
+
+  const handleDeleteCustomRatio = (id: string) => {
+    const newRatios = customRatios.filter((r) => r.id !== id);
+    setCustomRatios(newRatios);
+    if (selectedCustomRatio?.id === id) {
+      setSelectedCustomRatio(null);
+      if (lastInput === 'coffee') coffeeToWater(coffee.exact);
+      if (lastInput === 'water') waterToCoffee(water.exact);
+    }
+  };
+
   const handleMethod = (m: BrewMethod, i: number) => {
     setMethod(m);
     setLocalBrewMethod(i);
+    setSelectedCustomRatio(null);
     trackEvent('brew-method', m.label);
     const ns = m.strengths.find((s) => s.type === strength.type);
     if (ns) handleStrength(ns);
@@ -169,12 +202,19 @@ function Calculator() {
           <Button
             key={s.type}
             onClick={() => handleStrength(s)}
-            disabled={s.type === strength.type}
+            disabled={s.type === strength.type && !selectedCustomRatio}
             tabIndex={3}
           >
             {s.label} <small>1:{round(s.ratio)}</small>
           </Button>
         ))}
+        <CustomRatioManager
+          customRatios={customRatios}
+          onAddRatio={handleAddCustomRatio}
+          onDeleteRatio={handleDeleteCustomRatio}
+          onSelectRatio={handleCustomRatioSelect}
+          selectedRatioId={selectedCustomRatio?.id}
+        />
       </div>
       <Timer
         durationMs={method.details.durationMs}
