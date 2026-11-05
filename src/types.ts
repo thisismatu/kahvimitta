@@ -19,12 +19,6 @@ export interface Strength {
   ratio: number;
 }
 
-export interface CustomRatio {
-  id: string;
-  label: string;
-  ratio: number;
-}
-
 export interface Instruction {
   grind: string;
   temp: string;
