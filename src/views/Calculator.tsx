@@ -341,13 +341,18 @@ function Calculator() {
         </div>
       )}
       {showActions && (
-        <div className={styles.actionBar}>
-          <Button onClick={() => handleEdit(showActions)} className={styles.actionButton} tabIndex={3}>
-            Edit
-          </Button>
-          <Button onClick={() => handleDeleteFromActions(showActions)} className={styles.actionButton} tabIndex={3}>
-            Delete
-          </Button>
+        <div className={styles.actionBarOverlay} onClick={() => setShowActions(null)}>
+          <div className={styles.actionBar} onClick={(e) => e.stopPropagation()}>
+            <button className={styles.closeButton} onClick={() => setShowActions(null)} tabIndex={3}>
+              X
+            </button>
+            <Button onClick={() => handleEdit(showActions)} className={styles.actionButton} tabIndex={3}>
+              Edit
+            </Button>
+            <Button onClick={() => handleDeleteFromActions(showActions)} className={styles.actionButton} tabIndex={3}>
+              Delete
+            </Button>
+          </div>
         </div>
       )}
     </div>
