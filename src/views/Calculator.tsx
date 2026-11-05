@@ -9,22 +9,27 @@ import { BrewDetails } from 'components/BrewDetails';
 import { Button } from 'components/Button';
 import { MethodButton } from 'components/MethodButton';
 import { Timer } from 'components/Timer';
-import { CustomRatioManager } from 'components/CustomRatioManager';
+
 import styles from './Calculator.module.css';
 
 function Calculator() {
   const [localBrewMethod, setLocalBrewMethod] = useLocalStorage<number>('brewMethod', 0);
   const [localCoffeeUnit, setLocalCoffeeUnit] = useLocalStorage<Unit>('coffeeUnit', 'g');
   const [localWaterUnit, setLocalWaterUnit] = useLocalStorage<Unit>('waterUnit', 'ml');
-  const [customRatios, setCustomRatios] = useLocalStorage<CustomRatio[]>('customRatios', []);
+  const [customRatios, setCustomRatios] = useLocalStorage<Record<number, CustomRatio[]>>('customRatios', {});
   const [method, setMethod] = useState<BrewMethod>(brewMethods[localBrewMethod]);
   const [strength, setStrength] = useState<Strength>(brewMethods[localBrewMethod].strengths[1]);
   const [selectedCustomRatio, setSelectedCustomRatio] = useState<CustomRatio | null>(null);
+  const [showAddDialog, setShowAddDialog] = useState(false);
   const [coffee, setCoffee] = useState<Amount>({ round: 0, exact: 0 });
   const [water, setWater] = useState<Amount>({ round: 0, exact: 0 });
   const [coffeeUnit, setCoffeeUnit] = useState<Unit>(localCoffeeUnit);
   const [waterUnit, setWaterUnit] = useState<Unit>(localWaterUnit);
   const [lastInput, setLastInput] = useState<'coffee' | 'water'>();
+  const [newLabel, setNewLabel] = useState('');
+  const [newRatio, setNewRatio] = useState('');
+  const [showDelete, setShowDelete] = useState<string | null>(null);
+  const deleteTimerRef = useRef<NodeJS.Timeout | null>(null);
   const scrollRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -123,6 +128,10 @@ function Calculator() {
     setWater({ round: round(w, to), exact: w });
   };
 
+  const getCurrentMethodRatios = () => {
+    return customRatios[localBrewMethod] || [];
+  };
+
   const handleStrength = (s: Strength) => {
     setSelectedCustomRatio(null);
     setStrength(s);
@@ -136,16 +145,35 @@ function Calculator() {
     if (lastInput === 'water') waterToCoffee(water.exact, ratio.ratio);
   };
 
-  const handleAddCustomRatio = (ratio: CustomRatio) => {
-    setCustomRatios([...customRatios, ratio]);
-    setSelectedCustomRatio(ratio);
-    if (lastInput === 'coffee') coffeeToWater(coffee.exact, ratio.ratio);
-    if (lastInput === 'water') waterToCoffee(water.exact, ratio.ratio);
+  const handleAddCustomRatio = () => {
+    const ratioValue = parseFloat(newRatio);
+    if (newLabel.trim() && !isNaN(ratioValue) && ratioValue > 0) {
+      const newRatioObj: CustomRatio = {
+        id: Date.now().toString(),
+        label: newLabel.trim(),
+        ratio: ratioValue
+      };
+      const methodRatios = getCurrentMethodRatios();
+      setCustomRatios({
+        ...customRatios,
+        [localBrewMethod]: [...methodRatios, newRatioObj]
+      });
+      setSelectedCustomRatio(newRatioObj);
+      setShowAddDialog(false);
+      setNewLabel('');
+      setNewRatio('');
+      if (lastInput === 'coffee') coffeeToWater(coffee.exact, ratioValue);
+      if (lastInput === 'water') waterToCoffee(water.exact, ratioValue);
+    }
   };
 
   const handleDeleteCustomRatio = (id: string) => {
-    const newRatios = customRatios.filter((r) => r.id !== id);
-    setCustomRatios(newRatios);
+    const methodRatios = getCurrentMethodRatios();
+    const newRatios = methodRatios.filter((r) => r.id !== id);
+    setCustomRatios({
+      ...customRatios,
+      [localBrewMethod]: newRatios
+    });
     if (selectedCustomRatio?.id === id) {
       setSelectedCustomRatio(null);
       if (lastInput === 'coffee') coffeeToWater(coffee.exact);
@@ -160,6 +188,37 @@ function Calculator() {
     trackEvent('brew-method', m.label);
     const ns = m.strengths.find((s) => s.type === strength.type);
     if (ns) handleStrength(ns);
+  };
+
+  const handleOpenAddDialog = () => {
+    setShowAddDialog(true);
+    setNewLabel('');
+    setNewRatio('');
+  };
+
+  const handleCloseAddDialog = () => {
+    setShowAddDialog(false);
+    setNewLabel('');
+    setNewRatio('');
+  };
+
+  const handleLongPressStart = (id: string) => {
+    deleteTimerRef.current = setTimeout(() => {
+      setShowDelete(id);
+    }, 1000);
+  };
+
+  const handleLongPressEnd = () => {
+    if (deleteTimerRef.current) {
+      clearTimeout(deleteTimerRef.current);
+      deleteTimerRef.current = null;
+    }
+  };
+
+  const handleDelete = (id: string, e: React.MouseEvent) => {
+    e.stopPropagation();
+    handleDeleteCustomRatio(id);
+    setShowDelete(null);
   };
 
   return (
@@ -208,19 +267,74 @@ function Calculator() {
             {s.label} <small>1:{round(s.ratio)}</small>
           </Button>
         ))}
-        <CustomRatioManager
-          customRatios={customRatios}
-          onAddRatio={handleAddCustomRatio}
-          onDeleteRatio={handleDeleteCustomRatio}
-          onSelectRatio={handleCustomRatioSelect}
-          selectedRatioId={selectedCustomRatio?.id}
-        />
+        {getCurrentMethodRatios().map((ratio) => (
+          <div key={ratio.id} className={styles.ratioWrapper}>
+            <Button
+              onClick={() => handleCustomRatioSelect(ratio)}
+              disabled={selectedCustomRatio?.id === ratio.id}
+              tabIndex={3}
+              onTouchStart={() => handleLongPressStart(ratio.id)}
+              onTouchEnd={handleLongPressEnd}
+              onTouchCancel={handleLongPressEnd}
+              onMouseDown={() => handleLongPressStart(ratio.id)}
+              onMouseUp={handleLongPressEnd}
+              onMouseLeave={handleLongPressEnd}
+            >
+              {ratio.label} <small>1:{round(ratio.ratio)}</small>
+            </Button>
+            {showDelete === ratio.id && (
+              <button
+                className={styles.deleteButton}
+                onClick={(e) => handleDelete(ratio.id, e)}
+              >
+                Delete
+              </button>
+            )}
+          </div>
+        ))}
+        <Button onClick={handleOpenAddDialog} className={styles.addButton} tabIndex={3}>
+          + Add
+        </Button>
       </div>
       <Timer
         durationMs={method.details.durationMs}
         durationIncrement={method.details.durationIncrement}
       />
       <BrewDetails details={method.details} />
+      {showAddDialog && (
+        <div className={styles.dialogOverlay} onClick={handleCloseAddDialog}>
+          <div className={styles.dialog} onClick={(e) => e.stopPropagation()}>
+            <h3>Add Custom Ratio</h3>
+            <div className={styles.dialogInputs}>
+              <input
+                type="text"
+                placeholder="Label"
+                value={newLabel}
+                onChange={(e) => setNewLabel(e.target.value)}
+                className={styles.dialogInput}
+                autoFocus
+              />
+              <input
+                type="number"
+                placeholder="Ratio"
+                value={newRatio}
+                onChange={(e) => setNewRatio(e.target.value)}
+                className={styles.dialogInput}
+                step="0.01"
+                min="0.01"
+              />
+            </div>
+            <div className={styles.dialogActions}>
+              <Button onClick={handleCloseAddDialog} className={styles.cancelButton} tabIndex={3}>
+                Cancel
+              </Button>
+              <Button onClick={handleAddCustomRatio} className={styles.submitButton} tabIndex={3}>
+                Add
+              </Button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
